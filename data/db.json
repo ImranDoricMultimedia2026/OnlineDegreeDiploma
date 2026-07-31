@@ -1,0 +1,1025 @@
+{
+  "users": [
+    {
+      "_id": "usr_admin_01",
+      "name": "System Administrator",
+      "email": "admin@onlinedegreediploma.com",
+      "password": "$2b$10$CkOrIcs1UfYoU0Qh00wMdOi83ka0HprYPscTyhMb7MpRLI.yHGJOm",
+      "role": "admin",
+      "phone": "+91 9999900000",
+      "state": "Delhi",
+      "status": "active",
+      "savedPrograms": [],
+      "createdAt": "2026-07-30T11:10:42.243Z"
+    }
+  ],
+  "colleges": [
+    {
+      "_id": "col_01",
+      "name": "LPU Online",
+      "slug": "lpu-online",
+      "location": "Jalandhar, Punjab",
+      "state": "Punjab",
+      "description": "Lovely Professional University Online offers UGC-entitled degree programs with flexible learning and world-class faculty.",
+      "overview": "LPU Online provides high-quality online degrees crafted for working professionals and ambitious students with global curriculum standards.",
+      "approvals": [
+        "UGC Entitled",
+        "NAAC A++",
+        "AICTE Approved",
+        "WES Listed"
+      ],
+      "logo": "https://images.unsplash.com/photo-1592280771190-3e2e4d571952?w=150&h=150&fit=crop&q=80",
+      "banner": "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1200&h=400&fit=crop&q=80",
+      "website": "https://www.lpuonline.com",
+      "establishedYear": "2005",
+      "isActive": true,
+      "createdAt": "2026-07-30T11:10:42.243Z"
+    },
+    {
+      "_id": "col_02",
+      "name": "CU Online",
+      "slug": "cu-online",
+      "location": "Mohali, Punjab",
+      "state": "Punjab",
+      "description": "Chandigarh University Online offers NAAC A+ accredited online degree and diploma courses with placement support.",
+      "overview": "CU Online combines experiential learning, industry immersion, and comprehensive digital LMS for seamless education.",
+      "approvals": [
+        "UGC",
+        "NAAC A+",
+        "QS World Ranked",
+        "AICTE"
+      ],
+      "logo": "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=150&h=150&fit=crop&q=80",
+      "banner": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200&h=400&fit=crop&q=80",
+      "website": "https://www.onlinecu.in",
+      "establishedYear": "2012",
+      "isActive": true,
+      "createdAt": "2026-07-30T11:10:42.243Z"
+    },
+    {
+      "_id": "col_03",
+      "name": "Delhi University (DU) SOL",
+      "slug": "delhi-university-du-sol",
+      "location": "Delhi, India",
+      "state": "Delhi",
+      "description": "School of Open Learning, University of Delhi, pioneer in distance and online education with affordable fee structure.",
+      "overview": "DU SOL is one of India premier distance education institutions providing central university degrees recognized nationwide.",
+      "approvals": [
+        "UGC-DEB Approved",
+        "Central University",
+        "NAAC A+"
+      ],
+      "logo": "https://images.unsplash.com/photo-1562774053-701939374585?w=150&h=150&fit=crop&q=80",
+      "banner": "https://images.unsplash.com/photo-1562774053-701939374585?w=1200&h=400&fit=crop&q=80",
+      "website": "https://sol.du.ac.in",
+      "establishedYear": "1962",
+      "isActive": true,
+      "createdAt": "2026-07-30T11:10:42.243Z"
+    },
+    {
+      "_id": "col_04",
+      "name": "Amity Online",
+      "slug": "amity-online",
+      "location": "Noida / Gurugram",
+      "state": "Uttar Pradesh",
+      "description": "Amity University Online provides top-tier India first UGC recognized online degree programs with global mentorship.",
+      "overview": "Amity Online empowers learners with interactive live sessions, global career services, and top recruiter tie-ups.",
+      "approvals": [
+        "UGC Recognized",
+        "NAAC A+",
+        "WES Approved",
+        "QS Ranked"
+      ],
+      "logo": "https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0?w=150&h=150&fit=crop&q=80",
+      "banner": "https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=1200&h=400&fit=crop&q=80",
+      "website": "https://amityonline.com",
+      "establishedYear": "2003",
+      "isActive": true,
+      "createdAt": "2026-07-30T11:10:42.243Z"
+    },
+    {
+      "_id": "col_05",
+      "name": "IGNOU",
+      "slug": "ignou",
+      "location": "New Delhi, India",
+      "state": "Delhi",
+      "description": "Indira Gandhi National Open University is the world largest open university offering recognized distance and online courses.",
+      "overview": "IGNOU serves millions of students across India and globally with accredited degrees, flexible exam schedules, and extensive study centers.",
+      "approvals": [
+        "Central University",
+        "UGC-DEB",
+        "NAAC A++"
+      ],
+      "logo": "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=150&h=150&fit=crop&q=80",
+      "banner": "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1200&h=400&fit=crop&q=80",
+      "website": "https://www.ignou.ac.in",
+      "establishedYear": "1985",
+      "isActive": true,
+      "createdAt": "2026-07-30T11:10:42.243Z"
+    },
+    {
+      "_id": "col_06",
+      "name": "GLA University Online",
+      "slug": "gla-university-online",
+      "location": "Mathura, Uttar Pradesh",
+      "state": "Uttar Pradesh",
+      "description": "GLA University Online offers industry-aligned online degrees with personalized learning paths and mentorship.",
+      "overview": "GLA Online focuses on practical learning, skill enhancement, and flexible examination for undergraduate and postgraduate programs.",
+      "approvals": [
+        "UGC Approved",
+        "NAAC A+",
+        "IACBE Accredited"
+      ],
+      "logo": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=150&h=150&fit=crop&q=80",
+      "banner": "https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0?w=1200&h=400&fit=crop&q=80",
+      "website": "https://glaonline.com",
+      "establishedYear": "2010",
+      "isActive": true,
+      "createdAt": "2026-07-30T11:10:42.243Z"
+    },
+    {
+      "_id": "col_07",
+      "name": "SSODL",
+      "slug": "ssodl",
+      "location": "Pune, India",
+      "state": "Maharashtra",
+      "description": "Symbiosis Centre for Distance Learning (SSODL) offers premium online diplomas and degree credentials from Symbiosis.",
+      "overview": "Symbiosis Open & Distance Learning provides flexible management, IT, and literature programs with high market reputation.",
+      "approvals": [
+        "UGC-DEB Entitled",
+        "AICTE Approved",
+        "NAAC A++"
+      ],
+      "logo": "https://images.unsplash.com/photo-1562774053-701939374585?w=150&h=150&fit=crop&q=80",
+      "banner": "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1200&h=400&fit=crop&q=80",
+      "website": "https://www.scdl.net",
+      "establishedYear": "2001",
+      "isActive": true,
+      "createdAt": "2026-07-30T11:10:42.243Z"
+    },
+    {
+      "_id": "col_08",
+      "name": "AMU Online",
+      "slug": "amu-online",
+      "location": "Aligarh, Uttar Pradesh",
+      "state": "Uttar Pradesh",
+      "description": "Aligarh Muslim University Online offers accredited degree and diploma courses with rich academic heritage.",
+      "overview": "AMU Centre for Distance and Online Education brings central university education directly to your screen with affordable tuition.",
+      "approvals": [
+        "Central University",
+        "UGC-DEB Entitled",
+        "NAAC A+"
+      ],
+      "logo": "https://images.unsplash.com/photo-1592280771190-3e2e4d571952?w=150&h=150&fit=crop&q=80",
+      "banner": "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1200&h=400&fit=crop&q=80",
+      "website": "https://amuonline.in",
+      "establishedYear": "1920",
+      "isActive": true,
+      "createdAt": "2026-07-30T11:10:42.243Z"
+    },
+    {
+      "_id": "col_09",
+      "name": "Online Manipal University",
+      "slug": "online-manipal-university",
+      "location": "Karnataka",
+      "state": "Karnataka",
+      "description": "Online Manipal brings top-tier UGC-entitled degrees from Manipal Academy of Higher Education (MAHE) & MUJ.",
+      "overview": "Online Manipal features world-class LMS, interactive live classes, virtual labs, and corporate placement support.",
+      "approvals": [
+        "UGC Entitled",
+        "NAAC A+",
+        "AICTE Approved",
+        "WES Listed"
+      ],
+      "logo": "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=150&h=150&fit=crop&q=80",
+      "banner": "https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=1200&h=400&fit=crop&q=80",
+      "website": "https://www.onlinemanipal.com",
+      "establishedYear": "1953",
+      "isActive": true,
+      "createdAt": "2026-07-30T11:10:42.243Z"
+    },
+    {
+      "_id": "col_10",
+      "name": "Jamia Hamdard Online",
+      "slug": "jamia-hamdard-online",
+      "location": "New Delhi",
+      "state": "Delhi",
+      "description": "Jamia Hamdard University Centre for Distance and Online Education offers professional degrees with NAAC A+ standards.",
+      "overview": "Jamia Hamdard Online emphasizes career-oriented learning, state-of-the-art e-library access, and expert mentor support.",
+      "approvals": [
+        "Deemed University",
+        "UGC-DEB Approved",
+        "NAAC A+"
+      ],
+      "logo": "https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0?w=150&h=150&fit=crop&q=80",
+      "banner": "https://images.unsplash.com/photo-1562774053-701939374585?w=1200&h=400&fit=crop&q=80",
+      "website": "https://jamiahamdard.edu",
+      "establishedYear": "1989",
+      "isActive": true,
+      "createdAt": "2026-07-30T11:10:42.243Z"
+    },
+    {
+      "_id": "col_11",
+      "name": "Online Uttaranchal University",
+      "slug": "online-uttaranchal-university",
+      "location": "Dehradun, Uttarakhand",
+      "state": "Uttarakhand",
+      "description": "Uttaranchal University Online provides accredited degree and diploma programs designed for flexible remote learning.",
+      "overview": "Experience high-impact online education backed by interactive virtual classrooms and comprehensive student care.",
+      "approvals": [
+        "UGC Entitled",
+        "NAAC A+",
+        "AICTE Approved"
+      ],
+      "logo": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=150&h=150&fit=crop&q=80",
+      "banner": "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1200&h=400&fit=crop&q=80",
+      "website": "https://onlineuu.in",
+      "establishedYear": "2013",
+      "isActive": true,
+      "createdAt": "2026-07-30T11:10:42.243Z"
+    },
+    {
+      "_id": "col_12",
+      "name": "Online Mizoram University",
+      "slug": "online-mizoram-university",
+      "location": "Aizawl, Mizoram",
+      "state": "Mizoram",
+      "description": "Mizoram University Online offers central university degree programs with accessible fees and comprehensive online portals.",
+      "overview": "As a Grade A NAAC accredited central university, Mizoram University Online delivers career-focused degrees with digital learning modules.",
+      "approvals": [
+        "Central University",
+        "UGC-DEB Entitled",
+        "NAAC A"
+      ],
+      "logo": "https://images.unsplash.com/photo-1592280771190-3e2e4d571952?w=150&h=150&fit=crop&q=80",
+      "banner": "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1200&h=400&fit=crop&q=80",
+      "website": "https://mzuonline.in",
+      "establishedYear": "2001",
+      "isActive": true,
+      "createdAt": "2026-07-30T11:10:42.243Z"
+    }
+  ],
+  "programs": [
+    {
+      "_id": "prog_pg_mba",
+      "title": "MBA",
+      "name": "Master of Business Administration",
+      "slug": "mba",
+      "collegeId": "col_02",
+      "collegeName": "CU Online",
+      "degreeType": "PG",
+      "duration": "2 Years",
+      "fee": "₹40,400 /sem",
+      "eligibility": "Graduation in any discipline with 50% marks",
+      "specializations": [
+        "12 Specializations",
+        "Marketing",
+        "Finance",
+        "HR",
+        "Business Analytics"
+      ],
+      "overview": "Develop leadership and management skills with 12 specializations.",
+      "semesterInfo": "Covers Corporate Strategy, Managerial Economics, Financial Management, AI in Business, and Industry Capstone.",
+      "careerScope": [
+        "Brand Manager",
+        "Financial Advisor",
+        "Management Consultant",
+        "HR Director"
+      ],
+      "isActive": true,
+      "createdAt": "2026-07-31T12:02:04.319Z"
+    },
+    {
+      "_id": "prog_pg_mca",
+      "title": "MCA",
+      "name": "Master of Computer Applications",
+      "slug": "mca",
+      "collegeId": "col_02",
+      "collegeName": "CU Online",
+      "degreeType": "PG",
+      "duration": "2 Years",
+      "fee": "₹32,400 /sem",
+      "eligibility": "Graduation with Mathematics/Statistics",
+      "specializations": [
+        "5 Specializations",
+        "AI",
+        "Cloud",
+        "Cybersecurity",
+        "Full Stack"
+      ],
+      "overview": "Advanced computing with specializations in AI, Cloud, Cybersecurity.",
+      "semesterInfo": "Advanced Programming, Cloud Computing, Cyber Security, Web Architecture, Data Science, Capstone.",
+      "careerScope": [
+        "Senior Software Architect",
+        "Cloud Lead",
+        "Cyber Security Specialist",
+        "Tech Lead"
+      ],
+      "isActive": true,
+      "createdAt": "2026-07-31T12:02:04.320Z"
+    },
+    {
+      "_id": "prog_pg_mcom",
+      "title": "M.Com",
+      "name": "Master of Commerce",
+      "slug": "mcom",
+      "collegeId": "col_02",
+      "collegeName": "CU Online",
+      "degreeType": "PG",
+      "duration": "2 Years",
+      "fee": "₹20,400 /sem",
+      "eligibility": "B.Com or equivalent with 50% marks",
+      "specializations": [
+        "1 Specialization",
+        "Accounting & Finance"
+      ],
+      "overview": "Advanced commerce education covering Accounting and Finance.",
+      "semesterInfo": "Advanced Financial Accounting, Corporate Taxation, Managerial Economics, Financial Markets.",
+      "careerScope": [
+        "Financial Controller",
+        "Auditor",
+        "Taxation Consultant",
+        "Investment Executive"
+      ],
+      "isActive": true,
+      "createdAt": "2026-07-31T12:02:04.320Z"
+    },
+    {
+      "_id": "prog_pg_mscit",
+      "title": "M.Sc. IT",
+      "name": "M.Sc. Information Technology",
+      "slug": "msc-it",
+      "collegeId": "col_02",
+      "collegeName": "CU Online",
+      "degreeType": "PG",
+      "duration": "2 Years",
+      "fee": "₹16,500 /sem",
+      "eligibility": "Graduation with relevant subject",
+      "specializations": [
+        "1 Specialization",
+        "Information Technology"
+      ],
+      "overview": "Advanced IT program with industry-relevant curriculum.",
+      "semesterInfo": "Enterprise Software, Advanced DBMS, Network Security, Web Engineering, Capstone.",
+      "careerScope": [
+        "IT Consultant",
+        "Systems Analyst",
+        "Database Administrator",
+        "Network Engineer"
+      ],
+      "isActive": true,
+      "createdAt": "2026-07-31T12:02:04.320Z"
+    },
+    {
+      "_id": "prog_pg_maeng",
+      "title": "MA English",
+      "name": "M.A. English",
+      "slug": "ma-english",
+      "collegeId": "col_02",
+      "collegeName": "CU Online",
+      "degreeType": "PG",
+      "duration": "2 Years",
+      "fee": "₹8,000 /sem",
+      "eligibility": "Graduation in any discipline",
+      "specializations": [
+        "1 Specialization",
+        "English Literature"
+      ],
+      "overview": "Advanced English literature and language studies.",
+      "semesterInfo": "British Literature, Postcolonial Studies, Literary Theory, Critical Criticism, Linguistics.",
+      "careerScope": [
+        "Content Writer",
+        "Editor",
+        "Academician",
+        "PR Executive"
+      ],
+      "isActive": true,
+      "createdAt": "2026-07-31T12:02:04.320Z"
+    },
+    {
+      "_id": "prog_pg_mahist",
+      "title": "MA History",
+      "name": "M.A. History",
+      "slug": "ma-history",
+      "collegeId": "col_02",
+      "collegeName": "CU Online",
+      "degreeType": "PG",
+      "duration": "2 Years",
+      "fee": "₹8,000 /sem",
+      "eligibility": "Graduation in any discipline",
+      "specializations": [
+        "1 Specialization",
+        "History"
+      ],
+      "overview": "In-depth study of Indian and world history.",
+      "semesterInfo": "Ancient Indian History, Medieval India, Modern World Civilizations, Historiography.",
+      "careerScope": [
+        "Archivist",
+        "Historian",
+        "Civil Services Specialist",
+        "Researcher"
+      ],
+      "isActive": true,
+      "createdAt": "2026-07-31T12:02:04.320Z"
+    },
+    {
+      "_id": "prog_pg_mahin",
+      "title": "MA Hindi",
+      "name": "M.A. Hindi",
+      "slug": "ma-hindi",
+      "collegeId": "col_02",
+      "collegeName": "CU Online",
+      "degreeType": "PG",
+      "duration": "2 Years",
+      "fee": "₹8,000 /sem",
+      "eligibility": "Graduation in any discipline",
+      "specializations": [
+        "1 Specialization",
+        "Hindi Literature"
+      ],
+      "overview": "Advanced Hindi language and literature.",
+      "semesterInfo": "Hindi Kavya, Prose & Drama, Bhasha Vigyan, Modern Literature Criticism.",
+      "careerScope": [
+        "Hindi Officer",
+        "Translator",
+        "Educator",
+        "Journalist"
+      ],
+      "isActive": true,
+      "createdAt": "2026-07-31T12:02:04.320Z"
+    },
+    {
+      "_id": "prog_pg_mapun",
+      "title": "MA Punjabi",
+      "name": "M.A. Punjabi",
+      "slug": "ma-punjabi",
+      "collegeId": "col_02",
+      "collegeName": "CU Online",
+      "degreeType": "PG",
+      "duration": "2 Years",
+      "fee": "₹8,000 /sem",
+      "eligibility": "Graduation in any discipline",
+      "specializations": [
+        "1 Specialization",
+        "Punjabi Literature"
+      ],
+      "overview": "Punjabi language and literary studies.",
+      "semesterInfo": "Punjabi Poetry, Sufi Literature, Modern Fiction, Cultural Studies.",
+      "careerScope": [
+        "Language Specialist",
+        "Media Writer",
+        "Educator",
+        "Translator"
+      ],
+      "isActive": true,
+      "createdAt": "2026-07-31T12:02:04.320Z"
+    },
+    {
+      "_id": "prog_pg_mapol",
+      "title": "MA Pol. Sci.",
+      "name": "M.A. Political Science",
+      "slug": "ma-political-science",
+      "collegeId": "col_02",
+      "collegeName": "CU Online",
+      "degreeType": "PG",
+      "duration": "2 Years",
+      "fee": "₹8,000 /sem",
+      "eligibility": "Graduation in any discipline",
+      "specializations": [
+        "1 Specialization",
+        "Political Science"
+      ],
+      "overview": "Political theory, governance, and international relations.",
+      "semesterInfo": "Political Thought, International Relations, Public Administration, Constitutional Law.",
+      "careerScope": [
+        "Policy Analyst",
+        "Political Advisor",
+        "Civil Services Candidate",
+        "PR Specialist"
+      ],
+      "isActive": true,
+      "createdAt": "2026-07-31T12:02:04.320Z"
+    },
+    {
+      "_id": "prog_pg_mamath",
+      "title": "MA Maths",
+      "name": "M.A. Mathematics",
+      "slug": "ma-mathematics",
+      "collegeId": "col_02",
+      "collegeName": "CU Online",
+      "degreeType": "PG",
+      "duration": "2 Years",
+      "fee": "₹8,000 /sem",
+      "eligibility": "Graduation with Mathematics",
+      "specializations": [
+        "1 Specialization",
+        "Mathematics"
+      ],
+      "overview": "Advanced mathematical concepts and applications.",
+      "semesterInfo": "Real Analysis, Abstract Algebra, Complex Analysis, Topology, Differential Equations.",
+      "careerScope": [
+        "Data Analyst",
+        "Math Educator",
+        "Statistical Associate",
+        "Research Scientist"
+      ],
+      "isActive": true,
+      "createdAt": "2026-07-31T12:02:04.320Z"
+    },
+    {
+      "_id": "prog_pg_masoc",
+      "title": "MA Sociology",
+      "name": "M.A. Sociology",
+      "slug": "ma-sociology",
+      "collegeId": "col_02",
+      "collegeName": "CU Online",
+      "degreeType": "PG",
+      "duration": "2 Years",
+      "fee": "₹8,000 /sem",
+      "eligibility": "Graduation in any discipline",
+      "specializations": [
+        "1 Specialization",
+        "Sociology"
+      ],
+      "overview": "Study of society, social behavior and institutions.",
+      "semesterInfo": "Sociological Theories, Research Methodology, Indian Social Structure, Development Studies.",
+      "careerScope": [
+        "Social Worker",
+        "NGO Consultant",
+        "Policy Associate",
+        "Researcher"
+      ],
+      "isActive": true,
+      "createdAt": "2026-07-31T12:02:04.320Z"
+    },
+    {
+      "_id": "prog_pg_maedu",
+      "title": "MA Education",
+      "name": "M.A. Education",
+      "slug": "ma-education",
+      "collegeId": "col_02",
+      "collegeName": "CU Online",
+      "degreeType": "PG",
+      "duration": "2 Years",
+      "fee": "₹8,000 /sem",
+      "eligibility": "Graduation in any discipline",
+      "specializations": [
+        "1 Specialization",
+        "Education"
+      ],
+      "overview": "Educational theory, pedagogy and curriculum development.",
+      "semesterInfo": "Pedagogy, Educational Psychology, Curriculum Planning, Educational Technology.",
+      "careerScope": [
+        "Curriculum Specialist",
+        "Educational Administrator",
+        "Academic Counselor"
+      ],
+      "isActive": true,
+      "createdAt": "2026-07-31T12:02:04.320Z"
+    },
+    {
+      "_id": "prog_pg_maeco",
+      "title": "MA Economics",
+      "name": "M.A. Economics",
+      "slug": "ma-economics",
+      "collegeId": "col_02",
+      "collegeName": "CU Online",
+      "degreeType": "PG",
+      "duration": "2 Years",
+      "fee": "₹8,000 /sem",
+      "eligibility": "Graduation in any discipline",
+      "specializations": [
+        "1 Specialization",
+        "Economics"
+      ],
+      "overview": "Advanced study of economic theory and policy.",
+      "semesterInfo": "Microeconomics, Macroeconomics, Econometrics, Public Finance, Development Economics.",
+      "careerScope": [
+        "Economist",
+        "Financial Analyst",
+        "Policy Researcher",
+        "Risk Consultant"
+      ],
+      "isActive": true,
+      "createdAt": "2026-07-31T12:02:04.320Z"
+    },
+    {
+      "_id": "prog_pg_mlis",
+      "title": "MLIS",
+      "name": "Master of Library & Information Science",
+      "slug": "mlis",
+      "collegeId": "col_02",
+      "collegeName": "CU Online",
+      "degreeType": "PG",
+      "duration": "1 Year",
+      "fee": "₹7,500 /sem",
+      "eligibility": "BLIS or equivalent",
+      "specializations": [
+        "1 Specialization",
+        "Library Science"
+      ],
+      "overview": "Advanced library science and information management.",
+      "semesterInfo": "Digital Library Architecture, Information Retrieval, Knowledge Management Systems.",
+      "careerScope": [
+        "Chief Librarian",
+        "Knowledge Officer",
+        "Information Specialist"
+      ],
+      "isActive": true,
+      "createdAt": "2026-07-31T12:02:04.320Z"
+    },
+    {
+      "_id": "prog_ug_bba",
+      "title": "BBA",
+      "name": "Bachelor of Business Administration",
+      "slug": "bba",
+      "collegeId": "col_02",
+      "collegeName": "CU Online",
+      "degreeType": "UG",
+      "duration": "3 Years",
+      "fee": "₹20,400 /sem",
+      "eligibility": "10+2 in any stream with 50% marks",
+      "specializations": [
+        "1 Specialization",
+        "Business Management"
+      ],
+      "overview": "Foundation in business management and leadership skills.",
+      "semesterInfo": "Management Principles, Accounting, Marketing, HR, Business Law, Operations.",
+      "careerScope": [
+        "Management Executive",
+        "Marketing Assistant",
+        "Business Development Officer"
+      ],
+      "isActive": true,
+      "createdAt": "2026-07-31T12:02:04.320Z"
+    },
+    {
+      "_id": "prog_ug_bca",
+      "title": "BCA",
+      "name": "Bachelor of Computer Applications",
+      "slug": "bca",
+      "collegeId": "col_02",
+      "collegeName": "CU Online",
+      "degreeType": "UG",
+      "duration": "3 Years",
+      "fee": "₹20,400 /sem",
+      "eligibility": "10+2 with Mathematics",
+      "specializations": [
+        "1 Specialization",
+        "Computer Applications"
+      ],
+      "overview": "Comprehensive IT program with practical skills.",
+      "semesterInfo": "C Programming, Java, Data Structures, DBMS, Web Development, Software Engineering.",
+      "careerScope": [
+        "Software Developer",
+        "Web Developer",
+        "System Executive"
+      ],
+      "isActive": true,
+      "createdAt": "2026-07-31T12:02:04.320Z"
+    },
+    {
+      "_id": "prog_ug_ba",
+      "title": "BA",
+      "name": "Bachelor of Arts",
+      "slug": "ba",
+      "collegeId": "col_02",
+      "collegeName": "CU Online",
+      "degreeType": "UG",
+      "duration": "3 Years",
+      "fee": "₹16,400 /sem",
+      "eligibility": "10+2 in any stream",
+      "specializations": [
+        "1 Specialization",
+        "Arts & Humanities"
+      ],
+      "overview": "Versatile arts program with multiple specializations.",
+      "semesterInfo": "English Literature, History, Political Science, Sociology, Environmental Science.",
+      "careerScope": [
+        "Civil Services Candidate",
+        "Content Writer",
+        "PR Assistant"
+      ],
+      "isActive": true,
+      "createdAt": "2026-07-31T12:02:04.320Z"
+    },
+    {
+      "_id": "prog_dip_dba",
+      "title": "DBA",
+      "name": "Diploma in Business Administration",
+      "slug": "dba",
+      "collegeId": "col_02",
+      "collegeName": "CU Online",
+      "degreeType": "Diploma",
+      "duration": "1 Year",
+      "fee": "₹20,400 /sem",
+      "eligibility": "10+2 in any stream",
+      "specializations": [
+        "1 Specialization",
+        "Business Administration"
+      ],
+      "overview": "Entry-level business program for career foundation.",
+      "semesterInfo": "Principles of Management, Office Practice, Business Communication, Accounting Basics.",
+      "careerScope": [
+        "Office Administrator",
+        "Junior Supervisor",
+        "Front Desk Executive"
+      ],
+      "isActive": true,
+      "createdAt": "2026-07-31T12:02:04.320Z"
+    },
+    {
+      "_id": "prog_dip_dca",
+      "title": "DCA",
+      "name": "Diploma in Computer Applications",
+      "slug": "dca",
+      "collegeId": "col_02",
+      "collegeName": "CU Online",
+      "degreeType": "Diploma",
+      "duration": "1 Year",
+      "fee": "₹20,400 /sem",
+      "eligibility": "10+2 in any stream",
+      "specializations": [
+        "1 Specialization",
+        "Computer Applications"
+      ],
+      "overview": "Foundation computer applications program.",
+      "semesterInfo": "Computer Fundamentals, MS Office, HTML/CSS, Database Basics, Internet Applications.",
+      "careerScope": [
+        "Computer Operator",
+        "Data Entry Executive",
+        "IT Assistant"
+      ],
+      "isActive": true,
+      "createdAt": "2026-07-31T12:02:04.320Z"
+    },
+    {
+      "title": "Bachelor of Commerce (B.Com)",
+      "name": "Bachelor of Commerce (B.Com)",
+      "code": "PROG",
+      "slug": "bachelor-of-commerce-b-com",
+      "degreeType": "UG",
+      "level": "UG",
+      "category": "Management",
+      "duration": "3 Years",
+      "mode": "Online",
+      "fee": "₹ 28,000 / Year",
+      "fees": "₹ 28,000 / Year",
+      "eligibility": "10+2 or equivalent from a recognized board.",
+      "specializations": [
+        "Accounting",
+        "Finance",
+        "Taxation",
+        "Banking",
+        "Business Law"
+      ],
+      "overview": "The Online MBA program is designed to develop leadership, strategic thinking, and business management skills. The curriculum combines practical case studies with industry-focused learning to prepare students for managerial roles across various sectors.",
+      "description": "The Online MBA program is designed to develop leadership, strategic thinking, and business management skills. The curriculum combines practical case studies with industry-focused learning to prepare students for managerial roles across various sectors.",
+      "image": "/uploads/file-1785484169338-939956156.jpg",
+      "applyUrl": "/apply",
+      "semesterInfo": "",
+      "careerScope": [],
+      "brochurePdfUrl": "",
+      "syllabusPdfUrl": "",
+      "feeStructurePdfUrl": "",
+      "syllabus": [],
+      "highlights": [],
+      "collegeId": "6a6b349c86943188967519c4",
+      "collegeName": "Online Mizoram University",
+      "popular": false,
+      "isActive": true,
+      "_id": "6a6c538bf2c49e5e9eb597fe",
+      "createdAt": "2026-07-31T07:49:31.120Z",
+      "updatedAt": "2026-07-31T07:49:31.120Z",
+      "__v": 0
+    },
+    {
+      "title": "Master of Computer Applications (MCA)",
+      "name": "Master of Computer Applications (MCA)",
+      "code": "PROG",
+      "slug": "master-of-computer-applications-mca",
+      "degreeType": "PG",
+      "level": "UG",
+      "category": "Management",
+      "duration": "2 Years",
+      "mode": "Online",
+      "fee": "₹33,000 / Year (₹16,500 per Semester × 2 Semesters)",
+      "fees": "₹33,000 / Year (₹16,500 per Semester × 2 Semesters)",
+      "eligibility": "Bachelor's Degree in any discipline with Mathematics at 10+2 or Graduation level from a recognized",
+      "specializations": [
+        "Artificial Intelligence & Machine Learning",
+        "Data Science",
+        "Cyber Security",
+        "Full Stack Development",
+        "Cloud Computing"
+      ],
+      "overview": "The Master of Computer Applications (MCA) is a 2-year postgraduate program offered by LPU Online. It is designed to provide advanced knowledge in computer science, software development, programming, database management, cloud computing, cybersecurity, and emerging technologies. The program helps students build practical technical skills and prepares them for careers as Software Developers, System Analysts, Web Developers, Database Administrators, Cloud Engineers, and IT Consultants. The flexible online learning format allows students and working professionals to study from anywhere while earning a UGC-entitled degree.",
+      "description": "The Master of Computer Applications (MCA) is a 2-year postgraduate program offered by LPU Online. It is designed to provide advanced knowledge in computer science, software development, programming, database management, cloud computing, cybersecurity, and emerging technologies. The program helps students build practical technical skills and prepares them for careers as Software Developers, System Analysts, Web Developers, Database Administrators, Cloud Engineers, and IT Consultants. The flexible online learning format allows students and working professionals to study from anywhere while earning a UGC-entitled degree.",
+      "image": "/uploads/file-1785483425069-747172004.png",
+      "applyUrl": "",
+      "semesterInfo": "",
+      "careerScope": [],
+      "brochurePdfUrl": "",
+      "syllabusPdfUrl": "",
+      "feeStructurePdfUrl": "",
+      "syllabus": [],
+      "highlights": [],
+      "collegeId": "6a6b349c86943188967519b9",
+      "collegeName": "LPU Online",
+      "popular": false,
+      "isActive": true,
+      "_id": "6a6c50b0f2c49e5e9eb597fd",
+      "createdAt": "2026-07-31T07:37:20.633Z",
+      "updatedAt": "2026-07-31T07:37:20.633Z",
+      "__v": 0
+    }
+  ],
+  "enquiries": [],
+  "applications": [],
+  "documents": [
+    {
+      "_id": "doc_01",
+      "title": "LPU Online MBA Official Syllabus & Prospectus",
+      "type": "brochure",
+      "collegeName": "LPU Online",
+      "programName": "MBA with Dual Specialization",
+      "fileUrl": "/uploads/LPU_MBA_Prospectus.pdf",
+      "fileSize": "2.4 MB",
+      "uploadedBy": "Admin",
+      "createdAt": "2026-07-30T11:10:42.243Z"
+    },
+    {
+      "_id": "doc_02",
+      "title": "CU Online BCA Course Structure & Fee Guide",
+      "type": "fee_structure",
+      "collegeName": "CU Online",
+      "programName": "BCA with Dual Specialization",
+      "fileUrl": "/uploads/CU_BCA_Fee_Structure.pdf",
+      "fileSize": "1.8 MB",
+      "uploadedBy": "Admin",
+      "createdAt": "2026-07-30T11:10:42.243Z"
+    }
+  ],
+  "contacts": [
+    {
+      "_id": "cnt_01",
+      "name": "Rohan Malhotra",
+      "email": "rohan.m@example.com",
+      "phone": "+91 9777788888",
+      "subject": "Query regarding DU SOL examination centers",
+      "message": "Hello, I live in Gurgaon. Can I choose examination center near NCR for DU SOL courses?",
+      "isRead": false,
+      "createdAt": "2026-07-30T11:10:42.243Z"
+    }
+  ],
+  "subscribers": [
+    {
+      "_id": "sub_01",
+      "email": "learner.test@example.com",
+      "status": "active",
+      "createdAt": "2026-07-30T11:10:42.243Z"
+    }
+  ],
+  "faqs": [
+    {
+      "_id": "faq_01",
+      "question": "Are online degree programs UGC entiteld and valid for government jobs?",
+      "answer": "Yes! As per UGC notification, online degrees awarded by recognized universities under UGC-DEB regulations are completely equivalent to regular degrees and valid for all government jobs, higher education, and corporate employment.",
+      "category": "General",
+      "order": 1,
+      "isActive": true
+    },
+    {
+      "_id": "faq_02",
+      "question": "How are examinations conducted for online degrees?",
+      "answer": "Most accredited universities conduct online proctored examinations that can be taken securely from home using a computer with webcam, or at designated examination centers.",
+      "category": "Exam",
+      "order": 2,
+      "isActive": true
+    },
+    {
+      "_id": "faq_03",
+      "question": "Can I pay my tuition fee in installments or No-Cost EMI?",
+      "answer": "Yes, almost all partner universities offer flexible semester-wise fee payment options as well as zero-interest EMI schemes through corporate banking partners.",
+      "category": "Fees",
+      "order": 3,
+      "isActive": true
+    },
+    {
+      "_id": "faq_04",
+      "question": "What is the complete process to apply through Online Degree Diploma?",
+      "answer": "Select your preferred university and program, submit a free enquiry or counselling request, speak with an academic advisor, upload eligibility documents, and complete your admission online.",
+      "category": "Admission",
+      "order": 4,
+      "isActive": true
+    }
+  ],
+  "testimonials": [
+    {
+      "_id": "tst_01",
+      "name": "Vikramaditya Roy",
+      "course": "Online MBA Dual Specialization",
+      "college": "LPU Online",
+      "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&q=80",
+      "quote": "Online Degree Diploma helped me compare fee structures and accreditation transparently. I completed my MBA while working full time and received a 40% salary hike!",
+      "rating": 5,
+      "isActive": true
+    },
+    {
+      "_id": "tst_02",
+      "name": "Sneha Kulkarni",
+      "course": "MCA Cloud Computing",
+      "college": "Online Manipal University",
+      "image": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&q=80",
+      "quote": "The free counselling team answered every query with clarity. The portal made my application and document submission completely hassle-free.",
+      "rating": 5,
+      "isActive": true
+    },
+    {
+      "_id": "tst_03",
+      "name": "Amitabh Sen",
+      "course": "BCA Dual Specialization",
+      "college": "CU Online",
+      "image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&q=80",
+      "quote": "Direct brochure downloads and fee breakdowns allowed me to choose the best program within my budget. Truly recommended for all online learners.",
+      "rating": 5,
+      "isActive": true
+    }
+  ],
+  "sliders": [
+    {
+      "_id": "sld_01",
+      "title": "Accelerate Your Career with UGC-Recognized Online Degrees",
+      "subtitle": "Explore 100+ accredited Bachelor, Master & Diploma programs from top Indian universities.",
+      "badge": "🎓 Admissions Open for 2026 Batch",
+      "bgImage": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1600&h=800&fit=crop&q=80",
+      "primaryBtnText": "Explore Programs",
+      "primaryBtnLink": "/programs",
+      "secondaryBtnText": "Apply Now",
+      "secondaryBtnLink": "/apply",
+      "order": 1,
+      "isActive": true
+    },
+    {
+      "_id": "sld_02",
+      "title": "Study at Top Universities like LPU, DU, Amity & Manipal",
+      "subtitle": "Flexible online learning, zero-interest EMI options, and dedicated placement assistance.",
+      "badge": "✨ Verified & Accredited Universities",
+      "bgImage": "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1600&h=800&fit=crop&q=80",
+      "primaryBtnText": "View Colleges",
+      "primaryBtnLink": "/colleges",
+      "secondaryBtnText": "Get Free Counselling",
+      "secondaryBtnLink": "/contact",
+      "order": 2,
+      "isActive": true
+    },
+    {
+      "title": "Admissions Open 2026-27",
+      "subtitle": "UGC-Approved Online Degrees & Diplomas",
+      "description": "",
+      "badge": "SPRING BATCH 2026",
+      "bgImage": "/uploads/file-1785411760138-783267107.jpg",
+      "mobileBgImage": "/uploads/file-1785411760138-783267107.jpg",
+      "primaryBtnText": "Explore Programs",
+      "primaryBtnLink": "/programs",
+      "secondaryBtnText": "Apply Online",
+      "secondaryBtnLink": "/apply",
+      "order": 1,
+      "isActive": true,
+      "_id": "6a6b38b219f2605337739fd2",
+      "createdAt": "2026-07-30T11:42:43.016Z",
+      "updatedAt": "2026-07-30T11:42:43.016Z",
+      "__v": 0
+    },
+    {
+      "title": "Shape Your Future with India's Best Online Universities",
+      "subtitle": "Earn UGC-Entitled Online Degrees, Diplomas, and Certifications from NAAC A+ Accredited Universities with Flexible Learning, Affordable Fees, and Placement Assistance.",
+      "description": "",
+      "badge": "SPRING BATCH 2026",
+      "bgImage": "/uploads/file-1785412621817-650170331.jpg",
+      "mobileBgImage": "/uploads/file-1785412068812-405502042.jpg",
+      "primaryBtnText": "Explore Universities",
+      "primaryBtnLink": "/colleges",
+      "secondaryBtnText": "Apply Online",
+      "secondaryBtnLink": "/apply",
+      "order": 2,
+      "isActive": true,
+      "_id": "6a6b39e619f2605337739fd3",
+      "createdAt": "2026-07-30T11:47:50.291Z",
+      "updatedAt": "2026-07-30T11:47:50.291Z",
+      "__v": 0
+    }
+  ],
+  "notifications": [
+    {
+      "_id": "notif_01",
+      "userId": "usr_std_01",
+      "title": "Application Received",
+      "message": "Your application for MBA at LPU Online has been submitted successfully.",
+      "type": "info",
+      "isRead": false,
+      "createdAt": "2026-07-30T11:10:42.243Z"
+    }
+  ],
+  "settings": null
+}

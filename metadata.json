@@ -1,0 +1,6 @@
+{
+  "name": "Online Degree Diploma",
+  "description": "Comprehensive online degree and diploma admission platform with student and admin dashboards, university listings, programs, application tracking, and enquiry management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

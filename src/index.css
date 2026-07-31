@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --primary: #FA394A;
+    --primary-dark: #D92B3B;
+    --primary-light: #FFE8EA;
+    --dark: #333333;
+    --muted: #999999;
+    --border: #DDDDDD;
+    --card-bg: #FFFFFF;
+    --bg-light: #F5F5F5;
+  }
+
+  body {
+    background-color: var(--bg-light);
+    color: var(--dark);
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+/* Custom Primary Color Utility Classes */
+.bg-primary { background-color: #FA394A; }
+.bg-primary-dark { background-color: #D92B3B; }
+.bg-primary-light { background-color: #FFE8EA; }
+.text-primary { color: #FA394A; }
+.border-primary { border-color: #FA394A; }
+
+.hover\:bg-primary-dark:hover { background-color: #D92B3B; }
+.hover\:text-primary:hover { color: #FA394A; }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #FA394A;
+}
+
+/* Pulse Glow & Glassmorphism helpers */
+.shadow-soft {
+  box-shadow: 0 10px 30px -5px rgba(250, 57, 74, 0.08), 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.shadow-card {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
