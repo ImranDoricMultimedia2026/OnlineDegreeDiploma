@@ -163,17 +163,34 @@ export const ApplyNowPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#F5F5F5] font-sans pb-16">
       {/* Header Banner */}
-      <div className="bg-[#333333] text-white py-12 px-4">
-        <div className="max-w-4xl mx-auto text-center space-y-3">
-          <span className="text-xs font-bold text-[#FA394A] uppercase tracking-wider flex items-center justify-center">
-            <Sparkles className="w-4 h-4 mr-1.5" /> Direct University Admission Form
-          </span>
-          <h1 className="text-2xl sm:text-4xl font-black">Online Degree Application Portal</h1>
-          <p className="text-xs sm:text-sm text-gray-300 max-w-lg mx-auto">
-            Submit your application for 2026 academic batches in 3 simple steps.
-          </p>
-        </div>
-      </div>
+    <div className="relative overflow-hidden text-white py-16 sm:py-20 lg:py-24 px-4">
+  {/* Background Image */}
+  <img
+    src="/PagesBanner/4.png"
+    alt="Online Degree Application"
+    className="absolute inset-0 w-full h-full object-cover object-center"
+  />
+
+  {/* Overlay */}
+  <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/35 to-black/45"></div>
+
+  {/* Content */}
+  <div className="relative z-10 max-w-4xl mx-auto text-center">
+    <span className="inline-flex items-center justify-center bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#FA394A]">
+      <Sparkles className="w-4 h-4 mr-2" />
+      Direct University Admission Form
+    </span>
+
+    <h1 className="mt-5 text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black leading-tight">
+      Online Degree Application Portal
+    </h1>
+
+    <p className="mt-4 text-sm sm:text-base lg:text-lg text-gray-200 max-w-2xl mx-auto leading-relaxed">
+      Submit your application for <strong>2026 Academic Batches</strong> in
+      <span className="text-[#FA394A] font-bold"> 3 simple steps</span>.
+    </p>
+  </div>
+</div>
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
         {/* Progress Tracker Bar */}
