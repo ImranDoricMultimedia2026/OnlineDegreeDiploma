@@ -186,39 +186,44 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* QUICK SEARCH & FILTER BAR */}
-      <div  className="max-w-6xl mx-auto px-4 -mt-4 relative z-30">
-        <form
-          onSubmit={handleSearchSubmit}
-          className="bg-white rounded-3xl p-4 sm:p-6 shadow-2xl border border-gray-100 flex flex-col md:flex-row gap-4 items-center"
-        >
-          <div className="flex-1 w-full relative">
-            <Search className="w-5 h-5 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search by degree name (e.g. MBA, BCA, MCA, BBA, Diploma)..."
-              className="w-full pl-12 pr-4 py-3.5 bg-gray-50 rounded-2xl text-xs sm:text-sm text-[#333333] border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#FA394A] font-medium"
-            />
-          </div>
+ <div className="max-w-6xl mx-auto px-4 -mt-4 relative z-30 overflow-hidden">
+  <form
+    onSubmit={handleSearchSubmit}
+    className="bg-white rounded-3xl p-4 sm:p-6 shadow-2xl border border-gray-100 flex flex-col md:flex-row gap-4 items-stretch md:items-center w-full"
+  >
+    {/* Search Input */}
+    <div className="flex-1 relative min-w-0">
+      <Search className="w-5 h-5 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2" />
 
-          <div className="flex items-center gap-2.5 w-full md:w-auto">
-            <button
-              type="submit"
-              className="w-full md:w-auto bg-[#FA394A] hover:bg-[#D92B3B] text-white px-8 py-3.5 rounded-2xl font-bold text-xs sm:text-sm shadow-md transition-all flex items-center justify-center shrink-0"
-            >
-              <Search className="w-4 h-4 mr-2" /> Search Programs
-            </button>
-            <button
-              type="button"
-              onClick={() => openEnquiry('general')}
-              className="w-full md:w-auto bg-[#333333] hover:bg-black text-white px-6 py-3.5 rounded-2xl font-bold text-xs sm:text-sm transition-all shrink-0"
-            >
-              Get Counselling
-            </button>
-          </div>
-        </form>
-      </div>
+      <input
+        type="text"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        placeholder="Search by degree name (e.g. MBA, BCA, MCA, BBA, Diploma)..."
+        className="w-full pl-12 pr-4 py-3.5 bg-gray-50 rounded-2xl text-xs sm:text-sm text-[#333333] border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#FA394A] font-medium"
+      />
+    </div>
+
+    {/* Buttons */}
+    <div className="flex w-full md:w-auto gap-3">
+      <button
+        type="submit"
+        className="flex-1 md:flex-none bg-[#FA394A] hover:bg-[#D92B3B] text-white px-4 sm:px-8 py-3.5 rounded-2xl font-bold text-xs sm:text-sm shadow-md transition-all flex items-center justify-center whitespace-nowrap"
+      >
+        <Search className="w-4 h-4 mr-2 flex-shrink-0" />
+        Search Programs
+      </button>
+
+      <button
+        type="button"
+        onClick={() => openEnquiry("general")}
+        className="flex-1 md:flex-none bg-[#333333] hover:bg-black text-white px-4 sm:px-6 py-3.5 rounded-2xl font-bold text-xs sm:text-sm transition-all whitespace-nowrap"
+      >
+        Get Counselling
+      </button>
+    </div>
+  </form>
+</div>
 
       {/* STATS BANNER */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
