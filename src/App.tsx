@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
+import { ThemeProvider } from './context/ThemeContext';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { FloatingContact } from './components/layout/FloatingContact';
@@ -38,7 +39,7 @@ const ScrollToTop = () => {
 // Main Layout Component
 const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
-    <div className="flex flex-col min-h-screen bg-[#F5F5F5] font-sans text-[#333333]">
+    <div className="flex flex-col min-h-screen bg-page text-heading font-sans transition-colors duration-300">
       <Navbar />
       <main className="flex-grow">{children}</main>
       <Footer />
@@ -50,8 +51,9 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 export default function App() {
   return (
     <ErrorBoundary>
-      <AuthProvider>
-        <Router>
+      <ThemeProvider>
+        <AuthProvider>
+          <Router>
           <ScrollToTop />
           <Routes>
           {/* Public Routes with Main Navbar & Footer */}
@@ -186,6 +188,7 @@ export default function App() {
         </Routes>
       </Router>
     </AuthProvider>
+  </ThemeProvider>
   </ErrorBoundary>
 );
 }

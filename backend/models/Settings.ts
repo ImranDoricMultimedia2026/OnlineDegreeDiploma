@@ -28,7 +28,7 @@ const SettingsSchema: Schema = new Schema(
     phoneSecondary: { type: String, default: '+91 80000 12345' },
     whatsappNumber: { type: String, default: '919876543210' },
     emailPrimary: { type: String, default: 'admissions@onlinedegreeportal.in' },
-    emailSupport: { type: String, default: 'support@onlinedegreeportal.in' },
+    emailSupport: { type: String, default: 'addmission@onlinedegreediplomaludhiana.com' },
     address: { type: String, default: 'Building 4B, Knowledge Park III, Greater Noida, UP - 201306' },
     googleMapUrl: { type: String, default: 'https://maps.google.com/maps?q=Greater+Noida&output=embed' },
     facebookUrl: { type: String, default: 'https://facebook.com' },

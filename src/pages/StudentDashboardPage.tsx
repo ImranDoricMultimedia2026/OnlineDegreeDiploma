@@ -21,14 +21,15 @@ import {
   Download
 } from 'lucide-react';
 import api from '../services/api';
-import { Application, Enquiry, Program } from '../types';
+import { Application, Enquiry, Notification, Program } from '../types';
 
 export const StudentDashboardPage: React.FC = () => {
   const { user, logout, updateProfile } = useAuth();
-  const [activeTab, setActiveTab] = useState<'applications' | 'enquiries' | 'profile'>('applications');
+  const [activeTab, setActiveTab] = useState<'applications' | 'enquiries' | 'notifications' | 'profile'>('applications');
 
   const [applications, setApplications] = useState<Application[]>([]);
   const [enquiries, setEnquiries] = useState<Enquiry[]>([]);
+  const [notifications, setNotifications] = useState<Notification[]>([]);
   const [loading, setLoading] = useState(true);
 
   // Profile Form state
@@ -71,6 +72,15 @@ export const StudentDashboardPage: React.FC = () => {
         if (enqRes.data.success && Array.isArray(enqRes.data.enquiries)) {
           enqs = enqRes.data.enquiries;
         }
+      }
+
+      try {
+        const notifRes = await api.get('/notifications');
+        if (notifRes.data.success && Array.isArray(notifRes.data.notifications)) {
+          setNotifications(notifRes.data.notifications);
+        }
+      } catch {
+        setNotifications([]);
       }
 
       setApplications(apps);
@@ -212,6 +222,27 @@ export const StudentDashboardPage: React.FC = () => {
                   }`}
                 >
                   {enquiries.length}
+                </span>
+              </button>
+
+              <button
+                onClick={() => setActiveTab('notifications')}
+                className={`w-full flex items-center justify-between px-4 py-3 rounded-2xl text-xs font-bold transition-all ${
+                  activeTab === 'notifications'
+                    ? 'bg-[#FA394A] text-white shadow-md shadow-[#FA394A]/20'
+                    : 'text-gray-600 hover:bg-gray-100'
+                }`}
+              >
+                <div className="flex items-center space-x-3">
+                  <MessageSquare className="w-4 h-4" />
+                  <span>Notifications</span>
+                </div>
+                <span
+                  className={`px-2 py-0.5 rounded-full text-[10px] font-black ${
+                    activeTab === 'notifications' ? 'bg-white/20 text-white' : 'bg-gray-100 text-gray-700'
+                  }`}
+                >
+                  {notifications.length}
                 </span>
               </button>
 
@@ -369,6 +400,39 @@ export const StudentDashboardPage: React.FC = () => {
                         <div className="text-[10px] text-gray-400">
                           Requested on {new Date(enq.createdAt).toLocaleDateString()}
                         </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* NOTIFICATIONS TAB */}
+            {activeTab === 'notifications' && (
+              <div className="bg-white rounded-3xl p-6 sm:p-8 border border-gray-200/80 shadow-sm space-y-6">
+                <div className="flex items-center justify-between gap-4">
+                  <div>
+                    <h2 className="text-lg font-black text-[#333333]">My Notifications</h2>
+                    <p className="text-xs text-gray-500">Messages broadcast by the admin and alerts for your account.</p>
+                  </div>
+                </div>
+
+                {notifications.length === 0 ? (
+                  <div className="text-center py-12 bg-gray-50 rounded-2xl border border-dashed border-gray-200 text-xs text-gray-500">
+                    No notifications available yet.
+                  </div>
+                ) : (
+                  <div className="space-y-3">
+                    {notifications.map((notif) => (
+                      <div key={notif._id} className="p-4 bg-gray-50 rounded-2xl border border-gray-200">
+                        <div className="flex justify-between items-start gap-3">
+                          <div>
+                            <h3 className="text-xs font-black text-[#333333]">{notif.title}</h3>
+                            <p className="text-[11px] text-gray-500">{notif.type.toUpperCase()}</p>
+                          </div>
+                          <span className="text-[10px] text-gray-400">{new Date(notif.createdAt).toLocaleDateString('en-IN')}</span>
+                        </div>
+                        <p className="text-xs text-gray-600 mt-2">{notif.message}</p>
                       </div>
                     ))}
                   </div>

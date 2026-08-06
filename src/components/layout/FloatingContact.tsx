@@ -8,6 +8,7 @@ export const FloatingContact: React.FC = () => {
 
   return (
     <>
+    
       <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end space-y-3 pointer-events-none">
         {/* Expanded Options */}
         <div
@@ -30,7 +31,7 @@ export const FloatingContact: React.FC = () => {
 
           {/* Call Action */}
           <a
-            href="tel:+919876543210"
+            href="tel:+91 8054100099"
             className="flex items-center bg-[#333333] text-white py-2.5 px-4 rounded-2xl shadow-xl hover:scale-105 transition-all text-xs font-bold group"
           >
             <span className="mr-2">Call Admission Helpline</span>

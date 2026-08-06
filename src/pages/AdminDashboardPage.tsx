@@ -210,21 +210,14 @@ export const AdminDashboardPage: React.FC = () => {
     try {
       const formData = new FormData();
       formData.append('file', file);
-      const token = localStorage.getItem('token');
-      const res = await fetch('/api/upload', {
-        method: 'POST',
-        headers: token ? { Authorization: `Bearer ${token}` } : {},
-        body: formData
-      });
-      const data = await res.json();
-      if (data.success) {
+      const res = await api.post('/upload', formData);
+      if (res.data.success) {
         showToast('File uploaded successfully!');
-        return data.fileUrl;
-      } else {
-        throw new Error(data.message || 'File upload failed');
+        return res.data.fileUrl;
       }
+      throw new Error(res.data.message || 'File upload failed');
     } catch (err: any) {
-      alert(err.message || 'Error uploading file');
+      alert(err.response?.data?.message || err.message || 'Error uploading file');
       return '';
     } finally {
       setUploadingFile(false);
@@ -265,7 +258,7 @@ export const AdminDashboardPage: React.FC = () => {
         api.get('/faqs?all=true').catch(() => ({ data: { success: false } })),
         api.get('/testimonials?all=true').catch(() => ({ data: { success: false } })),
         api.get('/sliders?all=true').catch(() => ({ data: { success: false } })),
-        api.get('/notifications').catch(() => ({ data: { success: false } })),
+        api.get('/notifications/admin').catch(() => ({ data: { success: false } })),
         api.get('/documents').catch(() => ({ data: { success: false } })),
         api.get('/settings').catch(() => ({ data: { success: false } }))
       ]);
@@ -590,16 +583,55 @@ export const AdminDashboardPage: React.FC = () => {
     }
   };
 
+  const handleDeleteStudent = async (id: string) => {
+    if (!window.confirm('Delete this student account? This action cannot be undone.')) return;
+    try {
+      const res = await api.delete(`/students/${id}`);
+      if (res.data.success) {
+        showToast('Student account deleted');
+        setStudents((prev) => prev.filter((s) => s._id !== id));
+      }
+    } catch (err: any) {
+      alert(err.response?.data?.message || 'Error deleting student account');
+    }
+  };
+
+  const handleDeleteContact = async (id: string) => {
+    if (!window.confirm('Delete this contact message?')) return;
+    try {
+      const res = await api.delete(`/contacts/${id}`);
+      if (res.data.success) {
+        showToast('Contact message deleted');
+        setContacts((prev) => prev.filter((c) => c._id !== id));
+      }
+    } catch (err: any) {
+      alert(err.response?.data?.message || 'Error deleting contact message');
+    }
+  };
+
+  const handleDeleteNotification = async (id: string) => {
+    if (!window.confirm('Delete this notification?')) return;
+    try {
+      const res = await api.delete(`/notifications/admin/${id}`);
+      if (res.data.success) {
+        showToast('Notification deleted');
+        setNotifications((prev) => prev.filter((n) => n._id !== id));
+      }
+    } catch (err: any) {
+      alert(err.response?.data?.message || 'Error deleting notification');
+    }
+  };
+
   // 7. SAVE WEBSITE SETTINGS
   const handleSaveSettings = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await api.post('/settings', siteSettings);
+      const res = await api.put('/settings', siteSettings);
       if (res.data.success) {
         showToast('Website contact and site settings updated successfully!');
       }
-    } catch (err) {
-      alert('Error saving site settings');
+    } catch (err: any) {
+      alert(err.response?.data?.message || 'Error saving site settings');
     }
   };
 
@@ -607,15 +639,15 @@ export const AdminDashboardPage: React.FC = () => {
   const handleSendNotification = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await api.post('/notifications', notificationFormData);
+      const res = await api.post('/notifications/admin', notificationFormData);
       if (res.data.success) {
         showToast('Notification broadcasted');
         setShowNotificationModal(false);
         setNotificationFormData({ title: '', message: '', userId: 'all', type: 'info' });
         fetchAllData();
       }
-    } catch (err) {
-      alert('Error broadcasting notification');
+    } catch (err: any) {
+      alert(err.response?.data?.message || 'Error broadcasting notification');
     }
   };
 
@@ -939,6 +971,23 @@ export const AdminDashboardPage: React.FC = () => {
               </button>
 
               <button
+                onClick={() => setActiveTab('notifications')}
+                className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-extrabold transition-all ${
+                  activeTab === 'notifications'
+                    ? 'bg-[#FA394A] text-white shadow-md shadow-[#FA394A]/20'
+                    : 'text-gray-600 hover:bg-gray-100'
+                }`}
+              >
+                <span className="flex items-center space-x-3">
+                  <Icons.Bell className="w-4 h-4" />
+                  <span>Notifications</span>
+                </span>
+                <span className="bg-gray-100 text-gray-700 px-2 py-0.5 rounded-full text-[10px]">
+                  {notifications.length}
+                </span>
+              </button>
+
+              <button
                 onClick={() => setActiveTab('profile')}
                 className={`w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-2xl text-xs font-extrabold transition-all ${
                   activeTab === 'profile'
@@ -1203,7 +1252,79 @@ export const AdminDashboardPage: React.FC = () => {
               </div>
             )}
 
-            {/* 4. UNIVERSITIES TAB */}
+            {/* 4. STUDENT ACCOUNTS TAB */}
+            {activeTab === 'students' && (
+              <div className="bg-white rounded-3xl p-6 sm:p-8 border border-gray-200/80 shadow-sm space-y-6">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div>
+                    <h2 className="text-lg font-black text-[#333333]">Student Accounts</h2>
+                    <p className="text-xs text-gray-500">View all registered student users and manage accounts.</p>
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="Search student name, email or phone..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="px-3.5 py-2 rounded-xl border text-xs font-medium outline-none w-full sm:w-80"
+                  />
+                </div>
+
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-xs">
+                    <thead>
+                      <tr className="border-b border-gray-200 text-gray-400 font-extrabold uppercase">
+                        <th className="py-3 px-3">Student Name</th>
+                        <th className="py-3 px-3">Email</th>
+                        <th className="py-3 px-3">Phone</th>
+                        <th className="py-3 px-3">Status</th>
+                        <th className="py-3 px-3">Joined</th>
+                        <th className="py-3 px-3">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-100 font-medium">
+                      {filteredStudents.map((std) => (
+                        <tr key={std._id} className="hover:bg-gray-50">
+                          <td className="py-3 px-3 font-bold text-[#333333]">{std.name}</td>
+                          <td className="py-3 px-3">{std.email}</td>
+                          <td className="py-3 px-3">{std.phone || 'N/A'}</td>
+                          <td className="py-3 px-3">
+                            <span className={`inline-flex px-2 py-1 rounded-full text-[11px] font-bold ${std.status === 'inactive' ? 'bg-red-100 text-red-700' : 'bg-emerald-100 text-emerald-700'}`}>
+                              {std.status === 'inactive' ? 'Inactive' : 'Active'}
+                            </span>
+                          </td>
+                          <td className="py-3 px-3 text-[11px] text-gray-500">{std.createdAt ? new Date(std.createdAt).toLocaleDateString('en-IN') : 'N/A'}</td>
+                          <td className="py-3 px-3 flex items-center gap-2">
+                            <button
+                              type="button"
+                              onClick={() => handleViewStudentDetail(std)}
+                              className="text-blue-600 hover:underline text-[11px] font-black"
+                            >
+                              View
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => handleDeleteStudent(std._id)}
+                              className="text-red-600 hover:underline text-[11px] font-black"
+                            >
+                              Delete
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                      {filteredStudents.length === 0 && (
+                        <tr>
+                          <td colSpan={6} className="py-6 px-3 text-center text-gray-500 text-xs">
+                            No student accounts found.
+                          </td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+
+            {/* 5. UNIVERSITIES TAB */}
             {activeTab === 'colleges' && (
               <div className="bg-white rounded-3xl p-6 sm:p-8 border border-gray-200/80 shadow-sm space-y-6">
                 <div className="flex justify-between items-center">
@@ -1735,21 +1856,84 @@ export const AdminDashboardPage: React.FC = () => {
 
                 <div className="space-y-3">
                   {contacts.map((c) => (
-                    <div key={c._id} className="p-4 bg-gray-50 rounded-2xl border border-gray-200 space-y-1">
-                      <div className="flex justify-between items-start">
+                    <div key={c._id} className="p-4 bg-gray-50 rounded-2xl border border-gray-200 space-y-3">
+                      <div className="flex justify-between items-start gap-4">
                         <div>
                           <h3 className="text-xs font-black text-[#333333]">{c.name}</h3>
                           <p className="text-[11px] text-[#FA394A] font-bold">{c.email} • {c.phone}</p>
                         </div>
-                        <span className="text-[10px] text-gray-400">
-                          {new Date(c.createdAt).toLocaleDateString('en-IN')}
-                        </span>
+                        <div className="text-right">
+                          <span className="text-[10px] text-gray-400 block mb-1">
+                            {new Date(c.createdAt).toLocaleDateString('en-IN')}
+                          </span>
+                          <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded-full bg-slate-100 text-slate-700">
+                            {c.isRead ? 'Read' : 'Unread'}
+                          </span>
+                        </div>
                       </div>
                       <p className="text-xs font-bold text-gray-800">Subject: {c.subject || 'General Query'}</p>
                       <p className="text-xs text-gray-600 leading-relaxed">{c.message}</p>
+                      <div className="flex justify-end">
+                        <button
+                          type="button"
+                          onClick={() => handleDeleteContact(c._id)}
+                          className="text-red-600 hover:text-red-800 text-[11px] font-black"
+                        >
+                          Delete Message
+                        </button>
+                      </div>
                     </div>
                   ))}
                 </div>
+              </div>
+            )}
+
+            {/* 12. NOTIFICATIONS TAB */}
+            {activeTab === 'notifications' && (
+              <div className="bg-white rounded-3xl p-6 sm:p-8 border border-gray-200/80 shadow-sm space-y-6">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div>
+                    <h2 className="text-lg font-black text-[#333333]">Broadcast Notifications</h2>
+                    <p className="text-xs text-gray-500">View all notifications saved for students and delete outdated alerts.</p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setShowNotificationModal(true)}
+                    className="bg-[#FA394A] text-white px-4 py-2 rounded-xl text-xs font-bold hover:bg-[#D92B3B] transition-colors"
+                  >
+                    New Broadcast
+                  </button>
+                </div>
+
+                {notifications.length === 0 ? (
+                  <div className="text-center py-12 bg-gray-50 rounded-2xl border border-dashed border-gray-200 text-xs text-gray-500">
+                    No broadcast notifications found yet.
+                  </div>
+                ) : (
+                  <div className="space-y-3">
+                    {notifications.map((notif) => (
+                      <div key={notif._id} className="p-4 bg-gray-50 rounded-2xl border border-gray-200 space-y-3">
+                        <div className="flex justify-between items-start gap-4">
+                          <div>
+                            <h3 className="text-xs font-black text-[#333333]">{notif.title}</h3>
+                            <p className="text-[11px] text-gray-500">Target: {notif.userId === 'all' ? 'All Students' : notif.userId}</p>
+                          </div>
+                          <span className="text-[10px] text-gray-400">{new Date(notif.createdAt).toLocaleDateString('en-IN')}</span>
+                        </div>
+                        <p className="text-xs text-gray-600">{notif.message}</p>
+                        <div className="flex justify-end gap-2">
+                          <button
+                            type="button"
+                            onClick={() => handleDeleteNotification(notif._id)}
+                            className="text-red-600 hover:text-red-800 text-[11px] font-black"
+                          >
+                            Delete Alert
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             )}
 

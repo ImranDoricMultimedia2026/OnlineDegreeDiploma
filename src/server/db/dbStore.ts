@@ -425,7 +425,7 @@ export async function initDbStore() {
       console.log('⚡ Data store loaded from disk');
       syncDefaultPrograms();
       saveDbStore();
-      await seedInitialDataToMongo(dbData.colleges, dbData.programs, dbData.users);
+      await seedInitialDataToMongo(dbData.colleges, dbData.programs, dbData.users, dbData.faqs, dbData.testimonials);
       return;
     } catch (e) {
       console.error('Failed to read db.json, generating fresh seeds:', e);
@@ -435,7 +435,7 @@ export async function initDbStore() {
   // Generate Seed Data
   await seedInitialData();
   saveDbStore();
-  await seedInitialDataToMongo(dbData.colleges, dbData.programs, dbData.users);
+  await seedInitialDataToMongo(dbData.colleges, dbData.programs, dbData.users, dbData.faqs, dbData.testimonials);
 }
 
 export function saveDbStore() {

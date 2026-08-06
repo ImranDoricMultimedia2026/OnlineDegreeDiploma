@@ -14,6 +14,14 @@ api.interceptors.request.use(
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
+
+    if (config.data instanceof FormData) {
+      // Allow axios/browser to set multipart boundaries automatically
+      if (config.headers) {
+        delete (config.headers as any)['Content-Type'];
+      }
+    }
+
     return config;
   },
   (error) => Promise.reject(error)

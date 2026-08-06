@@ -79,21 +79,21 @@ export const CollegeDetailPage: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-[#F5F5F5] py-20">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-page py-20">
         <div className="w-12 h-12 border-4 border-[#FA394A] border-t-transparent rounded-full animate-spin mb-4" />
-        <p className="text-xs font-bold text-gray-600 tracking-wide uppercase">Loading University Profile...</p>
+        <p className="text-xs font-bold text-muted tracking-wide uppercase">Loading University Profile...</p>
       </div>
     );
   }
 
   if (error || !college) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-[#F5F5F5] p-6 text-center">
-        <div className="w-20 h-20 bg-red-100 text-[#FA394A] rounded-full flex items-center justify-center mb-4">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-page p-6 text-center">
+        <div className="w-20 h-20 bg-red-100 dark:bg-red-950/40 text-[#FA394A] rounded-full flex items-center justify-center mb-4">
           <Building2 className="w-10 h-10" />
         </div>
-        <h1 className="text-2xl font-black text-[#333333]">University Profile Not Found</h1>
-        <p className="text-xs text-gray-500 max-w-md mt-2 leading-relaxed">
+        <h1 className="text-2xl font-black text-heading">University Profile Not Found</h1>
+        <p className="text-xs text-muted max-w-md mt-2 leading-relaxed">
           The requested university slug (<code className="text-[#FA394A] font-bold">{slug}</code>) does not exist or has been updated in MongoDB Atlas.
         </p>
         <div className="mt-6 flex flex-wrap gap-3 justify-center">
@@ -105,7 +105,7 @@ export const CollegeDetailPage: React.FC = () => {
           </Link>
           <Link
             to="/"
-            className="bg-white hover:bg-gray-100 text-[#333333] border border-gray-300 px-6 py-3 rounded-2xl text-xs font-bold transition-all"
+            className="bg-surface hover:bg-gray-100 dark:hover:bg-gray-700 text-heading border border-theme px-6 py-3 rounded-2xl text-xs font-bold transition-all"
           >
             Back to Homepage
           </Link>
@@ -158,105 +158,111 @@ export const CollegeDetailPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#F5F5F5] font-sans pb-20">
+    <div className="min-h-screen bg-page font-sans pb-20 transition-colors duration-300">
       {/* HERO BANNER SECTION BELOW NAVBAR */}
-   <div className="relative bg-[#222222] text-white overflow-hidden min-h-[420px] sm:min-h-[480px] flex items-center">
+      <div className="relative bg-[#222222] text-white overflow-hidden min-h-[420px] sm:min-h-[480px] flex items-center">
 
-  {/* Overlay */}
-  <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/20 to-black/20 z-10" />
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/20 to-black/20 z-10" />
 
-  {/* Banner Image */}
-  <img
-    src={
-      college.banner ||
-      "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1920&q=80"
-    }
-    alt={college.name}
-    className="absolute inset-0 w-full h-full object-cover object-center sm:object-center md:object-center lg:object-center"
-  />
-
-  <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 relative z-20">
-
-    <div className="flex items-center">
-
-      {/* Left Content */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
-
-        {/* Logo */}
+        {/* Banner Image */}
         <img
           src={
-            college.logo ||
-            college.image ||
-            "https://images.unsplash.com/photo-1592280771190-3e2e4d571952?w=150&q=80"
+            college.banner ||
+            "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1920&q=80"
           }
           alt={college.name}
-          className="w-20 h-20 sm:w-28 sm:h-28 rounded-2xl bg-white p-2.5 shadow-2xl object-contain border-2 border-white/80 shrink-0"
+          className="absolute inset-0 w-full h-full object-cover object-center sm:object-center md:object-center lg:object-center"
         />
 
-        {/* Details */}
-        <div>
+        <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 relative z-20">
 
-          {/* Tags */}
-          <div className="flex flex-wrap items-center gap-2 mb-3">
-            <span className="px-3 py-1 rounded-full bg-[#FA394A] text-white text-[11px] font-extrabold uppercase flex items-center">
-              <ShieldCheck className="w-3.5 h-3.5 mr-1" />
-              {college.approval || "UGC Entitled"}
-            </span>
+          <div className="flex items-center">
 
-            {college.naacGrade && (
-              <span className="px-3 py-1 rounded-full bg-amber-500 text-white text-[11px] font-extrabold uppercase">
-                NAAC Grade {college.naacGrade}
-              </span>
-            )}
+            {/* Left Content */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
 
-            {college.establishedYear && (
-              <span className="px-3 py-1 rounded-full bg-white/20 backdrop-blur text-white text-[11px] font-bold">
-                Estd. {college.establishedYear}
-              </span>
-            )}
-          </div>
+              {/* Logo */}
+              <img
+                src={
+                  college.logo ||
+                  college.image ||
+                  "https://images.unsplash.com/photo-1592280771190-3e2e4d571952?w=150&q=80"
+                }
+                alt={college.name}
+                className="w-20 h-20 sm:w-28 sm:h-28 rounded-2xl bg-white p-2.5 shadow-2xl object-contain border-2 border-white/80 shrink-0"
+              />
 
-          {/* Title */}
-          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black leading-tight">
-            {college.name}
-          </h1>
+              {/* Details */}
+              <div>
 
-          {/* Location */}
-          <div className="flex flex-wrap items-center gap-4 mt-3 text-gray-200">
+                {/* Tags */}
+                <div className="flex flex-wrap items-center gap-2 mb-3">
+                  <span className="px-3 py-1 rounded-full bg-[#FA394A] text-white text-[11px] font-extrabold uppercase flex items-center">
+                    <ShieldCheck className="w-3.5 h-3.5 mr-1" />
+                    {college.approval || "UGC Entitled"}
+                  </span>
 
-            <div className="flex items-center">
-              <MapPin className="w-4 h-4 mr-2 text-[#FA394A]" />
-              <span className="text-sm">
-                {college.location}
-              </span>
-            </div>
+                  {college.naacGrade && (
+                    <span className="px-3 py-1 rounded-full bg-amber-500 text-white text-[11px] font-extrabold uppercase">
+                      NAAC Grade {college.naacGrade}
+                    </span>
+                  )}
 
-            {college.rating && (
-              <div className="flex items-center text-amber-400 font-bold">
-                <Star className="w-4 h-4 fill-current mr-1" />
-                {college.rating} / 5.0 Rating
+                  {college.establishedYear && (
+                    <span className="px-3 py-1 rounded-full bg-white/20 backdrop-blur text-white text-[11px] font-bold">
+                      Estd. {college.establishedYear}
+                    </span>
+                  )}
+                </div>
+
+                {/* Title */}
+                <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black leading-tight">
+                  {college.name}
+                </h1>
+
+                {/* Location */}
+                <div className="flex flex-wrap items-center gap-4 mt-3 text-gray-200">
+
+                  <div className="flex items-center">
+                    <MapPin className="w-4 h-4 mr-2 text-[#FA394A]" />
+                    <span className="text-sm">
+                      {college.location}
+                    </span>
+                  </div>
+
+                  {college.rating && (
+                    <div className="flex items-center text-amber-400 font-bold">
+                      <Star className="w-4 h-4 fill-current mr-1" />
+                      {college.rating} / 5.0 Rating
+                    </div>
+                  )}
+                </div>
+
+                {/* Buttons (Always below Rating) */}
+                <div className="flex flex-col sm:flex-row gap-3 mt-6">
+
+                  <button
+                    onClick={() => handleOpenModal("brochure")}
+                    className="bg-white/10 hover:bg-white/20 border border-white/30 text-white font-bold px-6 py-3 rounded-2xl backdrop-blur transition-all flex items-center justify-center gap-2"
+                  >
+                    <Download className="w-4 h-4" />
+                    Download Brochure
+                  </button>
+
+                  <button
+                    onClick={() => handleOpenModal("general")}
+                    className="bg-[#FA394A] hover:bg-[#D92B3B] text-white font-extrabold px-6 py-3 rounded-2xl shadow-lg shadow-[#FA394A]/30 transition-all flex items-center justify-center gap-2"
+                  >
+                    <Sparkles className="w-4 h-4" />
+                    Free Admission Counseling
+                  </button>
+
+                </div>
+
               </div>
-            )}
-          </div>
 
-          {/* Buttons (Always below Rating) */}
-          <div className="flex flex-col sm:flex-row gap-3 mt-6">
-
-            <button
-              onClick={() => handleOpenModal("brochure")}
-              className="bg-white/10 hover:bg-white/20 border border-white/30 text-white font-bold px-6 py-3 rounded-2xl backdrop-blur transition-all flex items-center justify-center gap-2"
-            >
-              <Download className="w-4 h-4" />
-              Download Brochure
-            </button>
-
-            <button
-              onClick={() => handleOpenModal("general")}
-              className="bg-[#FA394A] hover:bg-[#D92B3B] text-white font-extrabold px-6 py-3 rounded-2xl shadow-lg shadow-[#FA394A]/30 transition-all flex items-center justify-center gap-2"
-            >
-              <Sparkles className="w-4 h-4" />
-              Free Admission Counseling
-            </button>
+            </div>
 
           </div>
 
@@ -264,38 +270,32 @@ export const CollegeDetailPage: React.FC = () => {
 
       </div>
 
-    </div>
-
-  </div>
-
-</div>
-
       {/* MAIN BODY LAYOUT */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* LEFT 2 COLUMNS - DETAILED CONTENT */}
         <div className="lg:col-span-2 space-y-8">
           {/* RANKING & RECOGNITION */}
-          <div className="bg-white p-6 rounded-3xl border border-gray-200/80 shadow-sm space-y-4">
-            <h2 className="text-base font-extrabold text-[#333333] uppercase tracking-wider flex items-center">
+          <div className="bg-surface p-6 rounded-3xl border border-theme shadow-sm space-y-4">
+            <h2 className="text-base font-extrabold text-heading uppercase tracking-wider flex items-center">
               <Award className="w-5 h-5 mr-2 text-[#FA394A]" /> Rankings & Approvals
             </h2>
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              <div className="p-3.5 bg-red-50/60 rounded-2xl border border-red-100 text-center">
-                <span className="text-[10px] text-gray-500 font-bold uppercase block">UGC Status</span>
+              <div className="p-3.5 bg-red-50/60 dark:bg-red-950/30 rounded-2xl border border-red-100 dark:border-red-900/50 text-center">
+                <span className="text-[10px] text-muted font-bold uppercase block">UGC Status</span>
                 <span className="text-xs font-black text-[#FA394A]">UGC Entitled</span>
               </div>
-              <div className="p-3.5 bg-amber-50/60 rounded-2xl border border-amber-100 text-center">
-                <span className="text-[10px] text-gray-500 font-bold uppercase block">NAAC Grade</span>
-                <span className="text-xs font-black text-amber-700">{college.naacGrade || 'A++ Accredited'}</span>
+              <div className="p-3.5 bg-amber-50/60 dark:bg-amber-950/30 rounded-2xl border border-amber-100 dark:border-amber-900/50 text-center">
+                <span className="text-[10px] text-muted font-bold uppercase block">NAAC Grade</span>
+                <span className="text-xs font-black text-amber-700 dark:text-amber-400">{college.naacGrade || 'A++ Accredited'}</span>
               </div>
-              <div className="p-3.5 bg-blue-50/60 rounded-2xl border border-blue-100 text-center">
-                <span className="text-[10px] text-gray-500 font-bold uppercase block">Placement</span>
-                <span className="text-xs font-black text-blue-700">{college.placementPercentage || '88%+ Support'}</span>
+              <div className="p-3.5 bg-blue-50/60 dark:bg-blue-950/30 rounded-2xl border border-blue-100 dark:border-blue-900/50 text-center">
+                <span className="text-[10px] text-muted font-bold uppercase block">Placement</span>
+                <span className="text-xs font-black text-blue-700 dark:text-blue-400">{college.placementPercentage || '88%+ Support'}</span>
               </div>
-              <div className="p-3.5 bg-green-50/60 rounded-2xl border border-green-100 text-center">
-                <span className="text-[10px] text-gray-500 font-bold uppercase block">Global Value</span>
-                <span className="text-xs font-black text-green-700">WES Approved</span>
+              <div className="p-3.5 bg-green-50/60 dark:bg-green-950/30 rounded-2xl border border-green-100 dark:border-green-900/50 text-center">
+                <span className="text-[10px] text-muted font-bold uppercase block">Global Value</span>
+                <span className="text-xs font-black text-green-700 dark:text-green-400">WES Approved</span>
               </div>
             </div>
 
@@ -303,18 +303,18 @@ export const CollegeDetailPage: React.FC = () => {
               {approvalsList.map((app, i) => (
                 <span
                   key={i}
-                  className="px-3.5 py-1.5 rounded-xl bg-gray-100 text-[#333333] font-bold text-xs flex items-center border border-gray-200"
+                  className="px-3.5 py-1.5 rounded-xl bg-gray-100 dark:bg-gray-700 text-heading font-bold text-xs flex items-center border border-theme"
                 >
-                  <CheckCircle className="w-3.5 h-3.5 mr-1.5 text-green-600" /> {app}
+                  <CheckCircle className="w-3.5 h-3.5 mr-1.5 text-green-600 dark:text-green-400" /> {app}
                 </span>
               ))}
             </div>
           </div>
 
           {/* ABOUT UNIVERSITY */}
-          <div className="bg-white p-6 sm:p-8 rounded-3xl border border-gray-200/80 shadow-sm space-y-4">
-            <h2 className="text-lg sm:text-xl font-extrabold text-[#333333]">About {college.name}</h2>
-            <p className="text-xs sm:text-sm text-gray-600 leading-relaxed whitespace-pre-line">
+          <div className="bg-surface p-6 sm:p-8 rounded-3xl border border-theme shadow-sm space-y-4">
+            <h2 className="text-lg sm:text-xl font-extrabold text-heading">About {college.name}</h2>
+            <p className="text-xs sm:text-sm text-muted leading-relaxed whitespace-pre-line">
               {college.overview || college.description}
             </p>
 
@@ -324,7 +324,7 @@ export const CollegeDetailPage: React.FC = () => {
                   href={college.website}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center text-xs font-bold text-[#FA394A] hover:underline bg-red-50 px-4 py-2 rounded-xl border border-red-100"
+                  className="inline-flex items-center text-xs font-bold text-[#FA394A] hover:underline bg-red-50 dark:bg-red-950/30 px-4 py-2 rounded-xl border border-red-100 dark:border-red-900/50"
                 >
                   <Globe className="w-4 h-4 mr-2" /> Visit Official University Portal
                 </a>
@@ -333,18 +333,18 @@ export const CollegeDetailPage: React.FC = () => {
           </div>
 
           {/* UNIVERSITY HIGHLIGHTS */}
-          <div className="bg-white p-6 sm:p-8 rounded-3xl border border-gray-200/80 shadow-sm space-y-4">
-            <h2 className="text-lg font-extrabold text-[#333333] flex items-center">
+          <div className="bg-surface p-6 sm:p-8 rounded-3xl border border-theme shadow-sm space-y-4">
+            <h2 className="text-lg font-extrabold text-heading flex items-center">
               <Sparkles className="w-5 h-5 mr-2 text-[#FA394A]" /> Key University Highlights
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
               {highlightsList.map((hl, idx) => (
-                <div key={idx} className="flex items-start space-x-3 p-3 bg-gray-50 rounded-2xl border border-gray-200">
+                <div key={idx} className="flex items-start space-x-3 p-3 bg-gray-50 dark:bg-gray-800 rounded-2xl border border-theme">
                   <div className="w-5 h-5 rounded-full bg-[#FA394A] text-white flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">
                     ✓
                   </div>
-                  <span className="text-xs font-bold text-gray-700">{hl}</span>
+                  <span className="text-xs font-bold text-gray-700 dark:text-gray-300">{hl}</span>
                 </div>
               ))}
             </div>
@@ -373,18 +373,18 @@ export const CollegeDetailPage: React.FC = () => {
           {/* AVAILABLE PROGRAMS */}
           <div className="space-y-4">
             <div className="flex justify-between items-center">
-              <h2 className="text-lg sm:text-xl font-extrabold text-[#333333] flex items-center">
+              <h2 className="text-lg sm:text-xl font-extrabold text-heading flex items-center">
                 <BookOpen className="w-5 h-5 mr-2 text-[#FA394A]" /> Available Programs
               </h2>
-              <span className="text-xs font-bold text-gray-500 bg-gray-200 px-3 py-1 rounded-full">
+              <span className="text-xs font-bold text-muted bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full">
                 {programs.length} Courses
               </span>
             </div>
 
             {programs.length === 0 ? (
-              <div className="bg-white p-8 rounded-3xl border border-gray-200 text-center space-y-3">
-                <GraduationCap className="w-10 h-10 text-gray-300 mx-auto" />
-                <p className="text-xs font-bold text-gray-500">General admission open for all UG & PG programs.</p>
+              <div className="bg-surface p-8 rounded-3xl border border-theme text-center space-y-3">
+                <GraduationCap className="w-10 h-10 text-gray-300 dark:text-gray-600 mx-auto" />
+                <p className="text-xs font-bold text-muted">General admission open for all UG & PG programs.</p>
                 <button
                   onClick={() => handleOpenModal('general')}
                   className="bg-[#FA394A] text-white font-bold text-xs px-5 py-2.5 rounded-xl"
@@ -397,26 +397,26 @@ export const CollegeDetailPage: React.FC = () => {
                 {programs.map((program) => (
                   <div
                     key={program._id}
-                    className="bg-white p-5 rounded-3xl border border-gray-200/80 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between space-y-4"
+                    className="bg-surface p-5 rounded-3xl border border-theme shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between space-y-4"
                   >
                     <div className="space-y-2">
                       <div className="flex justify-between items-center">
-                        <span className="px-2.5 py-1 rounded-lg bg-[#FFE8EA] text-[#FA394A] text-[10px] font-extrabold uppercase">
+                        <span className="px-2.5 py-1 rounded-lg bg-[#FFE8EA] dark:bg-[#4a1d21] text-[#FA394A] text-[10px] font-extrabold uppercase">
                           {program.degreeType} Degree
                         </span>
-                        <span className="text-[11px] text-gray-500 font-semibold flex items-center">
+                        <span className="text-[11px] text-muted font-semibold flex items-center">
                           <Clock className="w-3.5 h-3.5 mr-1" /> {program.duration}
                         </span>
                       </div>
 
-                      <h3 className="font-extrabold text-sm text-[#333333]">{program.title}</h3>
+                      <h3 className="font-extrabold text-sm text-heading">{program.title}</h3>
                       <p className="text-xs font-black text-[#FA394A]">{program.fee}</p>
                     </div>
 
-                    <div className="pt-3 border-t border-gray-100 flex items-center justify-between gap-2">
+                    <div className="pt-3 border-t border-theme flex items-center justify-between gap-2">
                       <Link
                         to={`/programs/${program.slug}`}
-                        className="text-xs font-bold text-[#333333] hover:text-[#FA394A] transition-colors"
+                        className="text-xs font-bold text-heading hover:text-[#FA394A] transition-colors"
                       >
                         Course Details →
                       </Link>
@@ -435,23 +435,23 @@ export const CollegeDetailPage: React.FC = () => {
           </div>
 
           {/* FEE STRUCTURE & EMI */}
-          <div className="bg-white p-6 sm:p-8 rounded-3xl border border-gray-200/80 shadow-sm space-y-4">
-            <h2 className="text-lg font-extrabold text-[#333333] flex items-center">
+          <div className="bg-surface p-6 sm:p-8 rounded-3xl border border-theme shadow-sm space-y-4">
+            <h2 className="text-lg font-extrabold text-heading flex items-center">
               <Briefcase className="w-5 h-5 mr-2 text-[#FA394A]" /> Fee Structure & Payment Plans
             </h2>
 
-            <div className="p-4 bg-gray-50 rounded-2xl border border-gray-200 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-2xl border border-theme flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
               <div>
-                <span className="text-xs text-gray-500 font-bold">Estimated Annual Tuition Fee</span>
+                <span className="text-xs text-muted font-bold">Estimated Annual Tuition Fee</span>
                 <div className="text-xl font-black text-[#FA394A]">
                   {college.feesRange || '₹ 45,000 - ₹ 1,80,000 / Year'}
                 </div>
-                <p className="text-[11px] text-gray-400 mt-0.5">Includes LMS access, exam fees, and digital study material.</p>
+                <p className="text-[11px] text-gray-400 dark:text-gray-500 mt-0.5">Includes LMS access, exam fees, and digital study material.</p>
               </div>
 
               <button
                 onClick={() => handleOpenModal('fee_structure')}
-                className="bg-[#333333] hover:bg-black text-white text-xs font-bold px-4 py-2.5 rounded-xl transition-all"
+                className="bg-[#333333] dark:bg-gray-700 hover:bg-black dark:hover:bg-gray-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition-all"
               >
                 Get Detailed Fee Sheet
               </button>
@@ -459,48 +459,48 @@ export const CollegeDetailPage: React.FC = () => {
           </div>
 
           {/* ELIGIBILITY & ADMISSION PROCESS */}
-          <div className="bg-white p-6 sm:p-8 rounded-3xl border border-gray-200/80 shadow-sm space-y-6">
+          <div className="bg-surface p-6 sm:p-8 rounded-3xl border border-theme shadow-sm space-y-6">
             <div>
-              <h2 className="text-lg font-extrabold text-[#333333]">Admission Process & Eligibility</h2>
-              <p className="text-xs text-gray-500 mt-0.5">Simple 4-step direct online admission procedure</p>
+              <h2 className="text-lg font-extrabold text-heading">Admission Process & Eligibility</h2>
+              <p className="text-xs text-muted mt-0.5">Simple 4-step direct online admission procedure</p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {admissionSteps.map((step, idx) => (
-                <div key={idx} className="p-4 bg-gray-50 rounded-2xl border border-gray-200 space-y-1">
+                <div key={idx} className="p-4 bg-gray-50 dark:bg-gray-800 rounded-2xl border border-theme space-y-1">
                   <div className="text-[10px] font-extrabold uppercase text-[#FA394A]">Step 0{idx + 1}</div>
-                  <p className="text-xs font-bold text-[#333333] leading-snug">{step}</p>
+                  <p className="text-xs font-bold text-heading leading-snug">{step}</p>
                 </div>
               ))}
             </div>
           </div>
 
           {/* PLACEMENT SUPPORT */}
-          <div className="bg-white p-6 sm:p-8 rounded-3xl border border-gray-200/80 shadow-sm space-y-4">
-            <h2 className="text-lg font-extrabold text-[#333333] flex items-center">
+          <div className="bg-surface p-6 sm:p-8 rounded-3xl border border-theme shadow-sm space-y-4">
+            <h2 className="text-lg font-extrabold text-heading flex items-center">
               <TrendingUp className="w-5 h-5 mr-2 text-[#FA394A]" /> Career & Placement Cell
             </h2>
 
             <div className="grid grid-cols-3 gap-3 text-center">
-              <div className="p-3.5 bg-gray-50 rounded-2xl border border-gray-200">
-                <span className="text-[10px] text-gray-500 font-bold block">Placement Rate</span>
+              <div className="p-3.5 bg-gray-50 dark:bg-gray-800 rounded-2xl border border-theme">
+                <span className="text-[10px] text-muted font-bold block">Placement Rate</span>
                 <span className="text-base font-black text-[#FA394A]">{college.placementPercentage || '88%'}</span>
               </div>
-              <div className="p-3.5 bg-gray-50 rounded-2xl border border-gray-200">
-                <span className="text-[10px] text-gray-500 font-bold block">Average CTC</span>
-                <span className="text-base font-black text-[#333333]">{college.averagePackage || '₹ 5.2 LPA'}</span>
+              <div className="p-3.5 bg-gray-50 dark:bg-gray-800 rounded-2xl border border-theme">
+                <span className="text-[10px] text-muted font-bold block">Average CTC</span>
+                <span className="text-base font-black text-heading">{college.averagePackage || '₹ 5.2 LPA'}</span>
               </div>
-              <div className="p-3.5 bg-gray-50 rounded-2xl border border-gray-200">
-                <span className="text-[10px] text-gray-500 font-bold block">Highest CTC</span>
-                <span className="text-base font-black text-green-700">{college.highestPackage || '₹ 22.5 LPA'}</span>
+              <div className="p-3.5 bg-gray-50 dark:bg-gray-800 rounded-2xl border border-theme">
+                <span className="text-[10px] text-muted font-bold block">Highest CTC</span>
+                <span className="text-base font-black text-green-700 dark:text-green-400">{college.highestPackage || '₹ 22.5 LPA'}</span>
               </div>
             </div>
 
             <div>
-              <span className="text-xs font-bold text-gray-500 block mb-2">Top Hiring Partners:</span>
+              <span className="text-xs font-bold text-muted block mb-2">Top Hiring Partners:</span>
               <div className="flex flex-wrap gap-2">
                 {['Amazon', 'TCS', 'Deloitte', 'Wipro', 'Infosys', 'HDFC Bank', 'ICICI', 'Cognizant', 'Capgemini'].map((company, i) => (
-                  <span key={i} className="px-3 py-1 bg-gray-100 rounded-lg text-xs font-bold text-gray-700">
+                  <span key={i} className="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-lg text-xs font-bold text-gray-700 dark:text-gray-300">
                     {company}
                   </span>
                 ))}
@@ -509,18 +509,18 @@ export const CollegeDetailPage: React.FC = () => {
           </div>
 
           {/* SCHOLARSHIPS */}
-          <div className="bg-white p-6 sm:p-8 rounded-3xl border border-gray-200/80 shadow-sm space-y-3">
-            <h2 className="text-lg font-extrabold text-[#333333]">Scholarship Schemes</h2>
-            <div className="space-y-2 text-xs font-medium text-gray-600">
-              <div className="p-3 bg-red-50 rounded-2xl border border-red-100 flex items-center justify-between">
+          <div className="bg-surface p-6 sm:p-8 rounded-3xl border border-theme shadow-sm space-y-3">
+            <h2 className="text-lg font-extrabold text-heading">Scholarship Schemes</h2>
+            <div className="space-y-2 text-xs font-medium text-muted">
+              <div className="p-3 bg-red-50 dark:bg-red-950/30 rounded-2xl border border-red-100 dark:border-red-900/50 flex items-center justify-between">
                 <div>
                   <span className="font-extrabold text-[#FA394A]">Merit Scholarship:</span> Up to 30% tuition fee waiver for top scorers.
                 </div>
                 <span className="text-[10px] font-black bg-[#FA394A] text-white px-2.5 py-1 rounded-md">30% OFF</span>
               </div>
-              <div className="p-3 bg-blue-50 rounded-2xl border border-blue-100 flex items-center justify-between">
+              <div className="p-3 bg-blue-50 dark:bg-blue-950/30 rounded-2xl border border-blue-100 dark:border-blue-900/50 flex items-center justify-between">
                 <div>
-                  <span className="font-extrabold text-blue-700">Defense Personnel Concession:</span> 15% special discount for armed forces families.
+                  <span className="font-extrabold text-blue-700 dark:text-blue-400">Defense Personnel Concession:</span> 15% special discount for armed forces families.
                 </div>
                 <span className="text-[10px] font-black bg-blue-700 text-white px-2.5 py-1 rounded-md">15% OFF</span>
               </div>
@@ -528,8 +528,8 @@ export const CollegeDetailPage: React.FC = () => {
           </div>
 
           {/* FAQS ACCORDION */}
-          <div className="bg-white p-6 sm:p-8 rounded-3xl border border-gray-200/80 shadow-sm space-y-4">
-            <h2 className="text-lg font-extrabold text-[#333333] flex items-center">
+          <div className="bg-surface p-6 sm:p-8 rounded-3xl border border-theme shadow-sm space-y-4">
+            <h2 className="text-lg font-extrabold text-heading flex items-center">
               <HelpCircle className="w-5 h-5 mr-2 text-[#FA394A]" /> Frequently Asked Questions
             </h2>
 
@@ -537,16 +537,16 @@ export const CollegeDetailPage: React.FC = () => {
               {defaultFaqs.map((faq, index) => {
                 const isOpen = openFaqIndex === index;
                 return (
-                  <div key={index} className="border border-gray-200 rounded-2xl overflow-hidden">
+                  <div key={index} className="border border-theme rounded-2xl overflow-hidden">
                     <button
                       onClick={() => setOpenFaqIndex(isOpen ? null : index)}
-                      className="w-full p-4 text-left font-extrabold text-xs text-[#333333] bg-gray-50 flex justify-between items-center hover:bg-gray-100 transition-colors"
+                      className="w-full p-4 text-left font-extrabold text-xs text-heading bg-gray-50 dark:bg-gray-800 flex justify-between items-center hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
                     >
                       <span>{faq.question}</span>
-                      {isOpen ? <ChevronUp className="w-4 h-4 shrink-0 text-[#FA394A]" /> : <ChevronDown className="w-4 h-4 shrink-0 text-gray-400" />}
+                      {isOpen ? <ChevronUp className="w-4 h-4 shrink-0 text-[#FA394A]" /> : <ChevronDown className="w-4 h-4 shrink-0 text-gray-400 dark:text-gray-500" />}
                     </button>
                     {isOpen && (
-                      <div className="p-4 bg-white text-xs text-gray-600 leading-relaxed border-t border-gray-100">
+                      <div className="p-4 bg-surface text-xs text-muted leading-relaxed border-t border-theme">
                         {faq.answer}
                       </div>
                     )}
@@ -559,11 +559,11 @@ export const CollegeDetailPage: React.FC = () => {
           {/* RELATED UNIVERSITIES */}
           {relatedColleges.length > 0 && (
             <div className="space-y-4">
-              <h2 className="text-lg font-extrabold text-[#333333]">Other Recommended Online Universities</h2>
+              <h2 className="text-lg font-extrabold text-heading">Other Recommended Online Universities</h2>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {relatedColleges.map((rel) => (
-                  <div key={rel._id} className="bg-white p-5 rounded-3xl border border-gray-200/80 shadow-sm space-y-3">
+                  <div key={rel._id} className="bg-surface p-5 rounded-3xl border border-theme shadow-sm space-y-3">
                     <div className="flex items-center space-x-3">
                       <img
                         src={rel.logo || rel.image || 'https://images.unsplash.com/photo-1592280771190-3e2e4d571952?w=100'}
@@ -571,14 +571,14 @@ export const CollegeDetailPage: React.FC = () => {
                         className="w-12 h-12 rounded-xl object-contain bg-white p-1 border shrink-0"
                       />
                       <div>
-                        <h4 className="font-extrabold text-xs text-[#333333]">{rel.name}</h4>
-                        <span className="text-[10px] text-gray-500">{rel.location}</span>
+                        <h4 className="font-extrabold text-xs text-heading">{rel.name}</h4>
+                        <span className="text-[10px] text-muted">{rel.location}</span>
                       </div>
                     </div>
 
                     <Link
                       to={`/colleges/${rel.slug}`}
-                      className="block w-full text-center bg-gray-100 hover:bg-[#FA394A] hover:text-white text-[#333333] font-bold text-xs py-2 rounded-xl transition-all"
+                      className="block w-full text-center bg-gray-100 dark:bg-gray-700 hover:bg-[#FA394A] hover:text-white text-heading font-bold text-xs py-2 rounded-xl transition-all"
                     >
                       View University Profile
                     </Link>
@@ -591,13 +591,13 @@ export const CollegeDetailPage: React.FC = () => {
 
         {/* RIGHT SIDEBAR - STICKY COUNSELING CARD */}
         <div className="space-y-6">
-          <div className="bg-white p-6 rounded-3xl border border-gray-200/80 shadow-xl space-y-5 sticky top-24">
+          <div className="bg-surface p-6 rounded-3xl border border-theme shadow-xl space-y-5 sticky top-24">
             <div className="text-center space-y-1">
-              <span className="text-[10px] font-black text-[#FA394A] uppercase tracking-widest bg-red-50 px-3 py-1 rounded-full">
+              <span className="text-[10px] font-black text-[#FA394A] uppercase tracking-widest bg-red-50 dark:bg-red-950/30 px-3 py-1 rounded-full">
                 Free Admission Guidance
               </span>
-              <h3 className="text-lg font-black text-[#333333] pt-1">Apply to {college.name}</h3>
-              <p className="text-xs text-gray-500">
+              <h3 className="text-lg font-black text-heading pt-1">Apply to {college.name}</h3>
+              <p className="text-xs text-muted">
                 Get free 1-on-1 counseling, syllabus brochure, and fee installment plan.
               </p>
             </div>
@@ -613,7 +613,7 @@ export const CollegeDetailPage: React.FC = () => {
 
               <button
                 onClick={() => navigate(`/apply?collegeId=${college._id}`)}
-                className="w-full bg-[#333333] hover:bg-black text-white font-extrabold py-3.5 rounded-2xl text-xs transition-all flex items-center justify-center space-x-2"
+                className="w-full bg-[#333333] dark:bg-gray-700 hover:bg-black dark:hover:bg-gray-600 text-white font-extrabold py-3.5 rounded-2xl text-xs transition-all flex items-center justify-center space-x-2"
               >
                 <span>Apply Online Now</span>
                 <ArrowRight className="w-4 h-4" />
@@ -621,24 +621,24 @@ export const CollegeDetailPage: React.FC = () => {
 
               <button
                 onClick={() => handleOpenModal('fee_structure')}
-                className="w-full bg-gray-100 hover:bg-gray-200 text-[#333333] font-bold py-3.5 rounded-2xl text-xs transition-all flex items-center justify-center space-x-2"
+                className="w-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-heading font-bold py-3.5 rounded-2xl text-xs transition-all flex items-center justify-center space-x-2"
               >
                 <Briefcase className="w-4 h-4" />
                 <span>Check EMI & Fee Schedule</span>
               </button>
             </div>
 
-            <div className="pt-4 border-t border-gray-100 space-y-2 text-[11px] font-medium text-gray-500">
+            <div className="pt-4 border-t border-theme space-y-2 text-[11px] font-medium text-muted">
               <div className="flex items-center">
-                <Check className="w-3.5 h-3.5 text-green-600 mr-2 shrink-0" />
+                <Check className="w-3.5 h-3.5 text-green-600 dark:text-green-400 mr-2 shrink-0" />
                 <span>Direct University Admissions</span>
               </div>
               <div className="flex items-center">
-                <Check className="w-3.5 h-3.5 text-green-600 mr-2 shrink-0" />
+                <Check className="w-3.5 h-3.5 text-green-600 dark:text-green-400 mr-2 shrink-0" />
                 <span>Zero Admission Processing Fee</span>
               </div>
               <div className="flex items-center">
-                <Check className="w-3.5 h-3.5 text-green-600 mr-2 shrink-0" />
+                <Check className="w-3.5 h-3.5 text-green-600 dark:text-green-400 mr-2 shrink-0" />
                 <span>Official LMS Credentials</span>
               </div>
             </div>

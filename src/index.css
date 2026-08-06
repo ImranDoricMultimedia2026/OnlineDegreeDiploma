@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* Tailwind v4: enables class-based dark mode.
+   Without this line, dark: classes only follow the OS theme
+   and ignore the .dark class your JS is toggling. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer base {
   :root {
     --primary: #FA394A;
@@ -8,8 +13,21 @@
     --dark: #333333;
     --muted: #999999;
     --border: #DDDDDD;
-    --card-bg: #FFFFFF;
+    --surface: #FFFFFF;
+    --surface-soft: #F3F4F6;
     --bg-light: #F5F5F5;
+  }
+
+  .dark {
+    --primary: #FA394A;
+    --primary-dark: #FF5C6B;
+    --primary-light: #4a1d21;
+    --dark: #F5F5F5;
+    --muted: #9CA3AF;
+    --border: #374151;
+    --surface: #111827;
+    --surface-soft: #1F2937;
+    --bg-light: #0F172A;
   }
 
   body {
@@ -17,8 +35,28 @@
     color: var(--dark);
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     overflow-x: hidden;
+    transition: background-color 0.35s ease, color 0.35s ease;
+  }
+
+  input,
+  textarea,
+  select,
+  button {
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
   }
 }
+
+/* Semantic theme utility classes — these auto-switch with the .dark class
+   because they read the CSS variables above. Use these instead of
+   bg-white / text-[#333333] / border-gray-200 so you never need to
+   write a separate dark: class again. */
+.bg-page { background-color: var(--bg-light); }
+.bg-surface { background-color: var(--surface); }
+.bg-surface-soft { background-color: var(--surface-soft); }
+.text-heading { color: var(--dark); }
+.text-body { color: var(--dark); opacity: 0.85; }
+.text-muted { color: var(--muted); }
+.border-theme { border-color: var(--border); }
 
 /* Custom Primary Color Utility Classes */
 .bg-primary { background-color: #FA394A; }
@@ -26,6 +64,47 @@
 .bg-primary-light { background-color: #FFE8EA; }
 .text-primary { color: #FA394A; }
 .border-primary { border-color: #FA394A; }
+
+.hover\:bg-primary-dark:hover { background-color: #D92B3B; }
+.hover\:text-primary:hover { color: #FA394A; }
+
+/* Theme-aware overrides for common utility classes */
+.bg-white,
+.bg-white\/10,
+.bg-white\/20,
+.bg-white\/30,
+.bg-\[\#ffffff\] {
+  background-color: var(--surface) !important;
+}
+.bg-\[\#f5f5f5\] {
+  background-color: var(--bg-light) !important;
+}
+.bg-gray-100,
+.bg-gray-100\/80,
+.bg-gray-100\/60,
+.bg-gray-100\/50,
+.bg-gray-100\/20 {
+  background-color: var(--surface-soft) !important;
+}
+.text-black,
+.text-gray-900,
+.text-\[\#333333\] {
+  color: var(--dark) !important;
+}
+.border-gray-200,
+.border-gray-200\/80,
+.border-gray-200\/50,
+.border-gray-200\/20 {
+  border-color: var(--border) !important;
+}
+
+.theme-icon {
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.theme-icon-rotate {
+  transform: rotate(360deg);
+}
 
 .hover\:bg-primary-dark:hover { background-color: #D92B3B; }
 .hover\:text-primary:hover { color: #FA394A; }
@@ -38,9 +117,15 @@
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
+.dark ::-webkit-scrollbar-track {
+  background: #1f2937;
+}
 ::-webkit-scrollbar-thumb {
   background: #ccc;
   border-radius: 4px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #4b5563;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #FA394A;

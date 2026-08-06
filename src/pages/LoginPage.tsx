@@ -47,7 +47,7 @@ export const LoginPage: React.FC = () => {
 
   const fillAdminDemo = () => {
     setEmail('admin@onlinedegreediploma.com');
-    setPassword('admin123');
+    setPassword('');
     setError('');
   };
 

@@ -10,26 +10,31 @@ const router = Router();
 // GET Public Active Testimonials
 router.get('/', async (req, res) => {
   try {
+    const includeAll = req.query.all === 'true';
     if (isMongoConnected()) {
       const query: any = {};
-      if (req.query.all !== 'true') {
-        query.isActive = true;
+      if (!includeAll) {
+        query.$or = [{ isActive: true }, { isActive: { $exists: false } }];
       }
       const testimonials = await (TestimonialModel as any).find(query).sort({ createdAt: -1 }).lean();
-      return res.json({ success: true, testimonials });
+      if (testimonials.length > 0) {
+        return res.json({ success: true, testimonials });
+      }
     }
 
     const db = getDb();
     let testimonials = [...db.testimonials];
-
-    if (req.query.all !== 'true') {
-      testimonials = testimonials.filter((t) => t.isActive);
+    if (!includeAll) {
+      testimonials = testimonials.filter((t) => t.isActive !== false);
     }
-
     res.json({ success: true, testimonials });
   } catch (err: any) {
     const db = getDb();
-    res.json({ success: true, testimonials: db.testimonials || [] });
+    let testimonials = db.testimonials || [];
+    if (req.query.all !== 'true') {
+      testimonials = testimonials.filter((t) => t.isActive !== false);
+    }
+    res.json({ success: true, testimonials });
   }
 });
 

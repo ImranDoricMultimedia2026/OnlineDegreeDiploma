@@ -10,7 +10,20 @@
       "state": "Delhi",
       "status": "active",
       "savedPrograms": [],
-      "createdAt": "2026-07-30T11:10:42.243Z"
+      "createdAt": "2026-07-30T11:10:42.243Z",
+      "updatedAt": "2026-08-04T10:44:17.547Z"
+    },
+    {
+      "_id": "usr_std_1785578722098",
+      "name": "Md Imran Alam",
+      "email": "mdimranalam072@gmail.com",
+      "password": "$2b$10$4oWpQSdgfEfRqc1LeQ.xDeoVkZ2vdnjV5MTFjn9AI0UJNvRIpodna",
+      "phone": "7250018215",
+      "state": "Bihar",
+      "role": "student",
+      "status": "active",
+      "savedPrograms": [],
+      "createdAt": "2026-08-01T10:05:22.098Z"
     }
   ],
   "colleges": [
@@ -261,6 +274,499 @@
   ],
   "programs": [
     {
+      "_id": "prog_pg_mba",
+      "title": "MBA",
+      "name": "Master of Business Administration",
+      "slug": "mba",
+      "collegeId": "col_02",
+      "collegeName": "CU Online",
+      "degreeType": "PG",
+      "duration": "2 Years",
+      "fee": "₹40,400 /sem",
+      "eligibility": "Graduation in any discipline with 50% marks",
+      "specializations": [
+        "12 Specializations",
+        "Marketing",
+        "Finance",
+        "HR",
+        "Business Analytics"
+      ],
+      "overview": "Develop leadership and management skills with 12 specializations.",
+      "semesterInfo": "Covers Corporate Strategy, Managerial Economics, Financial Management, AI in Business, and Industry Capstone.",
+      "careerScope": [
+        "Brand Manager",
+        "Financial Advisor",
+        "Management Consultant",
+        "HR Director"
+      ],
+      "isActive": true,
+      "createdAt": "2026-08-06T11:21:10.619Z"
+    },
+    {
+      "_id": "prog_pg_mca",
+      "title": "MCA",
+      "name": "Master of Computer Applications",
+      "slug": "mca",
+      "collegeId": "col_02",
+      "collegeName": "CU Online",
+      "degreeType": "PG",
+      "duration": "2 Years",
+      "fee": "₹32,400 /sem",
+      "eligibility": "Graduation with Mathematics/Statistics",
+      "specializations": [
+        "5 Specializations",
+        "AI",
+        "Cloud",
+        "Cybersecurity",
+        "Full Stack"
+      ],
+      "overview": "Advanced computing with specializations in AI, Cloud, Cybersecurity.",
+      "semesterInfo": "Advanced Programming, Cloud Computing, Cyber Security, Web Architecture, Data Science, Capstone.",
+      "careerScope": [
+        "Senior Software Architect",
+        "Cloud Lead",
+        "Cyber Security Specialist",
+        "Tech Lead"
+      ],
+      "isActive": true,
+      "createdAt": "2026-08-06T11:21:10.621Z"
+    },
+    {
+      "_id": "prog_pg_mcom",
+      "title": "M.Com",
+      "name": "Master of Commerce",
+      "slug": "mcom",
+      "collegeId": "col_02",
+      "collegeName": "CU Online",
+      "degreeType": "PG",
+      "duration": "2 Years",
+      "fee": "₹20,400 /sem",
+      "eligibility": "B.Com or equivalent with 50% marks",
+      "specializations": [
+        "1 Specialization",
+        "Accounting & Finance"
+      ],
+      "overview": "Advanced commerce education covering Accounting and Finance.",
+      "semesterInfo": "Advanced Financial Accounting, Corporate Taxation, Managerial Economics, Financial Markets.",
+      "careerScope": [
+        "Financial Controller",
+        "Auditor",
+        "Taxation Consultant",
+        "Investment Executive"
+      ],
+      "isActive": true,
+      "createdAt": "2026-08-06T11:21:10.621Z"
+    },
+    {
+      "_id": "prog_pg_mscit",
+      "title": "M.Sc. IT",
+      "name": "M.Sc. Information Technology",
+      "slug": "msc-it",
+      "collegeId": "col_02",
+      "collegeName": "CU Online",
+      "degreeType": "PG",
+      "duration": "2 Years",
+      "fee": "₹16,500 /sem",
+      "eligibility": "Graduation with relevant subject",
+      "specializations": [
+        "1 Specialization",
+        "Information Technology"
+      ],
+      "overview": "Advanced IT program with industry-relevant curriculum.",
+      "semesterInfo": "Enterprise Software, Advanced DBMS, Network Security, Web Engineering, Capstone.",
+      "careerScope": [
+        "IT Consultant",
+        "Systems Analyst",
+        "Database Administrator",
+        "Network Engineer"
+      ],
+      "isActive": true,
+      "createdAt": "2026-08-06T11:21:10.621Z"
+    },
+    {
+      "_id": "prog_pg_maeng",
+      "title": "MA English",
+      "name": "M.A. English",
+      "slug": "ma-english",
+      "collegeId": "col_02",
+      "collegeName": "CU Online",
+      "degreeType": "PG",
+      "duration": "2 Years",
+      "fee": "₹8,000 /sem",
+      "eligibility": "Graduation in any discipline",
+      "specializations": [
+        "1 Specialization",
+        "English Literature"
+      ],
+      "overview": "Advanced English literature and language studies.",
+      "semesterInfo": "British Literature, Postcolonial Studies, Literary Theory, Critical Criticism, Linguistics.",
+      "careerScope": [
+        "Content Writer",
+        "Editor",
+        "Academician",
+        "PR Executive"
+      ],
+      "isActive": true,
+      "createdAt": "2026-08-06T11:21:10.621Z"
+    },
+    {
+      "_id": "prog_pg_mahist",
+      "title": "MA History",
+      "name": "M.A. History",
+      "slug": "ma-history",
+      "collegeId": "col_02",
+      "collegeName": "CU Online",
+      "degreeType": "PG",
+      "duration": "2 Years",
+      "fee": "₹8,000 /sem",
+      "eligibility": "Graduation in any discipline",
+      "specializations": [
+        "1 Specialization",
+        "History"
+      ],
+      "overview": "In-depth study of Indian and world history.",
+      "semesterInfo": "Ancient Indian History, Medieval India, Modern World Civilizations, Historiography.",
+      "careerScope": [
+        "Archivist",
+        "Historian",
+        "Civil Services Specialist",
+        "Researcher"
+      ],
+      "isActive": true,
+      "createdAt": "2026-08-06T11:21:10.621Z"
+    },
+    {
+      "_id": "prog_pg_mahin",
+      "title": "MA Hindi",
+      "name": "M.A. Hindi",
+      "slug": "ma-hindi",
+      "collegeId": "col_02",
+      "collegeName": "CU Online",
+      "degreeType": "PG",
+      "duration": "2 Years",
+      "fee": "₹8,000 /sem",
+      "eligibility": "Graduation in any discipline",
+      "specializations": [
+        "1 Specialization",
+        "Hindi Literature"
+      ],
+      "overview": "Advanced Hindi language and literature.",
+      "semesterInfo": "Hindi Kavya, Prose & Drama, Bhasha Vigyan, Modern Literature Criticism.",
+      "careerScope": [
+        "Hindi Officer",
+        "Translator",
+        "Educator",
+        "Journalist"
+      ],
+      "isActive": true,
+      "createdAt": "2026-08-06T11:21:10.621Z"
+    },
+    {
+      "_id": "prog_pg_mapun",
+      "title": "MA Punjabi",
+      "name": "M.A. Punjabi",
+      "slug": "ma-punjabi",
+      "collegeId": "col_02",
+      "collegeName": "CU Online",
+      "degreeType": "PG",
+      "duration": "2 Years",
+      "fee": "₹8,000 /sem",
+      "eligibility": "Graduation in any discipline",
+      "specializations": [
+        "1 Specialization",
+        "Punjabi Literature"
+      ],
+      "overview": "Punjabi language and literary studies.",
+      "semesterInfo": "Punjabi Poetry, Sufi Literature, Modern Fiction, Cultural Studies.",
+      "careerScope": [
+        "Language Specialist",
+        "Media Writer",
+        "Educator",
+        "Translator"
+      ],
+      "isActive": true,
+      "createdAt": "2026-08-06T11:21:10.621Z"
+    },
+    {
+      "_id": "prog_pg_mapol",
+      "title": "MA Pol. Sci.",
+      "name": "M.A. Political Science",
+      "slug": "ma-political-science",
+      "collegeId": "col_02",
+      "collegeName": "CU Online",
+      "degreeType": "PG",
+      "duration": "2 Years",
+      "fee": "₹8,000 /sem",
+      "eligibility": "Graduation in any discipline",
+      "specializations": [
+        "1 Specialization",
+        "Political Science"
+      ],
+      "overview": "Political theory, governance, and international relations.",
+      "semesterInfo": "Political Thought, International Relations, Public Administration, Constitutional Law.",
+      "careerScope": [
+        "Policy Analyst",
+        "Political Advisor",
+        "Civil Services Candidate",
+        "PR Specialist"
+      ],
+      "isActive": true,
+      "createdAt": "2026-08-06T11:21:10.621Z"
+    },
+    {
+      "_id": "prog_pg_mamath",
+      "title": "MA Maths",
+      "name": "M.A. Mathematics",
+      "slug": "ma-mathematics",
+      "collegeId": "col_02",
+      "collegeName": "CU Online",
+      "degreeType": "PG",
+      "duration": "2 Years",
+      "fee": "₹8,000 /sem",
+      "eligibility": "Graduation with Mathematics",
+      "specializations": [
+        "1 Specialization",
+        "Mathematics"
+      ],
+      "overview": "Advanced mathematical concepts and applications.",
+      "semesterInfo": "Real Analysis, Abstract Algebra, Complex Analysis, Topology, Differential Equations.",
+      "careerScope": [
+        "Data Analyst",
+        "Math Educator",
+        "Statistical Associate",
+        "Research Scientist"
+      ],
+      "isActive": true,
+      "createdAt": "2026-08-06T11:21:10.621Z"
+    },
+    {
+      "_id": "prog_pg_masoc",
+      "title": "MA Sociology",
+      "name": "M.A. Sociology",
+      "slug": "ma-sociology",
+      "collegeId": "col_02",
+      "collegeName": "CU Online",
+      "degreeType": "PG",
+      "duration": "2 Years",
+      "fee": "₹8,000 /sem",
+      "eligibility": "Graduation in any discipline",
+      "specializations": [
+        "1 Specialization",
+        "Sociology"
+      ],
+      "overview": "Study of society, social behavior and institutions.",
+      "semesterInfo": "Sociological Theories, Research Methodology, Indian Social Structure, Development Studies.",
+      "careerScope": [
+        "Social Worker",
+        "NGO Consultant",
+        "Policy Associate",
+        "Researcher"
+      ],
+      "isActive": true,
+      "createdAt": "2026-08-06T11:21:10.621Z"
+    },
+    {
+      "_id": "prog_pg_maedu",
+      "title": "MA Education",
+      "name": "M.A. Education",
+      "slug": "ma-education",
+      "collegeId": "col_02",
+      "collegeName": "CU Online",
+      "degreeType": "PG",
+      "duration": "2 Years",
+      "fee": "₹8,000 /sem",
+      "eligibility": "Graduation in any discipline",
+      "specializations": [
+        "1 Specialization",
+        "Education"
+      ],
+      "overview": "Educational theory, pedagogy and curriculum development.",
+      "semesterInfo": "Pedagogy, Educational Psychology, Curriculum Planning, Educational Technology.",
+      "careerScope": [
+        "Curriculum Specialist",
+        "Educational Administrator",
+        "Academic Counselor"
+      ],
+      "isActive": true,
+      "createdAt": "2026-08-06T11:21:10.621Z"
+    },
+    {
+      "_id": "prog_pg_maeco",
+      "title": "MA Economics",
+      "name": "M.A. Economics",
+      "slug": "ma-economics",
+      "collegeId": "col_02",
+      "collegeName": "CU Online",
+      "degreeType": "PG",
+      "duration": "2 Years",
+      "fee": "₹8,000 /sem",
+      "eligibility": "Graduation in any discipline",
+      "specializations": [
+        "1 Specialization",
+        "Economics"
+      ],
+      "overview": "Advanced study of economic theory and policy.",
+      "semesterInfo": "Microeconomics, Macroeconomics, Econometrics, Public Finance, Development Economics.",
+      "careerScope": [
+        "Economist",
+        "Financial Analyst",
+        "Policy Researcher",
+        "Risk Consultant"
+      ],
+      "isActive": true,
+      "createdAt": "2026-08-06T11:21:10.621Z"
+    },
+    {
+      "_id": "prog_pg_mlis",
+      "title": "MLIS",
+      "name": "Master of Library & Information Science",
+      "slug": "mlis",
+      "collegeId": "col_02",
+      "collegeName": "CU Online",
+      "degreeType": "PG",
+      "duration": "1 Year",
+      "fee": "₹7,500 /sem",
+      "eligibility": "BLIS or equivalent",
+      "specializations": [
+        "1 Specialization",
+        "Library Science"
+      ],
+      "overview": "Advanced library science and information management.",
+      "semesterInfo": "Digital Library Architecture, Information Retrieval, Knowledge Management Systems.",
+      "careerScope": [
+        "Chief Librarian",
+        "Knowledge Officer",
+        "Information Specialist"
+      ],
+      "isActive": true,
+      "createdAt": "2026-08-06T11:21:10.621Z"
+    },
+    {
+      "_id": "prog_ug_bba",
+      "title": "BBA",
+      "name": "Bachelor of Business Administration",
+      "slug": "bba",
+      "collegeId": "col_02",
+      "collegeName": "CU Online",
+      "degreeType": "UG",
+      "duration": "3 Years",
+      "fee": "₹20,400 /sem",
+      "eligibility": "10+2 in any stream with 50% marks",
+      "specializations": [
+        "1 Specialization",
+        "Business Management"
+      ],
+      "overview": "Foundation in business management and leadership skills.",
+      "semesterInfo": "Management Principles, Accounting, Marketing, HR, Business Law, Operations.",
+      "careerScope": [
+        "Management Executive",
+        "Marketing Assistant",
+        "Business Development Officer"
+      ],
+      "isActive": true,
+      "createdAt": "2026-08-06T11:21:10.621Z"
+    },
+    {
+      "_id": "prog_ug_bca",
+      "title": "BCA",
+      "name": "Bachelor of Computer Applications",
+      "slug": "bca",
+      "collegeId": "col_02",
+      "collegeName": "CU Online",
+      "degreeType": "UG",
+      "duration": "3 Years",
+      "fee": "₹20,400 /sem",
+      "eligibility": "10+2 with Mathematics",
+      "specializations": [
+        "1 Specialization",
+        "Computer Applications"
+      ],
+      "overview": "Comprehensive IT program with practical skills.",
+      "semesterInfo": "C Programming, Java, Data Structures, DBMS, Web Development, Software Engineering.",
+      "careerScope": [
+        "Software Developer",
+        "Web Developer",
+        "System Executive"
+      ],
+      "isActive": true,
+      "createdAt": "2026-08-06T11:21:10.621Z"
+    },
+    {
+      "_id": "prog_ug_ba",
+      "title": "BA",
+      "name": "Bachelor of Arts",
+      "slug": "ba",
+      "collegeId": "col_02",
+      "collegeName": "CU Online",
+      "degreeType": "UG",
+      "duration": "3 Years",
+      "fee": "₹16,400 /sem",
+      "eligibility": "10+2 in any stream",
+      "specializations": [
+        "1 Specialization",
+        "Arts & Humanities"
+      ],
+      "overview": "Versatile arts program with multiple specializations.",
+      "semesterInfo": "English Literature, History, Political Science, Sociology, Environmental Science.",
+      "careerScope": [
+        "Civil Services Candidate",
+        "Content Writer",
+        "PR Assistant"
+      ],
+      "isActive": true,
+      "createdAt": "2026-08-06T11:21:10.621Z"
+    },
+    {
+      "_id": "prog_dip_dba",
+      "title": "DBA",
+      "name": "Diploma in Business Administration",
+      "slug": "dba",
+      "collegeId": "col_02",
+      "collegeName": "CU Online",
+      "degreeType": "Diploma",
+      "duration": "1 Year",
+      "fee": "₹20,400 /sem",
+      "eligibility": "10+2 in any stream",
+      "specializations": [
+        "1 Specialization",
+        "Business Administration"
+      ],
+      "overview": "Entry-level business program for career foundation.",
+      "semesterInfo": "Principles of Management, Office Practice, Business Communication, Accounting Basics.",
+      "careerScope": [
+        "Office Administrator",
+        "Junior Supervisor",
+        "Front Desk Executive"
+      ],
+      "isActive": true,
+      "createdAt": "2026-08-06T11:21:10.621Z"
+    },
+    {
+      "_id": "prog_dip_dca",
+      "title": "DCA",
+      "name": "Diploma in Computer Applications",
+      "slug": "dca",
+      "collegeId": "col_02",
+      "collegeName": "CU Online",
+      "degreeType": "Diploma",
+      "duration": "1 Year",
+      "fee": "₹20,400 /sem",
+      "eligibility": "10+2 in any stream",
+      "specializations": [
+        "1 Specialization",
+        "Computer Applications"
+      ],
+      "overview": "Foundation computer applications program.",
+      "semesterInfo": "Computer Fundamentals, MS Office, HTML/CSS, Database Basics, Internet Applications.",
+      "careerScope": [
+        "Computer Operator",
+        "Data Entry Executive",
+        "IT Assistant"
+      ],
+      "isActive": true,
+      "createdAt": "2026-08-06T11:21:10.621Z"
+    },
+    {
       "title": "Diploma in Library & Information Science (DLIS)",
       "name": "Diploma in Library & Information Science (DLIS)",
       "code": "PROG",
@@ -282,7 +788,7 @@
       ],
       "overview": "The Diploma in Library & Information Science (DLIS) is a 1-year diploma program offered by LPU Online. The program provides fundamental knowledge of library management, information organization, cataloguing, classification, digital libraries, and modern information services.\n\nStudents develop practical skills in organizing library resources, managing digital information, documentation, and providing efficient information services. The flexible online learning format allows students to acquire professional knowledge while studying from anywhere.\n\nUpon completion, graduates can pursue careers as Library Assistants, Documentation Assistants, Information Assistants, Digital Library Executives, Records Management Executives, and Information Service Professionals in schools, colleges, universities, government departments, and corporate organizations.",
       "description": "The Diploma in Library & Information Science (DLIS) is a 1-year diploma program offered by LPU Online. The program provides fundamental knowledge of library management, information organization, cataloguing, classification, digital libraries, and modern information services.\n\nStudents develop practical skills in organizing library resources, managing digital information, documentation, and providing efficient information services. The flexible online learning format allows students to acquire professional knowledge while studying from anywhere.\n\nUpon completion, graduates can pursue careers as Library Assistants, Documentation Assistants, Information Assistants, Digital Library Executives, Records Management Executives, and Information Service Professionals in schools, colleges, universities, government departments, and corporate organizations.",
-      "image": "/uploads/file-1785571287614-969176999.jpg",
+      "image": "/uploads/file-1785913929039-745179131.jpg",
       "applyUrl": "",
       "semesterInfo": "",
       "careerScope": [],
@@ -1061,499 +1567,6 @@
       "__v": 0
     },
     {
-      "_id": "prog_pg_mba",
-      "title": "MBA",
-      "name": "Master of Business Administration",
-      "slug": "mba",
-      "collegeId": "col_02",
-      "collegeName": "CU Online",
-      "degreeType": "PG",
-      "duration": "2 Years",
-      "fee": "₹40,400 /sem",
-      "eligibility": "Graduation in any discipline with 50% marks",
-      "specializations": [
-        "12 Specializations",
-        "Marketing",
-        "Finance",
-        "HR",
-        "Business Analytics"
-      ],
-      "overview": "Develop leadership and management skills with 12 specializations.",
-      "semesterInfo": "Covers Corporate Strategy, Managerial Economics, Financial Management, AI in Business, and Industry Capstone.",
-      "careerScope": [
-        "Brand Manager",
-        "Financial Advisor",
-        "Management Consultant",
-        "HR Director"
-      ],
-      "isActive": true,
-      "createdAt": "2026-08-01T06:26:04.039Z"
-    },
-    {
-      "_id": "prog_pg_mca",
-      "title": "MCA",
-      "name": "Master of Computer Applications",
-      "slug": "mca",
-      "collegeId": "col_02",
-      "collegeName": "CU Online",
-      "degreeType": "PG",
-      "duration": "2 Years",
-      "fee": "₹32,400 /sem",
-      "eligibility": "Graduation with Mathematics/Statistics",
-      "specializations": [
-        "5 Specializations",
-        "AI",
-        "Cloud",
-        "Cybersecurity",
-        "Full Stack"
-      ],
-      "overview": "Advanced computing with specializations in AI, Cloud, Cybersecurity.",
-      "semesterInfo": "Advanced Programming, Cloud Computing, Cyber Security, Web Architecture, Data Science, Capstone.",
-      "careerScope": [
-        "Senior Software Architect",
-        "Cloud Lead",
-        "Cyber Security Specialist",
-        "Tech Lead"
-      ],
-      "isActive": true,
-      "createdAt": "2026-08-01T06:26:04.040Z"
-    },
-    {
-      "_id": "prog_pg_mcom",
-      "title": "M.Com",
-      "name": "Master of Commerce",
-      "slug": "mcom",
-      "collegeId": "col_02",
-      "collegeName": "CU Online",
-      "degreeType": "PG",
-      "duration": "2 Years",
-      "fee": "₹20,400 /sem",
-      "eligibility": "B.Com or equivalent with 50% marks",
-      "specializations": [
-        "1 Specialization",
-        "Accounting & Finance"
-      ],
-      "overview": "Advanced commerce education covering Accounting and Finance.",
-      "semesterInfo": "Advanced Financial Accounting, Corporate Taxation, Managerial Economics, Financial Markets.",
-      "careerScope": [
-        "Financial Controller",
-        "Auditor",
-        "Taxation Consultant",
-        "Investment Executive"
-      ],
-      "isActive": true,
-      "createdAt": "2026-08-01T06:26:04.040Z"
-    },
-    {
-      "_id": "prog_pg_mscit",
-      "title": "M.Sc. IT",
-      "name": "M.Sc. Information Technology",
-      "slug": "msc-it",
-      "collegeId": "col_02",
-      "collegeName": "CU Online",
-      "degreeType": "PG",
-      "duration": "2 Years",
-      "fee": "₹16,500 /sem",
-      "eligibility": "Graduation with relevant subject",
-      "specializations": [
-        "1 Specialization",
-        "Information Technology"
-      ],
-      "overview": "Advanced IT program with industry-relevant curriculum.",
-      "semesterInfo": "Enterprise Software, Advanced DBMS, Network Security, Web Engineering, Capstone.",
-      "careerScope": [
-        "IT Consultant",
-        "Systems Analyst",
-        "Database Administrator",
-        "Network Engineer"
-      ],
-      "isActive": true,
-      "createdAt": "2026-08-01T06:26:04.040Z"
-    },
-    {
-      "_id": "prog_pg_maeng",
-      "title": "MA English",
-      "name": "M.A. English",
-      "slug": "ma-english",
-      "collegeId": "col_02",
-      "collegeName": "CU Online",
-      "degreeType": "PG",
-      "duration": "2 Years",
-      "fee": "₹8,000 /sem",
-      "eligibility": "Graduation in any discipline",
-      "specializations": [
-        "1 Specialization",
-        "English Literature"
-      ],
-      "overview": "Advanced English literature and language studies.",
-      "semesterInfo": "British Literature, Postcolonial Studies, Literary Theory, Critical Criticism, Linguistics.",
-      "careerScope": [
-        "Content Writer",
-        "Editor",
-        "Academician",
-        "PR Executive"
-      ],
-      "isActive": true,
-      "createdAt": "2026-08-01T06:26:04.040Z"
-    },
-    {
-      "_id": "prog_pg_mahist",
-      "title": "MA History",
-      "name": "M.A. History",
-      "slug": "ma-history",
-      "collegeId": "col_02",
-      "collegeName": "CU Online",
-      "degreeType": "PG",
-      "duration": "2 Years",
-      "fee": "₹8,000 /sem",
-      "eligibility": "Graduation in any discipline",
-      "specializations": [
-        "1 Specialization",
-        "History"
-      ],
-      "overview": "In-depth study of Indian and world history.",
-      "semesterInfo": "Ancient Indian History, Medieval India, Modern World Civilizations, Historiography.",
-      "careerScope": [
-        "Archivist",
-        "Historian",
-        "Civil Services Specialist",
-        "Researcher"
-      ],
-      "isActive": true,
-      "createdAt": "2026-08-01T06:26:04.040Z"
-    },
-    {
-      "_id": "prog_pg_mahin",
-      "title": "MA Hindi",
-      "name": "M.A. Hindi",
-      "slug": "ma-hindi",
-      "collegeId": "col_02",
-      "collegeName": "CU Online",
-      "degreeType": "PG",
-      "duration": "2 Years",
-      "fee": "₹8,000 /sem",
-      "eligibility": "Graduation in any discipline",
-      "specializations": [
-        "1 Specialization",
-        "Hindi Literature"
-      ],
-      "overview": "Advanced Hindi language and literature.",
-      "semesterInfo": "Hindi Kavya, Prose & Drama, Bhasha Vigyan, Modern Literature Criticism.",
-      "careerScope": [
-        "Hindi Officer",
-        "Translator",
-        "Educator",
-        "Journalist"
-      ],
-      "isActive": true,
-      "createdAt": "2026-08-01T06:26:04.040Z"
-    },
-    {
-      "_id": "prog_pg_mapun",
-      "title": "MA Punjabi",
-      "name": "M.A. Punjabi",
-      "slug": "ma-punjabi",
-      "collegeId": "col_02",
-      "collegeName": "CU Online",
-      "degreeType": "PG",
-      "duration": "2 Years",
-      "fee": "₹8,000 /sem",
-      "eligibility": "Graduation in any discipline",
-      "specializations": [
-        "1 Specialization",
-        "Punjabi Literature"
-      ],
-      "overview": "Punjabi language and literary studies.",
-      "semesterInfo": "Punjabi Poetry, Sufi Literature, Modern Fiction, Cultural Studies.",
-      "careerScope": [
-        "Language Specialist",
-        "Media Writer",
-        "Educator",
-        "Translator"
-      ],
-      "isActive": true,
-      "createdAt": "2026-08-01T06:26:04.040Z"
-    },
-    {
-      "_id": "prog_pg_mapol",
-      "title": "MA Pol. Sci.",
-      "name": "M.A. Political Science",
-      "slug": "ma-political-science",
-      "collegeId": "col_02",
-      "collegeName": "CU Online",
-      "degreeType": "PG",
-      "duration": "2 Years",
-      "fee": "₹8,000 /sem",
-      "eligibility": "Graduation in any discipline",
-      "specializations": [
-        "1 Specialization",
-        "Political Science"
-      ],
-      "overview": "Political theory, governance, and international relations.",
-      "semesterInfo": "Political Thought, International Relations, Public Administration, Constitutional Law.",
-      "careerScope": [
-        "Policy Analyst",
-        "Political Advisor",
-        "Civil Services Candidate",
-        "PR Specialist"
-      ],
-      "isActive": true,
-      "createdAt": "2026-08-01T06:26:04.040Z"
-    },
-    {
-      "_id": "prog_pg_mamath",
-      "title": "MA Maths",
-      "name": "M.A. Mathematics",
-      "slug": "ma-mathematics",
-      "collegeId": "col_02",
-      "collegeName": "CU Online",
-      "degreeType": "PG",
-      "duration": "2 Years",
-      "fee": "₹8,000 /sem",
-      "eligibility": "Graduation with Mathematics",
-      "specializations": [
-        "1 Specialization",
-        "Mathematics"
-      ],
-      "overview": "Advanced mathematical concepts and applications.",
-      "semesterInfo": "Real Analysis, Abstract Algebra, Complex Analysis, Topology, Differential Equations.",
-      "careerScope": [
-        "Data Analyst",
-        "Math Educator",
-        "Statistical Associate",
-        "Research Scientist"
-      ],
-      "isActive": true,
-      "createdAt": "2026-08-01T06:26:04.040Z"
-    },
-    {
-      "_id": "prog_pg_masoc",
-      "title": "MA Sociology",
-      "name": "M.A. Sociology",
-      "slug": "ma-sociology",
-      "collegeId": "col_02",
-      "collegeName": "CU Online",
-      "degreeType": "PG",
-      "duration": "2 Years",
-      "fee": "₹8,000 /sem",
-      "eligibility": "Graduation in any discipline",
-      "specializations": [
-        "1 Specialization",
-        "Sociology"
-      ],
-      "overview": "Study of society, social behavior and institutions.",
-      "semesterInfo": "Sociological Theories, Research Methodology, Indian Social Structure, Development Studies.",
-      "careerScope": [
-        "Social Worker",
-        "NGO Consultant",
-        "Policy Associate",
-        "Researcher"
-      ],
-      "isActive": true,
-      "createdAt": "2026-08-01T06:26:04.040Z"
-    },
-    {
-      "_id": "prog_pg_maedu",
-      "title": "MA Education",
-      "name": "M.A. Education",
-      "slug": "ma-education",
-      "collegeId": "col_02",
-      "collegeName": "CU Online",
-      "degreeType": "PG",
-      "duration": "2 Years",
-      "fee": "₹8,000 /sem",
-      "eligibility": "Graduation in any discipline",
-      "specializations": [
-        "1 Specialization",
-        "Education"
-      ],
-      "overview": "Educational theory, pedagogy and curriculum development.",
-      "semesterInfo": "Pedagogy, Educational Psychology, Curriculum Planning, Educational Technology.",
-      "careerScope": [
-        "Curriculum Specialist",
-        "Educational Administrator",
-        "Academic Counselor"
-      ],
-      "isActive": true,
-      "createdAt": "2026-08-01T06:26:04.040Z"
-    },
-    {
-      "_id": "prog_pg_maeco",
-      "title": "MA Economics",
-      "name": "M.A. Economics",
-      "slug": "ma-economics",
-      "collegeId": "col_02",
-      "collegeName": "CU Online",
-      "degreeType": "PG",
-      "duration": "2 Years",
-      "fee": "₹8,000 /sem",
-      "eligibility": "Graduation in any discipline",
-      "specializations": [
-        "1 Specialization",
-        "Economics"
-      ],
-      "overview": "Advanced study of economic theory and policy.",
-      "semesterInfo": "Microeconomics, Macroeconomics, Econometrics, Public Finance, Development Economics.",
-      "careerScope": [
-        "Economist",
-        "Financial Analyst",
-        "Policy Researcher",
-        "Risk Consultant"
-      ],
-      "isActive": true,
-      "createdAt": "2026-08-01T06:26:04.040Z"
-    },
-    {
-      "_id": "prog_pg_mlis",
-      "title": "MLIS",
-      "name": "Master of Library & Information Science",
-      "slug": "mlis",
-      "collegeId": "col_02",
-      "collegeName": "CU Online",
-      "degreeType": "PG",
-      "duration": "1 Year",
-      "fee": "₹7,500 /sem",
-      "eligibility": "BLIS or equivalent",
-      "specializations": [
-        "1 Specialization",
-        "Library Science"
-      ],
-      "overview": "Advanced library science and information management.",
-      "semesterInfo": "Digital Library Architecture, Information Retrieval, Knowledge Management Systems.",
-      "careerScope": [
-        "Chief Librarian",
-        "Knowledge Officer",
-        "Information Specialist"
-      ],
-      "isActive": true,
-      "createdAt": "2026-08-01T06:26:04.040Z"
-    },
-    {
-      "_id": "prog_ug_bba",
-      "title": "BBA",
-      "name": "Bachelor of Business Administration",
-      "slug": "bba",
-      "collegeId": "col_02",
-      "collegeName": "CU Online",
-      "degreeType": "UG",
-      "duration": "3 Years",
-      "fee": "₹20,400 /sem",
-      "eligibility": "10+2 in any stream with 50% marks",
-      "specializations": [
-        "1 Specialization",
-        "Business Management"
-      ],
-      "overview": "Foundation in business management and leadership skills.",
-      "semesterInfo": "Management Principles, Accounting, Marketing, HR, Business Law, Operations.",
-      "careerScope": [
-        "Management Executive",
-        "Marketing Assistant",
-        "Business Development Officer"
-      ],
-      "isActive": true,
-      "createdAt": "2026-08-01T06:26:04.040Z"
-    },
-    {
-      "_id": "prog_ug_bca",
-      "title": "BCA",
-      "name": "Bachelor of Computer Applications",
-      "slug": "bca",
-      "collegeId": "col_02",
-      "collegeName": "CU Online",
-      "degreeType": "UG",
-      "duration": "3 Years",
-      "fee": "₹20,400 /sem",
-      "eligibility": "10+2 with Mathematics",
-      "specializations": [
-        "1 Specialization",
-        "Computer Applications"
-      ],
-      "overview": "Comprehensive IT program with practical skills.",
-      "semesterInfo": "C Programming, Java, Data Structures, DBMS, Web Development, Software Engineering.",
-      "careerScope": [
-        "Software Developer",
-        "Web Developer",
-        "System Executive"
-      ],
-      "isActive": true,
-      "createdAt": "2026-08-01T06:26:04.040Z"
-    },
-    {
-      "_id": "prog_ug_ba",
-      "title": "BA",
-      "name": "Bachelor of Arts",
-      "slug": "ba",
-      "collegeId": "col_02",
-      "collegeName": "CU Online",
-      "degreeType": "UG",
-      "duration": "3 Years",
-      "fee": "₹16,400 /sem",
-      "eligibility": "10+2 in any stream",
-      "specializations": [
-        "1 Specialization",
-        "Arts & Humanities"
-      ],
-      "overview": "Versatile arts program with multiple specializations.",
-      "semesterInfo": "English Literature, History, Political Science, Sociology, Environmental Science.",
-      "careerScope": [
-        "Civil Services Candidate",
-        "Content Writer",
-        "PR Assistant"
-      ],
-      "isActive": true,
-      "createdAt": "2026-08-01T06:26:04.040Z"
-    },
-    {
-      "_id": "prog_dip_dba",
-      "title": "DBA",
-      "name": "Diploma in Business Administration",
-      "slug": "dba",
-      "collegeId": "col_02",
-      "collegeName": "CU Online",
-      "degreeType": "Diploma",
-      "duration": "1 Year",
-      "fee": "₹20,400 /sem",
-      "eligibility": "10+2 in any stream",
-      "specializations": [
-        "1 Specialization",
-        "Business Administration"
-      ],
-      "overview": "Entry-level business program for career foundation.",
-      "semesterInfo": "Principles of Management, Office Practice, Business Communication, Accounting Basics.",
-      "careerScope": [
-        "Office Administrator",
-        "Junior Supervisor",
-        "Front Desk Executive"
-      ],
-      "isActive": true,
-      "createdAt": "2026-08-01T06:26:04.040Z"
-    },
-    {
-      "_id": "prog_dip_dca",
-      "title": "DCA",
-      "name": "Diploma in Computer Applications",
-      "slug": "dca",
-      "collegeId": "col_02",
-      "collegeName": "CU Online",
-      "degreeType": "Diploma",
-      "duration": "1 Year",
-      "fee": "₹20,400 /sem",
-      "eligibility": "10+2 in any stream",
-      "specializations": [
-        "1 Specialization",
-        "Computer Applications"
-      ],
-      "overview": "Foundation computer applications program.",
-      "semesterInfo": "Computer Fundamentals, MS Office, HTML/CSS, Database Basics, Internet Applications.",
-      "careerScope": [
-        "Computer Operator",
-        "Data Entry Executive",
-        "IT Assistant"
-      ],
-      "isActive": true,
-      "createdAt": "2026-08-01T06:26:04.040Z"
-    },
-    {
       "title": "Bachelor of Commerce (B.Com)",
       "name": "Bachelor of Commerce (B.Com)",
       "code": "PROG",
@@ -1635,7 +1648,124 @@
     }
   ],
   "enquiries": [],
-  "applications": [],
+  "applications": [
+    {
+      "_id": "6a7468c99f5ade7c6406aae5",
+      "userId": "guest_1786013897404",
+      "studentName": "Nadim Akhtar",
+      "studentEmail": "nadim123@gmail.com",
+      "studentPhone": "7079616210",
+      "collegeId": "6a6b349c86943188967519b9",
+      "collegeName": "LPU Online",
+      "programId": "6a6d9e86e806cbdf5384c847",
+      "programName": "Master of Arts in Mathematics (MA Mathematics)",
+      "personalInfo": {
+        "dob": "2009-05-11",
+        "gender": "Male",
+        "address": "",
+        "state": "Dehli",
+        "qualification": "General",
+        "tenthPercentage": "87",
+        "twelfthPercentage": "",
+        "graduationPercentage": ""
+      },
+      "documents": {
+        "idProof": "",
+        "marksheets": "",
+        "photo": ""
+      },
+      "status": "Pending",
+      "adminRemarks": "Application submitted and queued for verification.",
+      "createdAt": "2026-08-06T10:58:17.404Z"
+    },
+    {
+      "_id": "6a7464dd75baae1db99babae",
+      "userId": "usr_admin_01",
+      "studentName": "Aftab",
+      "studentEmail": "aftab@gmail.com",
+      "studentPhone": "8765432191",
+      "collegeId": "6a6b349c86943188967519b9",
+      "collegeName": "LPU Online",
+      "programId": "6a6d9a79e806cbdf5384c842",
+      "programName": "Master of Arts in English (MA English)",
+      "personalInfo": {
+        "dob": "2026-07-29",
+        "gender": "Male",
+        "address": "",
+        "state": "ludhiana",
+        "qualification": "General",
+        "tenthPercentage": "56",
+        "twelfthPercentage": "",
+        "graduationPercentage": ""
+      },
+      "documents": {
+        "idProof": "",
+        "marksheets": "",
+        "photo": ""
+      },
+      "status": "Pending",
+      "adminRemarks": "Application submitted and queued for verification.",
+      "createdAt": "2026-08-06T10:41:33.136Z"
+    },
+    {
+      "_id": "6a74641c75baae1db99babaa",
+      "userId": "guest_1786012700112",
+      "studentName": "System Administrator",
+      "studentEmail": "admin@onlinedegreediploma.com",
+      "studentPhone": "+91 9999900000",
+      "collegeId": "6a6b349c86943188967519c4",
+      "collegeName": "Online Mizoram University",
+      "programId": "6a6d9b21e806cbdf5384c843",
+      "programName": "Master of Arts in History (MA History)",
+      "personalInfo": {
+        "dob": "2026-08-04",
+        "gender": "Male",
+        "address": "",
+        "state": "Delhi",
+        "qualification": "General",
+        "tenthPercentage": "30",
+        "twelfthPercentage": "",
+        "graduationPercentage": ""
+      },
+      "documents": {
+        "idProof": "",
+        "marksheets": "",
+        "photo": ""
+      },
+      "status": "Pending",
+      "adminRemarks": "Application submitted and queued for verification.",
+      "createdAt": "2026-08-06T10:38:20.112Z"
+    },
+    {
+      "_id": "6a6dc46865900f8f70d2091e",
+      "userId": "guest_1785578600682",
+      "studentName": "Md Imran Alam",
+      "studentEmail": "mdimranalam12@gmail.com",
+      "studentPhone": "7640018213",
+      "collegeId": "6a6b349c86943188967519b9",
+      "collegeName": "LPU Online",
+      "programId": "6a6c50b0f2c49e5e9eb597fd",
+      "programName": "Master of Computer Applications (MCA)",
+      "personalInfo": {
+        "dob": "2026-02-17",
+        "gender": "Male",
+        "address": "",
+        "state": "Bihar",
+        "qualification": "",
+        "tenthPercentage": "76",
+        "twelfthPercentage": "",
+        "graduationPercentage": ""
+      },
+      "documents": {
+        "idProof": "",
+        "marksheets": "",
+        "photo": ""
+      },
+      "status": "Approved",
+      "adminRemarks": "Success",
+      "createdAt": "2026-08-01T10:03:20.684Z"
+    }
+  ],
   "documents": [
     {
       "_id": "doc_01",
@@ -1712,9 +1842,32 @@
       "category": "Admission",
       "order": 4,
       "isActive": true
+    },
+    {
+      "question": "What is an Online Degree Program?",
+      "answer": "An online degree program allows students to complete their education remotely through digital learning platforms. Classes, study materials, assignments, and exams are conducted online by UGC-recognized universities.",
+      "category": "General",
+      "featured": false,
+      "_id": "6a7037280711d5df47893018",
+      "createdAt": "2026-08-03T06:37:28.263Z",
+      "updatedAt": "2026-08-03T06:37:28.263Z",
+      "__v": 0
     }
   ],
   "testimonials": [
+    {
+      "name": "Md Imran Alam",
+      "course": "MBA Online",
+      "college": "LPU Online",
+      "image": "/uploads/file-1785738906246-552721309.jpg",
+      "quote": "The admission process was smooth and the counseling team guided me at every step. The online classes are flexible, study materials are excellent, and I can manage both my job and studies easily. I highly recommend this platform for working professionals.",
+      "rating": 5,
+      "isActive": true,
+      "_id": "6a7034190711d5df47893017",
+      "createdAt": "2026-08-03T06:24:25.118Z",
+      "updatedAt": "2026-08-03T06:24:25.118Z",
+      "__v": 0
+    },
     {
       "_id": "tst_01",
       "name": "Vikramaditya Roy",
@@ -1866,6 +2019,15 @@
   ],
   "notifications": [
     {
+      "_id": "notif_1785733646871",
+      "title": "addmission offer 2026-2027",
+      "message": "Every student can be apply ",
+      "userId": "all",
+      "type": "info",
+      "isRead": false,
+      "createdAt": "2026-08-03T05:07:26.871Z"
+    },
+    {
       "_id": "notif_01",
       "userId": "usr_std_01",
       "title": "Application Received",
@@ -1875,5 +2037,29 @@
       "createdAt": "2026-07-30T11:10:42.243Z"
     }
   ],
-  "settings": null
+  "settings": {
+    "_id": "6a6b34aa86943188967519d8",
+    "phonePrimary": "+91  8054100099",
+    "phoneSecondary": "+91  8054100099",
+    "whatsappNumber": " 80541 00099",
+    "emailPrimary": "addmissions@onlinedegreediplomaludhiana.com",
+    "emailSupport": "support@onlinedegreeportal.in",
+    "address": "1st Floor Gulati Market, Near CMC Chowk, Ludhiana",
+    "googleMapUrl": "https://maps.app.goo.gl/f2V7fZbvCchW5pDL6",
+    "facebookUrl": "https://facebook.com",
+    "instagramUrl": "https://instagram.com",
+    "linkedinUrl": "https://linkedin.com",
+    "twitterUrl": "https://twitter.com",
+    "youtubeUrl": "https://youtube.com",
+    "siteName": "Online Degree Portal",
+    "siteTitle": "UGC Approved Online Degree Programs & Top Universities",
+    "siteLogoUrl": "",
+    "headerAnnouncement": "🔥 Free Career Counselling & Admission Guidance for 2026 Batch!",
+    "footerAboutText": "India's leading online higher education portal helping students choose UGC-approved online degree programs from top universities.",
+    "defaultApplyUrl": "/apply",
+    "defaultBrochureUrl": "/uploads/sample_official_prospectus.pdf",
+    "createdAt": "2026-07-30T11:25:30.814Z",
+    "updatedAt": "2026-08-06T09:48:52.970Z",
+    "__v": 0
+  }
 }

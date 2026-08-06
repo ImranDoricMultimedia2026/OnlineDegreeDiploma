@@ -56,8 +56,12 @@ export const HomePage: React.FC = () => {
         if (slidersRes.data.success) setSliders(slidersRes.data.sliders);
         if (collegesRes.data.success) setColleges(collegesRes.data.colleges);
         if (programsRes.data.success) setPrograms(programsRes.data.programs);
-        if (faqsRes.data.success) setFaqs(faqsRes.data.faqs);
-        if (tstRes.data.success) setTestimonials(tstRes.data.testimonials);
+        if (faqsRes.data.success) {
+          setFaqs(faqsRes.data.faqs.filter((faq: any) => faq.isActive !== false));
+        }
+        if (tstRes.data.success) {
+          setTestimonials(tstRes.data.testimonials.filter((t: any) => t.isActive !== false));
+        }
       } catch (err) {
         console.error('Error loading homepage data:', err);
       }
@@ -92,19 +96,20 @@ export const HomePage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F5F5F5] font-sans">
+    <div className="min-h-screen bg-[#F5F5F5] dark:bg-gray-900 font-sans transition-colors duration-300">
       {/* HERO SLIDER SECTION */}
-      <section className="relative bg-[#333333] text-white overflow-hidden min-h-[520px] sm:min-h-[600px] flex items-center">
+      <section className="relative bg-[#333333] dark:bg-black text-white overflow-hidden min-h-[520px] sm:min-h-[600px] flex items-center">
         {sliders.length > 0 ? (
           sliders.map((slide, idx) => (
             <div
               key={slide._id}
-              className={`absolute inset-0 transition-opacity duration-1000 flex items-center ${
-                idx === currentSlideIndex ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
-              }`}
+              className={`absolute inset-0 transition-opacity duration-1000 flex items-center ${idx === currentSlideIndex ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
+                }`}
             >
               <div className="absolute inset-0 bg-black/20 z-10" />
               <img
+                loading="lazy"
+                decoding="async"
                 src={slide.bgImage}
                 alt={slide.title}
                 className="absolute inset-0 w-full h-full object-cover object-center"
@@ -169,9 +174,8 @@ export const HomePage: React.FC = () => {
                 <button
                   key={i}
                   onClick={() => setCurrentSlideIndex(i)}
-                  className={`w-3 h-3 rounded-full transition-all ${
-                    i === currentSlideIndex ? 'bg-[#FA394A] w-6' : 'bg-white/50'
-                  }`}
+                  className={`w-3 h-3 rounded-full transition-all ${i === currentSlideIndex ? 'bg-[#FA394A] w-6' : 'bg-white/50'
+                    }`}
                 />
               ))}
             </div>
@@ -186,74 +190,74 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* QUICK SEARCH & FILTER BAR */}
- <div className="max-w-6xl mx-auto px-4 -mt-4 relative z-30 overflow-hidden">
-  <form
-    onSubmit={handleSearchSubmit}
-    className="bg-white rounded-3xl p-4 sm:p-6 shadow-2xl border border-gray-100 flex flex-col md:flex-row gap-4 items-stretch md:items-center w-full"
-  >
-    {/* Search Input */}
-    <div className="flex-1 relative min-w-0">
-      <Search className="w-5 h-5 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2" />
+      <div className="max-w-6xl mx-auto px-4 -mt-4 relative z-30 overflow-hidden">
+        <form
+          onSubmit={handleSearchSubmit}
+          className="bg-white dark:bg-gray-800 rounded-3xl p-4 sm:p-6 shadow-2xl border border-gray-100 dark:border-gray-700 flex flex-col md:flex-row gap-4 items-stretch md:items-center w-full"
+        >
+          {/* Search Input */}
+          <div className="flex-1 relative min-w-0">
+            <Search className="w-5 h-5 text-gray-400 dark:text-gray-500 absolute left-4 top-1/2 -translate-y-1/2" />
 
-      <input
-        type="text"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-        placeholder="Search by degree name (e.g. MBA, BCA, MCA, BBA, Diploma)..."
-        className="w-full pl-12 pr-4 py-3.5 bg-gray-50 rounded-2xl text-xs sm:text-sm text-[#333333] border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#FA394A] font-medium"
-      />
-    </div>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search by degree name (e.g. MBA, BCA, MCA, BBA, Diploma)..."
+              className="w-full pl-12 pr-4 py-3.5 bg-gray-50 dark:bg-gray-900 rounded-2xl text-xs sm:text-sm text-[#333333] dark:text-gray-100 border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-[#FA394A] font-medium placeholder:text-gray-400 dark:placeholder:text-gray-500"
+            />
+          </div>
 
-    {/* Buttons */}
-    <div className="flex w-full md:w-auto gap-3">
-      <button
-        type="submit"
-        className="flex-1 md:flex-none bg-[#FA394A] hover:bg-[#D92B3B] text-white px-4 sm:px-8 py-3.5 rounded-2xl font-bold text-xs sm:text-sm shadow-md transition-all flex items-center justify-center whitespace-nowrap"
-      >
-        <Search className="w-4 h-4 mr-2 flex-shrink-0" />
-        Search Programs
-      </button>
+          {/* Buttons */}
+          <div className="flex w-full md:w-auto gap-3">
+            <button
+              type="submit"
+              className="flex-1 md:flex-none bg-[#FA394A] hover:bg-[#D92B3B] text-white px-4 sm:px-8 py-3.5 rounded-2xl font-bold text-xs sm:text-sm shadow-md transition-all flex items-center justify-center whitespace-nowrap"
+            >
+              <Search className="w-4 h-4 mr-2 flex-shrink-0" />
+              Search Programs
+            </button>
 
-      <button
-        type="button"
-        onClick={() => openEnquiry("general")}
-        className="flex-1 md:flex-none bg-[#333333] hover:bg-black text-white px-4 sm:px-6 py-3.5 rounded-2xl font-bold text-xs sm:text-sm transition-all whitespace-nowrap"
-      >
-        Get Counselling
-      </button>
-    </div>
-  </form>
-</div>
+            <button
+              type="button"
+              onClick={() => openEnquiry("general")}
+              className="flex-1 md:flex-none bg-[#333333] dark:bg-gray-700 hover:bg-black dark:hover:bg-gray-600 text-white px-4 sm:px-6 py-3.5 rounded-2xl font-bold text-xs sm:text-sm transition-all whitespace-nowrap"
+            >
+              Get Counselling
+            </button>
+          </div>
+        </form>
+      </div>
 
       {/* STATS BANNER */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-          <div className="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-sm text-center">
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200/80 dark:border-gray-700 shadow-sm text-center">
             <p className="text-2xl sm:text-3xl font-black text-[#FA394A]">12+</p>
-            <p className="text-xs font-bold text-[#333333] uppercase mt-1">UGC Accredited Universities</p>
+            <p className="text-xs font-bold text-[#333333] dark:text-gray-200 uppercase mt-1">UGC Accredited Universities</p>
           </div>
-          <div className="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-sm text-center">
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200/80 dark:border-gray-700 shadow-sm text-center">
             <p className="text-2xl sm:text-3xl font-black text-[#FA394A]">17+</p>
-            <p className="text-xs font-bold text-[#333333] uppercase mt-1">Online Degrees & Diplomas</p>
+            <p className="text-xs font-bold text-[#333333] dark:text-gray-200 uppercase mt-1">Online Degrees & Diplomas</p>
           </div>
-          <div className="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-sm text-center">
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200/80 dark:border-gray-700 shadow-sm text-center">
             <p className="text-2xl sm:text-3xl font-black text-[#FA394A]">100%</p>
-            <p className="text-xs font-bold text-[#333333] uppercase mt-1">Government Job Valid Degrees</p>
+            <p className="text-xs font-bold text-[#333333] dark:text-gray-200 uppercase mt-1">Government Job Valid Degrees</p>
           </div>
-          <div className="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-sm text-center">
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200/80 dark:border-gray-700 shadow-sm text-center">
             <p className="text-2xl sm:text-3xl font-black text-[#FA394A]">25,000+</p>
-            <p className="text-xs font-bold text-[#333333] uppercase mt-1">Students Counselled & Enrolled</p>
+            <p className="text-xs font-bold text-[#333333] dark:text-gray-200 uppercase mt-1">Students Counselled & Enrolled</p>
           </div>
         </div>
       </section>
 
       {/* POPULAR COLLEGES SECTION */}
-      <section className="py-12 bg-white border-y border-gray-200/80">
+      <section className="py-12 bg-white dark:bg-gray-900 border-y border-gray-200/80 dark:border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-10">
             <div>
               <span className="text-xs font-bold text-[#FA394A] uppercase tracking-wider">Top Ranked Partners</span>
-              <h2 className="text-2xl sm:text-3xl font-black text-[#333333] mt-1">
+              <h2 className="text-2xl sm:text-3xl font-black text-[#333333] dark:text-gray-100 mt-1">
                 Explore Premier Online Universities
               </h2>
             </div>
@@ -270,11 +274,13 @@ export const HomePage: React.FC = () => {
             {colleges.map((college) => (
               <div
                 key={college._id}
-                className="bg-white rounded-2xl border border-gray-200/80 overflow-hidden shadow-card hover:shadow-xl transition-all duration-300 flex flex-col group"
+                className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200/80 dark:border-gray-700 overflow-hidden shadow-sm  transition-all duration-300 flex flex-col group"
               >
                 {/* College Banner & Logo */}
-                <div className="relative h-40 bg-gray-100 overflow-hidden">
+                <div className="relative h-40 bg-gray-100 dark:bg-gray-700 overflow-hidden">
                   <img
+                    loading="lazy"
+                    decoding="async"
                     src={college.banner}
                     alt={college.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -282,6 +288,8 @@ export const HomePage: React.FC = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   <div className="absolute bottom-3 left-4 flex items-center space-x-3">
                     <img
+                      loading="lazy"
+  decoding="async"
                       src={college.logo}
                       alt={college.name}
                       className="w-12 h-12 rounded-xl bg-white p-1 shadow-md object-contain border border-gray-200"
@@ -295,7 +303,7 @@ export const HomePage: React.FC = () => {
 
                 {/* Body Details */}
                 <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
-                  <p className="text-xs text-gray-600 line-clamp-2 leading-relaxed">
+                  <p className="text-xs text-gray-600 dark:text-gray-400 line-clamp-2 leading-relaxed">
                     {college.description}
                   </p>
 
@@ -303,22 +311,22 @@ export const HomePage: React.FC = () => {
                     {(Array.isArray(college.approvals)
                       ? college.approvals
                       : typeof college.approvals === 'string'
-                      ? (college.approvals as string).split(',')
-                      : []
+                        ? (college.approvals as string).split(',')
+                        : []
                     ).slice(0, 3).map((app, i) => (
                       <span
                         key={i}
-                        className="px-2 py-0.5 rounded bg-[#FFE8EA] text-[#FA394A] text-[10px] font-bold"
+                        className="px-2 py-0.5 rounded bg-[#FFE8EA] dark:bg-[#4a1d21] text-[#FA394A] text-[10px] font-bold"
                       >
                         {typeof app === 'string' ? app.trim() : app}
                       </span>
                     ))}
                   </div>
 
-                  <div className="pt-2 border-t border-gray-100 flex items-center justify-between">
+                  <div className="pt-2 border-t border-gray-100 dark:border-gray-700 flex items-center justify-between">
                     <Link
                       to={`/colleges/${college.slug}`}
-                      className="text-xs font-bold text-[#333333] hover:text-[#FA394A] transition-colors"
+                      className="text-xs font-bold text-[#333333] dark:text-gray-200 hover:text-[#FA394A] transition-colors"
                     >
                       View Details →
                     </Link>
@@ -337,14 +345,14 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* POPULAR PROGRAMS SECTION */}
-      <section className="py-16 bg-[#F5F5F5]">
+      <section className="py-16 bg-[#F5F5F5] dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <span className="text-xs font-bold text-[#FA394A] uppercase tracking-wider">Career Focused Education</span>
-            <h2 className="text-2xl sm:text-3xl font-black text-[#333333] mt-1">
+            <h2 className="text-2xl sm:text-3xl font-black text-[#333333] dark:text-gray-100 mt-1">
               Popular Online Degree & Diploma Courses
             </h2>
-            <p className="text-xs sm:text-sm text-gray-600 mt-2">
+            <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-2">
               Select from top-rated Bachelor, Master, and Diploma programs with flexible examinations and affordable tuition.
             </p>
           </div>
@@ -355,11 +363,10 @@ export const HomePage: React.FC = () => {
               <button
                 key={type}
                 onClick={() => setSelectedDegreeType(type)}
-                className={`px-5 py-2 rounded-xl text-xs font-extrabold transition-all ${
-                  selectedDegreeType === type
+                className={`px-5 py-2 rounded-xl text-xs font-extrabold transition-all ${selectedDegreeType === type
                     ? 'bg-[#FA394A] text-white shadow-md'
-                    : 'bg-white text-[#333333] hover:bg-gray-100 border border-gray-200'
-                }`}
+                    : 'bg-white dark:bg-gray-800 text-[#333333] dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700'
+                  }`}
               >
                 {type === 'ALL' ? 'All Programs' : type === 'UG' ? 'Undergraduate (UG)' : type === 'PG' ? 'Postgraduate (PG)' : 'Diplomas'}
               </button>
@@ -372,23 +379,25 @@ export const HomePage: React.FC = () => {
               .map((program) => (
                 <div
                   key={program._id}
-                  className="bg-white rounded-2xl p-5 border border-gray-200 shadow-card hover:shadow-xl transition-all duration-300 flex flex-col justify-between group relative"
+                  className="bg-white dark:bg-gray-800 rounded-2xl p-5 border border-gray-200 dark:border-gray-700 shadow-sm transition-all duration-300 flex flex-col justify-between group relative"
                 >
                   <div className="space-y-3">
                     {program.image ? (
                       <img
+                        loading="lazy"
+  decoding="async"
                         src={getAssetUrl(program.image)}
                         alt={program.title}
-                        className="h-36 w-full rounded-2xl object-cover border border-gray-200"
+                        className="h-36 w-full rounded-2xl object-cover border border-gray-200 dark:border-gray-700"
                       />
                     ) : (
-                      <div className="h-36 w-full rounded-2xl border border-dashed border-gray-200 bg-gradient-to-br from-[#FFE8EA] to-gray-50 flex items-center justify-center text-[11px] font-bold text-gray-500">
+                      <div className="h-36 w-full rounded-2xl border border-dashed border-gray-200 dark:border-gray-700 bg-gradient-to-br from-[#FFE8EA] dark:from-[#4a1d21] to-gray-50 dark:to-gray-800 flex items-center justify-center text-[11px] font-bold text-gray-500 dark:text-gray-400">
                         No Cover Image
                       </div>
                     )}
                     {/* Top Row: PG/UG/Diploma badge & Fee */}
-                    <div className="flex items-center justify-between gap-2 border-b border-gray-100 pb-3">
-                      <span className="px-2.5 py-1 rounded-md bg-[#FFE8EA] text-[#FA394A] text-[11px] font-black uppercase tracking-wider">
+                    <div className="flex items-center justify-between gap-2 border-b border-gray-100 dark:border-gray-700 pb-3">
+                      <span className="px-2.5 py-1 rounded-md bg-[#FFE8EA] dark:bg-[#4a1d21] text-[#FA394A] text-[11px] font-black uppercase tracking-wider">
                         {program.degreeType || 'PG'}
                       </span>
                       <span className="text-sm font-black text-[#FA394A] tracking-tight">
@@ -398,29 +407,29 @@ export const HomePage: React.FC = () => {
 
                     {/* Titles */}
                     <div>
-                      <h3 className="font-black text-lg text-[#333333] group-hover:text-[#FA394A] transition-colors leading-snug">
+                      <h3 className="font-black text-lg text-[#333333] dark:text-gray-100 group-hover:text-[#FA394A] transition-colors leading-snug">
                         {program.title}
                       </h3>
                       {program.name && program.name !== program.title && (
-                        <p className="text-xs font-bold text-gray-500 mt-0.5 leading-snug">
+                        <p className="text-xs font-bold text-gray-500 dark:text-gray-400 mt-0.5 leading-snug">
                           {program.name}
                         </p>
                       )}
                     </div>
 
                     {/* Overview */}
-                    <p className="text-xs text-gray-600 leading-relaxed line-clamp-2">
+                    <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-2">
                       {program.overview || 'Career focused online degree program.'}
                     </p>
 
                     {/* Key Attributes */}
                     <div className="space-y-1.5 pt-1">
-                      <div className="flex items-center text-xs font-semibold text-gray-700 gap-2">
+                      <div className="flex items-center text-xs font-semibold text-gray-700 dark:text-gray-300 gap-2">
                         <Clock className="w-3.5 h-3.5 text-[#FA394A] flex-shrink-0" />
                         <span>{program.duration || '2 Years'}</span>
                       </div>
                       {program.specializations && program.specializations.length > 0 && (
-                        <div className="flex items-center text-xs font-semibold text-gray-700 gap-2">
+                        <div className="flex items-center text-xs font-semibold text-gray-700 dark:text-gray-300 gap-2">
                           <BookOpen className="w-3.5 h-3.5 text-[#FA394A] flex-shrink-0" />
                           <span className="truncate">{program.specializations[0]}</span>
                         </div>
@@ -429,14 +438,14 @@ export const HomePage: React.FC = () => {
 
                     {/* Eligibility */}
                     {program.eligibility && (
-                      <div className="bg-gray-50 p-2.5 rounded-xl border border-gray-100 text-[11px] text-gray-600 font-medium">
-                        <span className="font-bold text-[#333333]">Eligibility:</span> {program.eligibility}
+                      <div className="bg-gray-50 dark:bg-gray-900 p-2.5 rounded-xl border border-gray-100 dark:border-gray-700 text-[11px] text-gray-600 dark:text-gray-400 font-medium">
+                        <span className="font-bold text-[#333333] dark:text-gray-200">Eligibility:</span> {program.eligibility}
                       </div>
                     )}
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="pt-4 mt-4 border-t border-gray-100 grid grid-cols-2 gap-2">
+                  <div className="pt-4 mt-4 border-t border-gray-100 dark:border-gray-700 grid grid-cols-2 gap-2">
                     <Link
                       to={`/apply?programId=${program._id}&collegeId=${program.collegeId || 'col_02'}`}
                       className="text-center py-2.5 bg-[#FA394A] hover:bg-[#D92B3B] text-white font-extrabold text-xs rounded-xl shadow-sm transition-all"
@@ -445,7 +454,7 @@ export const HomePage: React.FC = () => {
                     </Link>
                     <Link
                       to={`/programs/${program.slug || program._id}`}
-                      className="text-center py-2.5 border border-gray-300 text-[#333333] hover:border-[#FA394A] hover:text-[#FA394A] font-bold text-xs rounded-xl transition-colors"
+                      className="text-center py-2.5 border border-gray-300 dark:border-gray-600 text-[#333333] dark:text-gray-200 hover:border-[#FA394A] hover:text-[#FA394A] font-bold text-xs rounded-xl transition-colors"
                     >
                       View Details
                     </Link>
@@ -457,7 +466,7 @@ export const HomePage: React.FC = () => {
           <div className="text-center mt-10">
             <Link
               to="/programs"
-              className="inline-flex items-center bg-[#333333] hover:bg-black text-white px-8 py-3.5 rounded-2xl font-bold text-xs sm:text-sm shadow-md transition-all"
+              className="inline-flex items-center bg-[#333333] dark:bg-gray-700 hover:bg-black dark:hover:bg-gray-600 text-white px-8 py-3.5 rounded-2xl font-bold text-xs sm:text-sm shadow-md transition-all"
             >
               <span>Explore All Degree & Diploma Courses</span>
               <ArrowRight className="w-4 h-4 ml-2" />
@@ -467,52 +476,52 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* WHY CHOOSE US */}
-      <section className="py-16 bg-white border-t border-gray-200">
+      <section className="py-16 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="text-xs font-bold text-[#FA394A] uppercase tracking-wider">Trusted Education Platform</span>
-            <h2 className="text-2xl sm:text-3xl font-black text-[#333333] mt-1">
+            <h2 className="text-2xl sm:text-3xl font-black text-[#333333] dark:text-gray-100 mt-1">
               Why Choose Online Degree Diploma?
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="bg-[#F5F5F5] p-6 rounded-3xl border border-gray-200/80 space-y-3 hover:-translate-y-1 transition-transform">
+            <div className="bg-[#F5F5F5] dark:bg-gray-800 p-6 rounded-3xl border border-gray-200/80 dark:border-gray-700 space-y-3 hover:-translate-y-1 transition-transform">
               <div className="w-12 h-12 rounded-2xl bg-[#FA394A] text-white flex items-center justify-center shadow-md">
                 <ShieldCheck className="w-6 h-6" />
               </div>
-              <h3 className="font-extrabold text-base text-[#333333]">Verified Universities</h3>
-              <p className="text-xs text-gray-600 leading-relaxed">
+              <h3 className="font-extrabold text-base text-[#333333] dark:text-gray-100">Verified Universities</h3>
+              <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
                 All listed institutions are 100% UGC-entitled, NAAC accredited, and recognized by DEB/AICTE for higher education & job eligibility.
               </p>
             </div>
 
-            <div className="bg-[#F5F5F5] p-6 rounded-3xl border border-gray-200/80 space-y-3 hover:-translate-y-1 transition-transform">
+            <div className="bg-[#F5F5F5] dark:bg-gray-800 p-6 rounded-3xl border border-gray-200/80 dark:border-gray-700 space-y-3 hover:-translate-y-1 transition-transform">
               <div className="w-12 h-12 rounded-2xl bg-[#FA394A] text-white flex items-center justify-center shadow-md">
                 <Clock className="w-6 h-6" />
               </div>
-              <h3 className="font-extrabold text-base text-[#333333]">Flexible Learning</h3>
-              <p className="text-xs text-gray-600 leading-relaxed">
+              <h3 className="font-extrabold text-base text-[#333333] dark:text-gray-100">Flexible Learning</h3>
+              <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
                 Learn at your own pace with self-paced online portals, recorded lectures, digital libraries, and online proctored exams.
               </p>
             </div>
 
-            <div className="bg-[#F5F5F5] p-6 rounded-3xl border border-gray-200/80 space-y-3 hover:-translate-y-1 transition-transform">
+            <div className="bg-[#F5F5F5] dark:bg-gray-800 p-6 rounded-3xl border border-gray-200/80 dark:border-gray-700 space-y-3 hover:-translate-y-1 transition-transform">
               <div className="w-12 h-12 rounded-2xl bg-[#FA394A] text-white flex items-center justify-center shadow-md">
                 <Briefcase className="w-6 h-6" />
               </div>
-              <h3 className="font-extrabold text-base text-[#333333]">Career-Focused Programs</h3>
-              <p className="text-xs text-gray-600 leading-relaxed">
+              <h3 className="font-extrabold text-base text-[#333333] dark:text-gray-100">Career-Focused Programs</h3>
+              <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
                 Industry-aligned curriculum tailored to job market needs, with soft-skills training and dedicated placement support.
               </p>
             </div>
 
-            <div className="bg-[#F5F5F5] p-6 rounded-3xl border border-gray-200/80 space-y-3 hover:-translate-y-1 transition-transform">
+            <div className="bg-[#F5F5F5] dark:bg-gray-800 p-6 rounded-3xl border border-gray-200/80 dark:border-gray-700 space-y-3 hover:-translate-y-1 transition-transform">
               <div className="w-12 h-12 rounded-2xl bg-[#FA394A] text-white flex items-center justify-center shadow-md">
                 <UserCheck className="w-6 h-6" />
               </div>
-              <h3 className="font-extrabold text-base text-[#333333]">1-on-1 Expert Guidance</h3>
-              <p className="text-xs text-gray-600 leading-relaxed">
+              <h3 className="font-extrabold text-base text-[#333333] dark:text-gray-100">1-on-1 Expert Guidance</h3>
+              <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
                 Get free unbiased counselling from senior admission experts to choose the perfect course and university for your budget.
               </p>
             </div>
@@ -521,7 +530,7 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* ADMISSION PROCESS STEPS */}
-      <section className="py-16 bg-[#333333] text-white">
+      <section className="py-16 bg-[#333333] dark:bg-black text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="text-xs font-bold text-[#FA394A] uppercase tracking-wider">Simple 5-Step Path</span>
@@ -551,30 +560,38 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* TESTIMONIALS SECTION */}
-      <section className="py-16 bg-white border-b border-gray-200">
+      <section className="py-16 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="text-xs font-bold text-[#FA394A] uppercase tracking-wider">Student Reviews</span>
-            <h2 className="text-2xl sm:text-3xl font-black text-[#333333] mt-1">
+            <h2 className="text-2xl sm:text-3xl font-black text-[#333333] dark:text-gray-100 mt-1">
               What Our Learners Say
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((t) => (
-              <div key={t._id} className="bg-[#F5F5F5] p-6 rounded-3xl border border-gray-200/80 space-y-4 flex flex-col justify-between">
-                <p className="text-xs text-gray-700 italic leading-relaxed">
+              <div key={t._id} className="bg-[#F5F5F5] dark:bg-gray-800 p-6 rounded-3xl border border-gray-200/80 dark:border-gray-700 space-y-4 flex flex-col justify-between">
+                <p className="text-xs text-gray-700 dark:text-gray-300 italic leading-relaxed">
                   "{t.quote}"
                 </p>
-                <div className="flex items-center space-x-3 pt-4 border-t border-gray-200">
-                  <img
-                    src={t.image}
-                    alt={t.name}
-                    className="w-11 h-11 rounded-full object-cover border-2 border-[#FA394A]"
-                  />
+                <div className="flex items-center space-x-3 pt-4 border-t border-gray-200 dark:border-gray-700">
+                  {t.image ? (
+                    <img
+                      loading="lazy"
+  decoding="async"
+                      src={t.image}
+                      alt={t.name}
+                      className="w-11 h-11 rounded-full object-cover border-2 border-[#FA394A]"
+                    />
+                  ) : (
+                    <div className="w-11 h-11 rounded-full bg-gray-200 border-2 border-[#FA394A] text-[#333333] flex items-center justify-center font-black text-xs">
+                      {t.name?.charAt(0) || 'S'}
+                    </div>
+                  )}
                   <div>
-                    <p className="font-extrabold text-xs text-[#333333]">{t.name}</p>
-                    <p className="text-[10px] font-semibold text-gray-500">{t.course} — {t.college}</p>
+                    <p className="font-extrabold text-xs text-[#333333] dark:text-gray-100">{t.name}</p>
+                    <p className="text-[10px] font-semibold text-gray-500 dark:text-gray-400">{t.course} — {t.college}</p>
                   </div>
                 </div>
               </div>
@@ -584,11 +601,11 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* FAQ ACCORDION SECTION */}
-      <section className="py-16 bg-[#F5F5F5]">
+      <section className="py-16 bg-[#F5F5F5] dark:bg-gray-900">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <span className="text-xs font-bold text-[#FA394A] uppercase tracking-wider">Frequently Asked Questions</span>
-            <h2 className="text-2xl sm:text-3xl font-black text-[#333333] mt-1">
+            <h2 className="text-2xl sm:text-3xl font-black text-[#333333] dark:text-gray-100 mt-1">
               Admission & Degree Validity FAQs
             </h2>
           </div>
@@ -597,21 +614,20 @@ export const HomePage: React.FC = () => {
             {faqs.map((faq, idx) => (
               <div
                 key={faq._id}
-                className="bg-white rounded-2xl border border-gray-200/80 overflow-hidden shadow-sm"
+                className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200/80 dark:border-gray-700 overflow-hidden shadow-sm"
               >
                 <button
                   onClick={() => setActiveFaqIndex(activeFaqIndex === idx ? null : idx)}
-                  className="w-full text-left p-5 flex justify-between items-center font-bold text-sm text-[#333333] hover:text-[#FA394A] transition-colors"
+                  className="w-full text-left p-5 flex justify-between items-center font-bold text-sm text-[#333333] dark:text-gray-100 hover:text-[#FA394A] transition-colors"
                 >
                   <span className="pr-4">{faq.question}</span>
                   <ChevronRight
-                    className={`w-5 h-5 text-[#FA394A] shrink-0 transition-transform ${
-                      activeFaqIndex === idx ? 'rotate-90' : ''
-                    }`}
+                    className={`w-5 h-5 text-[#FA394A] shrink-0 transition-transform ${activeFaqIndex === idx ? 'rotate-90' : ''
+                      }`}
                   />
                 </button>
                 {activeFaqIndex === idx && (
-                  <div className="p-5 pt-0 text-xs text-gray-600 leading-relaxed border-t border-gray-100">
+                  <div className="p-5 pt-0 text-xs text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-100 dark:border-gray-700">
                     {faq.answer}
                   </div>
                 )}

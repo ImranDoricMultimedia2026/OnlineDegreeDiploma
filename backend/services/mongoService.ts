@@ -5,6 +5,8 @@ import { ProgramModel } from '../models/Program';
 import { EnquiryModel } from '../models/Enquiry';
 import { ApplicationModel } from '../models/Application';
 import { ContactModel } from '../models/Contact';
+import { FAQModel } from '../models/FAQ';
+import { TestimonialModel } from '../models/Testimonial';
 
 export const isMongoConnected = (): boolean => {
   return mongoose.connection.readyState === 1;
@@ -109,7 +111,13 @@ export const saveContactToMongo = async (contactData: any) => {
 };
 
 // Seed initial Colleges & Programs to MongoDB Atlas if empty
-export const seedInitialDataToMongo = async (colleges: any[], programs: any[], defaultUsers: any[]) => {
+export const seedInitialDataToMongo = async (
+  colleges: any[],
+  programs: any[],
+  defaultUsers: any[],
+  faqs: any[] = [],
+  testimonials: any[] = []
+) => {
   if (!isMongoConnected()) {
     console.log('⚠️ MongoDB not connected yet. Cannot seed data into Atlas.');
     return;
@@ -196,6 +204,41 @@ export const seedInitialDataToMongo = async (colleges: any[], programs: any[], d
         });
       }
       console.log(`🍃 SUCCESS: Seeded ${programs.length} programs into MongoDB Atlas! Collection: "${ProgramModel.collection.name}"`);
+    }
+
+    const faqCount = await FAQModel.countDocuments();
+    console.log(`📊 Current MongoDB Atlas FAQs count: ${faqCount} (DB: "${dbName}")`);
+    if (faqCount === 0 && faqs && faqs.length > 0) {
+      for (const f of faqs) {
+        const faqData = {
+          question: f.question,
+          answer: f.answer,
+          category: f.category || 'General',
+          order: Number(f.order) || 1,
+          isActive: f.isActive !== undefined ? Boolean(f.isActive) : true,
+          featured: f.featured || false
+        };
+        await FAQModel.create(faqData);
+      }
+      console.log(`🍃 SUCCESS: Seeded ${faqs.length} FAQs into MongoDB Atlas! Collection: "${FAQModel.collection.name}"`);
+    }
+
+    const testimonialCount = await TestimonialModel.countDocuments();
+    console.log(`📊 Current MongoDB Atlas testimonials count: ${testimonialCount} (DB: "${dbName}")`);
+    if (testimonialCount === 0 && testimonials && testimonials.length > 0) {
+      for (const t of testimonials) {
+        const testimonialData = {
+          name: t.name,
+          course: t.course || 'Online Degree Student',
+          college: t.college || 'Partner University',
+          image: t.image || '',
+          quote: t.quote,
+          rating: Number(t.rating) || 5,
+          isActive: t.isActive !== undefined ? Boolean(t.isActive) : true
+        };
+        await TestimonialModel.create(testimonialData);
+      }
+      console.log(`🍃 SUCCESS: Seeded ${testimonials.length} testimonials into MongoDB Atlas! Collection: "${TestimonialModel.collection.name}"`);
     }
   } catch (err) {
     console.error('❌ Error seeding initial data to MongoDB Atlas:', err);

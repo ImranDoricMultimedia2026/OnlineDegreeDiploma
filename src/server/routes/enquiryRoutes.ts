@@ -2,6 +2,7 @@ import { Router, Response } from 'express';
 import { getDb, saveDbStore } from '../db/dbStore';
 import { verifyToken, requireAdmin, AuthRequest } from '../middleware/auth';
 import { saveEnquiryToMongo, isMongoConnected } from '../../../backend/services/mongoService';
+import { sendAdminNotification } from '../../../backend/services/emailService';
 import { EnquiryModel } from '../../../backend/models/Enquiry';
 
 const router = Router();
@@ -40,8 +41,9 @@ router.post('/', async (req: any, res: Response) => {
       createdAt: new Date().toISOString()
     };
 
+    let savedEnquiry: any = null;
     if (isMongoConnected()) {
-      await EnquiryModel.create({
+      savedEnquiry = await EnquiryModel.create({
         name,
         email: email.toLowerCase(),
         phone,
@@ -62,6 +64,31 @@ router.post('/', async (req: any, res: Response) => {
       const db = getDb();
       db.enquiries.unshift(newEnquiry);
       saveDbStore();
+      savedEnquiry = newEnquiry;
+    }
+
+    try {
+      await sendAdminNotification({
+        subject: `New Enquiry Submission: ${finalProgram}`,
+        heading: 'New Student Enquiry Received',
+        details: [
+          { label: 'Name', value: name },
+          { label: 'Email', value: email },
+          { label: 'Phone', value: phone },
+          { label: 'College', value: finalCollege },
+          { label: 'Program', value: finalProgram },
+          { label: 'Qualification', value: finalQualification || 'N/A' },
+          { label: 'City / State', value: `${finalCity || 'N/A'} / ${finalState || 'N/A'}` },
+          { label: 'Message', value: message || 'N/A' }
+        ],
+        message: type === 'brochure'
+          ? 'A brochure request was submitted. Please process the download request promptly.'
+          : type === 'fee_structure'
+          ? 'A fee structure request was submitted. Please share the latest fee details.'
+          : 'A general enquiry was submitted. Please review and follow up with the student.'
+      });
+    } catch (error) {
+      console.warn('Enquiry email notification failed:', error);
     }
 
     let downloadUrl = null;

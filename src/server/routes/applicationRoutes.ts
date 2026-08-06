@@ -3,6 +3,7 @@ import { getDb, saveDbStore } from '../db/dbStore';
 import { verifyToken, optionalToken, requireAdmin, AuthRequest } from '../middleware/auth';
 import { upload } from '../middleware/upload';
 import { saveApplicationToMongo, isMongoConnected } from '../../../backend/services/mongoService';
+import { sendAdminNotification } from '../../../backend/services/emailService';
 import { ApplicationModel } from '../../../backend/models/Application';
 import { CollegeModel } from '../../../backend/models/College';
 import { ProgramModel } from '../../../backend/models/Program';
@@ -124,6 +125,7 @@ router.post(
         createdAt: new Date().toISOString()
       };
 
+      let savedApplication: any = null;
       if (isMongoConnected()) {
         const createdMongo = await ApplicationModel.create({
           userId,
@@ -149,6 +151,11 @@ router.post(
             { title: 'Photo', url: photoUrl, status: 'Uploaded' }
           ]
         });
+        savedApplication = {
+          ...createdMongo.toObject(),
+          studentEmail: finalStudentEmail,
+          studentPhone: finalStudentPhone
+        };
         console.log(`🍃 Submitted Application into MongoDB Atlas for ${finalStudentName}`);
 
         const db = getDb();
@@ -157,26 +164,45 @@ router.post(
           _id: createdMongo._id.toString()
         });
         saveDbStore();
+      } else {
+        const db = getDb();
+        db.applications.unshift(newApplicationData);
+        saveDbStore();
+        savedApplication = newApplicationData;
+      }
 
+      try {
+        await sendAdminNotification({
+          subject: `New Application Submission: ${finalStudentName}`,
+          heading: 'New Admission Application Received',
+          details: [
+            { label: 'Applicant Name', value: finalStudentName },
+            { label: 'Email', value: finalStudentEmail },
+            { label: 'Phone', value: finalStudentPhone || 'N/A' },
+            { label: 'College', value: collegeName },
+            { label: 'Program', value: programTitle },
+            { label: 'Date of Birth', value: dob || 'N/A' },
+            { label: 'State', value: state || 'N/A' },
+            { label: '10th Marks', value: tenthPercentage || 'N/A' }
+          ],
+          message: `A new application has been received and stored with ID: ${savedApplication._id || savedApplication.id}. Please review it in the Admin dashboard.`
+        });
+      } catch (error) {
+        console.warn('Application email notification failed:', error);
+      }
+
+      if (isMongoConnected()) {
         return res.status(201).json({
           success: true,
           message: 'Application submitted successfully to MongoDB Atlas!',
-          application: {
-            ...createdMongo.toObject(),
-            studentEmail: finalStudentEmail,
-            studentPhone: finalStudentPhone
-          }
+          application: savedApplication
         });
       }
 
-      const db = getDb();
-      db.applications.unshift(newApplicationData);
-      saveDbStore();
-
-      res.status(201).json({
+      return res.status(201).json({
         success: true,
         message: 'Application submitted successfully!',
-        application: newApplicationData
+        application: savedApplication
       });
     } catch (err: any) {
       res.status(500).json({ success: false, message: err.message || 'Error submitting application' });

@@ -5,6 +5,8 @@ export interface IFAQ extends Document {
   answer: string;
   category: string;
   featured: boolean;
+  order: number;
+  isActive: boolean;
 }
 
 const FAQSchema: Schema = new Schema(
@@ -13,6 +15,8 @@ const FAQSchema: Schema = new Schema(
     answer: { type: String, required: true },
     category: { type: String, default: 'General' },
     featured: { type: Boolean, default: false },
+    order: { type: Number, default: 1 },
+    isActive: { type: Boolean, default: true }
   },
   { timestamps: true }
 );

@@ -54,6 +54,7 @@ export const ApplyNowPage: React.FC = () => {
   // Files
   const [photo, setPhoto] = useState<File | null>(null);
   const [idProof, setIdProof] = useState<File | null>(null);
+  const [marksheets, setMarksheets] = useState<File | null>(null);
 
   // Fetch colleges and programs
   useEffect(() => {
@@ -138,14 +139,28 @@ export const ApplyNowPage: React.FC = () => {
         (p) => p._id === formData.programId || p.slug === formData.programId || p.title === formData.programId
       );
 
-      const payload = {
-        ...formData,
-        collegeName: selectedCollege?.name || 'Partner University',
-        programName: selectedProgram?.title || 'Degree Program',
-        programTitle: selectedProgram?.title || 'Degree Program'
-      };
+      const formPayload = new FormData();
+      formPayload.append('collegeId', formData.collegeId);
+      formPayload.append('programId', formData.programId);
+      formPayload.append('studentName', formData.studentName);
+      formPayload.append('email', formData.email);
+      formPayload.append('phone', formData.phone);
+      formPayload.append('dob', formData.dob);
+      formPayload.append('gender', formData.gender);
+      formPayload.append('address', formData.address);
+      formPayload.append('state', formData.state);
+      formPayload.append('qualification', formData.category);
+      formPayload.append('tenthPercentage', formData.tenthPercentage);
+      formPayload.append('twelfthPercentage', formData.twelfthPercentage);
+      formPayload.append('graduationPercentage', formData.graduationPercentage);
+      formPayload.append('collegeName', selectedCollege?.name || 'Partner University');
+      formPayload.append('programName', selectedProgram?.title || 'Degree Program');
+      formPayload.append('programTitle', selectedProgram?.title || 'Degree Program');
+      if (idProof) formPayload.append('idProof', idProof);
+      if (marksheets) formPayload.append('marksheets', marksheets);
+      if (photo) formPayload.append('photo', photo);
 
-      const res = await api.post('/applications', payload);
+      const res = await api.post('/applications', formPayload);
 
       if (res.data.success) {
         setApplicationId(res.data.application._id || res.data.application.id);
@@ -355,6 +370,38 @@ export const ApplyNowPage: React.FC = () => {
                     onChange={(e) => setFormData({ ...formData, tenthPercentage: e.target.value })}
                     placeholder="e.g. 82%"
                     className="w-full px-4 py-3 rounded-xl border border-gray-300 text-xs font-medium focus:ring-2 focus:ring-[#FA394A] outline-none"
+                  />
+                </div>
+              </div>
+
+              <div className="pt-4 grid grid-cols-1 gap-4">
+                <div>
+                  <label className="block text-xs font-bold text-[#333333] mb-1">ID Proof (PDF, JPG, PNG)</label>
+                  <input
+                    type="file"
+                    accept=".pdf,.jpg,.jpeg,.png"
+                    onChange={(e) => setIdProof(e.target.files?.[0] || null)}
+                    className="w-full text-xs text-gray-600"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-[#333333] mb-1">Marksheets (PDF, JPG, PNG)</label>
+                  <input
+                    type="file"
+                    accept=".pdf,.jpg,.jpeg,.png"
+                    onChange={(e) => setMarksheets(e.target.files?.[0] || null)}
+                    className="w-full text-xs text-gray-600"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-[#333333] mb-1">Recent Photograph (JPG, PNG, WEBP)</label>
+                  <input
+                    type="file"
+                    accept=".jpg,.jpeg,.png,.webp"
+                    onChange={(e) => setPhoto(e.target.files?.[0] || null)}
+                    className="w-full text-xs text-gray-600"
                   />
                 </div>
               </div>

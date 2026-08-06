@@ -11,7 +11,7 @@ const defaultSettings = {
   phoneSecondary: '+91 80000 12345',
   whatsappNumber: '919876543210',
   emailPrimary: 'admissions@onlinedegreeportal.in',
-  emailSupport: 'support@onlinedegreeportal.in',
+  emailSupport: 'addmission@onlinedegreediplomaludhiana.com',
   address: 'Building 4B, Knowledge Park III, Greater Noida, UP - 201306',
   googleMapUrl: 'https://maps.google.com/maps?q=Greater+Noida&output=embed',
   facebookUrl: 'https://facebook.com',

@@ -9,27 +9,33 @@ const router = Router();
 // GET Public Active FAQs
 router.get('/', async (req, res) => {
   try {
+    const includeAll = req.query.all === 'true';
     if (isMongoConnected()) {
       const query: any = {};
-      if (req.query.all !== 'true') {
-        query.isActive = true;
+      if (!includeAll) {
+        query.$or = [{ isActive: true }, { isActive: { $exists: false } }];
       }
       const faqs = await (FAQModel as any).find(query).sort({ order: 1 }).lean();
-      return res.json({ success: true, faqs });
+      if (faqs.length > 0) {
+        return res.json({ success: true, faqs });
+      }
     }
 
     const db = getDb();
     let faqs = [...db.faqs];
-
-    if (req.query.all !== 'true') {
-      faqs = faqs.filter((f) => f.isActive);
+    if (!includeAll) {
+      faqs = faqs.filter((f) => f.isActive !== false);
     }
-
     faqs.sort((a, b) => (a.order || 0) - (b.order || 0));
     res.json({ success: true, faqs });
   } catch (err: any) {
     const db = getDb();
-    res.json({ success: true, faqs: db.faqs || [] });
+    let faqs = db.faqs || [];
+    if (req.query.all !== 'true') {
+      faqs = faqs.filter((f) => f.isActive !== false);
+    }
+    faqs.sort((a, b) => (a.order || 0) - (b.order || 0));
+    res.json({ success: true, faqs });
   }
 });
 

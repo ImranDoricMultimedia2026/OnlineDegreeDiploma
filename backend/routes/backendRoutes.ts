@@ -12,6 +12,7 @@ const router = Router();
  * GET /api/backend/status
  * Returns current status of MongoDB Atlas connection & Express backend
  */
+
 router.get('/status', async (req: Request, res: Response) => {
   const mongoStatus = getMongoStatus();
 

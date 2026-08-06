@@ -2,6 +2,7 @@ import { Router, Response } from 'express';
 import { getDb, saveDbStore } from '../db/dbStore';
 import { verifyToken, requireAdmin } from '../middleware/auth';
 import { saveContactToMongo, isMongoConnected } from '../../../backend/services/mongoService';
+import { sendAdminNotification } from '../../../backend/services/emailService';
 import { ContactModel } from '../../../backend/models/Contact';
 
 const router = Router();
@@ -14,8 +15,9 @@ router.post('/', async (req, res) => {
       return res.status(400).json({ success: false, message: 'Name, email, and message are required.' });
     }
 
+    let savedContact: any = null;
     if (isMongoConnected()) {
-      await ContactModel.create({
+      savedContact = await ContactModel.create({
         name,
         email: email.toLowerCase(),
         phone: phone || '',
@@ -25,7 +27,7 @@ router.post('/', async (req, res) => {
       console.log(`🍃 Saved Contact form entry into MongoDB Atlas for ${name}`);
     } else {
       const db = getDb();
-      const newContact = {
+      savedContact = {
         _id: 'cnt_' + Date.now(),
         name,
         email: email.toLowerCase(),
@@ -35,8 +37,25 @@ router.post('/', async (req, res) => {
         isRead: false,
         createdAt: new Date().toISOString()
       };
-      db.contacts.unshift(newContact);
+      db.contacts.unshift(savedContact);
       saveDbStore();
+    }
+
+    try {
+      await sendAdminNotification({
+        subject: `New Contact Form Submission: ${subject || 'General Inquiry'}`,
+        heading: 'New Contact Inquiry Received',
+        details: [
+          { label: 'Name', value: name },
+          { label: 'Email', value: email },
+          { label: 'Phone', value: phone || 'N/A' },
+          { label: 'Subject', value: subject || 'General Inquiry' },
+          { label: 'Message', value: message }
+        ],
+        message: 'This enquiry has been successfully stored in the system and is ready for review in the Admin Panel.'
+      });
+    } catch (error) {
+      console.warn('Contact email notification failed:', error);
     }
 
     res.status(201).json({

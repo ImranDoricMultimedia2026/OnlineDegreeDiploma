@@ -51,78 +51,77 @@ export const ContactPage: React.FC = () => {
 
   const phonePrimary = settings?.phonePrimary || '+91 98765 43210';
   const phoneSecondary = settings?.phoneSecondary || '1800-123-4567';
-  const emailPrimary = settings?.emailPrimary || 'admissions@onlinedegreediploma.com';
-  const emailSupport = settings?.emailSupport || 'support@onlinedegreediploma.com';
+  const emailAdmissions = settings?.emailPrimary ?? '';
   const address = settings?.address || 'Online Degree Diploma Platform,\nStatesman House, Building 12, Connaught Place,\nNew Delhi, India — 110001';
 
   return (
-    <div className="min-h-screen bg-[#F5F5F5] font-sans pb-16">
+    <div className="min-h-screen bg-page font-sans pb-16 transition-colors duration-300">
       {/* Header Banner */}
- <div className="relative overflow-hidden py-16 sm:py-20 lg:py-24">
+      <div className="relative overflow-hidden py-16 sm:py-20 lg:py-24">
 
-  {/* Background Image */}
-  <img
-    src="/PagesBanner/3.png" // Apni image ka naam yaha likho
-    alt="Contact Banner"
-    className="absolute inset-0 w-full h-full object-cover object-center md:object-center"
-  />
+        {/* Background Image */}
+        <img
+          src="/PagesBanner/3.png" // Apni image ka naam yaha likho
+          alt="Contact Banner"
+          className="absolute inset-0 w-full h-full object-cover object-center md:object-center"
+        />
 
-  {/* Overlay */}
-  <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/45 to-black/45"></div>
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/45 to-black/45"></div>
 
-  {/* Content */}
-  <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        {/* Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 
-    <span className="inline-block text-xs sm:text-sm font-bold text-[#FA394A] uppercase tracking-[3px] mb-4">
-      Get In Touch
-    </span>
+          <span className="inline-block text-xs sm:text-sm font-bold text-[#FA394A] uppercase tracking-[3px] mb-4">
+            Get In Touch
+          </span>
 
-    <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-tight">
-      Admission Support &
-      <span className="block text-[#FA394A]">
-        Support Desk
-      </span>
-    </h1>
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-tight">
+            Admission Support &
+            <span className="block text-[#FA394A]">
+              Support Desk
+            </span>
+          </h1>
 
-    <p className="mt-6 max-w-3xl mx-auto text-sm sm:text-lg text-gray-200 leading-7 sm:leading-8">
-      Have questions about UGC approvals, online exam centers, fee payment,
-      EMI options, or document uploads? Speak with our expert counselors
-      today for personalized admission guidance.
-    </p>
+          <p className="mt-6 max-w-3xl mx-auto text-sm sm:text-lg text-gray-200 leading-7 sm:leading-8">
+            Have questions about UGC approvals, online exam centers, fee payment,
+            EMI options, or document uploads? Speak with our expert counselors
+            today for personalized admission guidance.
+          </p>
 
-  </div>
+        </div>
 
-</div>
+      </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Contact Info Cards */}
         <div className="space-y-6">
-          <div className="bg-white p-6 rounded-3xl border border-gray-200/80 shadow-sm space-y-4">
-            <h3 className="font-extrabold text-base text-[#333333] flex items-center">
+          <div className="bg-surface p-6 rounded-3xl border border-theme shadow-sm space-y-4">
+            <h3 className="font-extrabold text-base text-heading flex items-center">
               <Phone className="w-5 h-5 text-[#FA394A] mr-2" /> Admission Helplines
             </h3>
-            <div className="space-y-2 text-xs font-semibold text-gray-600">
+            <div className="space-y-2 text-xs font-semibold text-muted">
               <p>Primary Call: <a href={`tel:${phonePrimary}`} className="text-[#FA394A] hover:underline">{phonePrimary}</a></p>
-              <p>Toll-Free Desk: <a href={`tel:${phoneSecondary}`} className="text-[#333333] hover:underline">{phoneSecondary}</a></p>
-              <p className="text-[11px] text-gray-400 font-normal">Mon - Sat: 9:00 AM to 7:00 PM IST</p>
+              <p>Toll-Free Desk: <a href={`tel:${phoneSecondary}`} className="text-heading hover:underline">{phoneSecondary}</a></p>
+              <p className="text-[11px] text-gray-400 dark:text-gray-500 font-normal">Mon - Sat: 9:00 AM to 7:00 PM IST</p>
             </div>
           </div>
 
-          <div className="bg-white p-6 rounded-3xl border border-gray-200/80 shadow-sm space-y-4">
-            <h3 className="font-extrabold text-base text-[#333333] flex items-center">
+          <div className="bg-surface p-6 rounded-3xl border border-theme shadow-sm space-y-4">
+            <h3 className="font-extrabold text-base text-heading flex items-center">
               <Mail className="w-5 h-5 text-[#FA394A] mr-2" /> Email Support
             </h3>
-            <div className="space-y-2 text-xs font-semibold text-gray-600">
-              <p>Admissions: <a href={`mailto:${emailPrimary}`} className="text-[#FA394A] hover:underline">{emailPrimary}</a></p>
-              <p>Student Desk: <a href={`mailto:${emailSupport}`} className="text-[#333333] hover:underline">{emailSupport}</a></p>
+            <div className="space-y-2 text-xs font-semibold text-muted">
+              <p>Admissions: <a href={`mailto:${emailAdmissions}`} className="text-[#FA394A] hover:underline">{emailAdmissions}</a></p>
+              <p>Student Desk: <a href={`mailto:${emailAdmissions}`} className="text-heading hover:underline">{emailAdmissions}</a></p>
             </div>
           </div>
 
-          <div className="bg-white p-6 rounded-3xl border border-gray-200/80 shadow-sm space-y-4">
-            <h3 className="font-extrabold text-base text-[#333333] flex items-center">
+          <div className="bg-surface p-6 rounded-3xl border border-theme shadow-sm space-y-4">
+            <h3 className="font-extrabold text-base text-heading flex items-center">
               <MapPin className="w-5 h-5 text-[#FA394A] mr-2" /> Corporate Office
             </h3>
-            <p className="text-xs text-gray-600 leading-relaxed font-medium whitespace-pre-line">
+            <p className="text-xs text-muted leading-relaxed font-medium whitespace-pre-line">
               {address}
             </p>
           </div>
@@ -130,19 +129,19 @@ export const ContactPage: React.FC = () => {
 
         {/* Contact Form */}
         <div className="lg:col-span-2">
-          <div className="bg-white p-8 rounded-3xl border border-gray-200/80 shadow-xl space-y-6">
-            <div className="border-b border-gray-100 pb-4">
-              <h2 className="text-xl font-extrabold text-[#333333]">Send Us a Direct Message</h2>
-              <p className="text-xs text-gray-500 mt-1">
+          <div className="bg-surface p-8 rounded-3xl border border-theme shadow-xl space-y-6">
+            <div className="border-b border-theme pb-4">
+              <h2 className="text-xl font-extrabold text-heading">Send Us a Direct Message</h2>
+              <p className="text-xs text-muted mt-1">
                 Fill in your enquiry details below. An advisor will get back to you within 24 hours.
               </p>
             </div>
 
             {success ? (
-              <div className="p-8 text-center bg-green-50 rounded-2xl border border-green-200 space-y-3">
-                <CheckCircle className="w-12 h-12 text-green-600 mx-auto" />
-                <h3 className="text-lg font-black text-[#333333]">Message Sent Successfully!</h3>
-                <p className="text-xs text-gray-600">
+              <div className="p-8 text-center bg-green-50 dark:bg-green-950/30 rounded-2xl border border-green-200 dark:border-green-900/50 space-y-3">
+                <CheckCircle className="w-12 h-12 text-green-600 dark:text-green-400 mx-auto" />
+                <h3 className="text-lg font-black text-heading">Message Sent Successfully!</h3>
+                <p className="text-xs text-muted">
                   Thank you for reaching out. An academic counselor has been assigned to your query and will contact you shortly.
                 </p>
                 <button
@@ -155,7 +154,7 @@ export const ContactPage: React.FC = () => {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
                 {error && (
-                  <div className="p-3 bg-red-50 border border-red-200 text-red-600 text-xs rounded-xl flex items-center">
+                  <div className="p-3 bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900/50 text-red-600 dark:text-red-400 text-xs rounded-xl flex items-center">
                     <AlertCircle className="w-4 h-4 mr-2 shrink-0" />
                     <span>{error}</span>
                   </div>
@@ -163,63 +162,63 @@ export const ContactPage: React.FC = () => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-bold text-[#333333] mb-1">Your Full Name *</label>
+                    <label className="block text-xs font-bold text-heading mb-1">Your Full Name *</label>
                     <input
                       type="text"
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="e.g. Ramesh Kumar"
-                      className="w-full px-4 py-3 rounded-xl border border-gray-300 text-xs focus:ring-2 focus:ring-[#FA394A] outline-none"
+                      className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-heading text-xs focus:ring-2 focus:ring-[#FA394A] outline-none placeholder:text-gray-400 dark:placeholder:text-gray-500"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-[#333333] mb-1">Email Address *</label>
+                    <label className="block text-xs font-bold text-heading mb-1">Email Address *</label>
                     <input
                       type="email"
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="e.g. ramesh@example.com"
-                      className="w-full px-4 py-3 rounded-xl border border-gray-300 text-xs focus:ring-2 focus:ring-[#FA394A] outline-none"
+                      className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-heading text-xs focus:ring-2 focus:ring-[#FA394A] outline-none placeholder:text-gray-400 dark:placeholder:text-gray-500"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-bold text-[#333333] mb-1">Phone Number</label>
+                    <label className="block text-xs font-bold text-heading mb-1">Phone Number</label>
                     <input
                       type="tel"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       placeholder="+91 98765 43210"
-                      className="w-full px-4 py-3 rounded-xl border border-gray-300 text-xs focus:ring-2 focus:ring-[#FA394A] outline-none"
+                      className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-heading text-xs focus:ring-2 focus:ring-[#FA394A] outline-none placeholder:text-gray-400 dark:placeholder:text-gray-500"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-[#333333] mb-1">Subject</label>
+                    <label className="block text-xs font-bold text-heading mb-1">Subject</label>
                     <input
                       type="text"
                       value={formData.subject}
                       onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                       placeholder="e.g. Fee installment, MBA eligibility"
-                      className="w-full px-4 py-3 rounded-xl border border-gray-300 text-xs focus:ring-2 focus:ring-[#FA394A] outline-none"
+                      className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-heading text-xs focus:ring-2 focus:ring-[#FA394A] outline-none placeholder:text-gray-400 dark:placeholder:text-gray-500"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-[#333333] mb-1">Message *</label>
+                  <label className="block text-xs font-bold text-heading mb-1">Message *</label>
                   <textarea
                     rows={4}
                     required
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Describe your query in detail..."
-                    className="w-full px-4 py-3 rounded-xl border border-gray-300 text-xs focus:ring-2 focus:ring-[#FA394A] outline-none"
+                    className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-heading text-xs focus:ring-2 focus:ring-[#FA394A] outline-none placeholder:text-gray-400 dark:placeholder:text-gray-500"
                   />
                 </div>
 
