@@ -741,13 +741,13 @@ export const AdminDashboardPage: React.FC = () => {
             </h1>
           </div>
           <div className="flex items-center space-x-3">
-            <button
-              onClick={() => setShowNotificationModal(true)}
-              className="bg-white/10 hover:bg-white/20 text-white px-3.5 py-2 rounded-xl text-xs font-bold transition-colors flex items-center space-x-1.5 border border-white/20"
-            >
-              <Icons.Bell className="w-4 h-4 text-amber-400" />
-              <span>Broadcast Alert</span>
-            </button>
+          <button
+  onClick={() => setShowNotificationModal(true)}
+  className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-xs font-extrabold transition-colors flex items-center space-x-1.5"
+>
+  <Icons.Bell className="w-4 h-4 text-amber-400" />
+  <span>Broadcast Alert</span>
+</button>
             <button
               onClick={logout}
               className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-xs font-extrabold transition-colors flex items-center space-x-1.5"
