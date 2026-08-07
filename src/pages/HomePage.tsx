@@ -136,12 +136,12 @@ export const HomePage: React.FC = () => {
                       <span>{slide.primaryBtnText}</span>
                       <ChevronRight className="w-4 h-4 ml-1" />
                     </Link>
-                    <Link
-                      to={slide.secondaryBtnLink || '/apply'}
-                      className="bg-white/20 hover:bg-white/30 backdrop-blur-md text-white border border-white/40 px-7 py-3.5 rounded-2xl font-extrabold text-sm transition-all hover:scale-105"
-                    >
-                      {slide.secondaryBtnText}
-                    </Link>
+                  <Link
+  to={slide.secondaryBtnLink || '/apply'}
+  className="bg-[#ff3b57] hover:bg-[#e62f4d] text-white px-7 py-3.5 rounded-2xl font-extrabold text-sm transition-all duration-300 hover:scale-105 shadow-lg"
+>
+  {slide.secondaryBtnText}
+</Link>
                   </div>
                 </div>
               </div>
