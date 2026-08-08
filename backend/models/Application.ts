@@ -66,5 +66,8 @@ const ApplicationSchema: Schema = new Schema(
   { timestamps: true }
 );
 
+ApplicationSchema.index({ createdAt: -1, status: 1 });
+ApplicationSchema.index({ studentEmail: 1, collegeId: 1 });
+
 export const ApplicationModel =
   mongoose.models.Application || mongoose.model<IApplication>('Application', ApplicationSchema);

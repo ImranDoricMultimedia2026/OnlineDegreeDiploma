@@ -25,6 +25,8 @@ import settingsRoutes from './src/server/routes/settingsRoutes';
 
 async function startServer() {
   const app = express();
+  // Disable ETag to prevent caching of API responses in browsers/proxies
+  app.disable('etag');
   const PORT = Number(process.env.PORT) || 3000;
 
   // Ensure upload directory exists
@@ -59,6 +61,14 @@ async function startServer() {
     next();
   });
 
+
+  // Prevent browser caching for all API routes
+app.use('/api', (req, res, next) => {
+  res.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+  res.set('Pragma', 'no-cache');
+  res.set('Expires', '0');
+  next();
+});
   // REST API Routes
   app.use('/api/auth', authRoutes);
   app.use('/api/colleges', collegeRoutes);

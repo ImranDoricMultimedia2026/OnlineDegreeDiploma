@@ -37,6 +37,7 @@ export interface ICollege extends Document {
   admissionProcess?: string[];
   placementSupport?: string;
   scholarships?: string;
+  displayPriority?: number;
   isActive?: boolean;
   faqs?: { question: string; answer: string }[];
 }
@@ -79,6 +80,7 @@ const CollegeSchema: Schema = new Schema(
     admissionProcess: [{ type: String }],
     placementSupport: { type: String, default: '' },
     scholarships: { type: String, default: '' },
+    displayPriority: { type: Number, default: 9999 },
     faqs: [
       {
         question: { type: String },
@@ -88,5 +90,8 @@ const CollegeSchema: Schema = new Schema(
   },
   { timestamps: true }
 );
+
+CollegeSchema.index({ displayPriority: 1, createdAt: -1 });
+CollegeSchema.index({ state: 1, isActive: 1 });
 
 export const CollegeModel = mongoose.models.College || mongoose.model<ICollege>('College', CollegeSchema);

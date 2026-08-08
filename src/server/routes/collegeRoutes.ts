@@ -11,7 +11,10 @@ const router = Router();
 // GET All Colleges (Public)
 router.get('/', async (req, res) => {
   try {
-    const { search, state, approval, popular, featured } = req.query;
+    const { search, state, approval, popular, featured, limit, page, pageSize } = req.query;
+    const pageNumber = Math.max(1, Number(page) || 1);
+    const requestedLimit = Math.min(100, Math.max(1, Number(limit || pageSize || 20)));
+    const skip = (pageNumber - 1) * requestedLimit;
 
     if (isMongoConnected()) {
       const query: any = {};
@@ -28,8 +31,16 @@ router.get('/', async (req, res) => {
       if (popular === 'true') query.popular = true;
       if (featured === 'true') query.featured = true;
 
-      const colleges = await (CollegeModel as any).find(query).sort({ createdAt: -1 }).lean();
-      return res.json({ success: true, count: colleges.length, colleges });
+      const [total, colleges] = await Promise.all([
+        (CollegeModel as any).countDocuments(query),
+        (CollegeModel as any)
+          .find(query)
+          .sort({ displayPriority: 1, createdAt: -1 })
+          .skip(skip)
+          .limit(requestedLimit)
+          .lean()
+      ]);
+      return res.json({ success: true, count: colleges.length, total, totalPages: Math.max(1, Math.ceil(total / requestedLimit)), page: pageNumber, limit: requestedLimit, colleges });
     }
 
     const db = getDb();
@@ -39,27 +50,31 @@ router.get('/', async (req, res) => {
       const s = String(search).toLowerCase();
       colleges = colleges.filter(
         (c) =>
-          c.name.toLowerCase().includes(s) ||
-          c.location.toLowerCase().includes(s) ||
-          c.state.toLowerCase().includes(s) ||
-          c.description.toLowerCase().includes(s)
+          (c.name || '').toLowerCase().includes(s) ||
+          (c.location || '').toLowerCase().includes(s) ||
+          (c.state || '').toLowerCase().includes(s) ||
+          (c.description || '').toLowerCase().includes(s)
       );
     }
 
     if (state) {
       const st = String(state).toLowerCase();
-      colleges = colleges.filter((c) => c.state.toLowerCase().includes(st));
+      colleges = colleges.filter((c) => (c.state || '').toLowerCase().includes(st));
     }
 
     if (approval) {
       const app = String(approval).toLowerCase();
-      colleges = colleges.filter((c) => c.approvals.some((a: string) => a.toLowerCase().includes(app)));
+      colleges = colleges.filter((c) => (c.approvals || []).some((a: string) => a.toLowerCase().includes(app)));
     }
 
     if (popular === 'true') colleges = colleges.filter((c) => c.popular);
     if (featured === 'true') colleges = colleges.filter((c) => c.featured);
 
-    res.json({ success: true, count: colleges.length, colleges });
+    colleges.sort((a: any, b: any) => Number(a.displayPriority ?? 9999) - Number(b.displayPriority ?? 9999) || new Date(b.createdAt || 0).getTime() - new Date(a.createdAt || 0).getTime());
+    const total = colleges.length;
+    const pagedColleges = colleges.slice(skip, skip + requestedLimit);
+
+    res.json({ success: true, count: pagedColleges.length, total, totalPages: Math.max(1, Math.ceil(total / requestedLimit)), page: pageNumber, limit: requestedLimit, colleges: pagedColleges });
   } catch (err: any) {
     res.status(500).json({ success: false, message: err.message || 'Error fetching colleges' });
   }
@@ -145,6 +160,7 @@ router.post(
         description,
         overview,
         approvals,
+        displayPriority,
         website,
         applyUrl,
         videoUrl,
@@ -231,6 +247,7 @@ router.post(
         placementPercentage: placementPercentage || '85%',
         averagePackage: averagePackage || '₹ 4.5 LPA',
         highestPackage: highestPackage || '₹ 18.0 LPA',
+        displayPriority: Number(displayPriority) || 9999,
         isActive: isActive !== undefined ? Boolean(isActive === 'true' || isActive === true) : true
       };
 
@@ -285,6 +302,7 @@ router.put(
         description,
         overview,
         approvals,
+        displayPriority,
         website,
         applyUrl,
         videoUrl,
@@ -317,6 +335,7 @@ router.put(
       if (placementPercentage !== undefined) updateData.placementPercentage = placementPercentage;
       if (averagePackage !== undefined) updateData.averagePackage = averagePackage;
       if (highestPackage !== undefined) updateData.highestPackage = highestPackage;
+      if (displayPriority !== undefined) updateData.displayPriority = Number(displayPriority) || 9999;
       if (isActive !== undefined) updateData.isActive = isActive === 'true' || isActive === true;
 
       if (approvals) {

@@ -12,7 +12,7 @@ export const CollegesPage: React.FC = () => {
 
   const [search, setSearch] = useState(searchParams.get('search') || '');
   const [selectedState, setSelectedState] = useState('');
-  const [sortBy, setSortBy] = useState('name');
+  const [sortBy, setSortBy] = useState('priority');
 
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedCollegeName, setSelectedCollegeName] = useState('');
@@ -23,7 +23,9 @@ export const CollegesPage: React.FC = () => {
       const res = await api.get(`/colleges?search=${encodeURIComponent(search)}&state=${encodeURIComponent(selectedState)}`);
       if (res.data.success) {
         let list = res.data.colleges;
-        if (sortBy === 'name') {
+        if (sortBy === 'priority') {
+          list.sort((a: College, b: College) => Number(a.displayPriority ?? 9999) - Number(b.displayPriority ?? 9999));
+        } else if (sortBy === 'name') {
           list.sort((a: College, b: College) => (a.name || '').localeCompare(b.name || ''));
         } else if (sortBy === 'year') {
           list.sort((a: College, b: College) => String(b.establishedYear || '').localeCompare(String(a.establishedYear || '')));
@@ -95,6 +97,7 @@ export const CollegesPage: React.FC = () => {
                 onChange={(e) => setSortBy(e.target.value)}
                 className="w-full px-3 py-2.5 bg-gray-50 rounded-xl text-xs font-medium border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#FA394A]"
               >
+                <option value="priority">Featured (Recommended)</option>
                 <option value="name">Sort by Name (A-Z)</option>
                 <option value="year">Sort by Establishment Year</option>
               </select>
@@ -127,9 +130,9 @@ export const CollegesPage: React.FC = () => {
             {colleges.map((college) => (
               <div
                 key={college._id}
-                className="bg-white rounded-3xl border border-gray-200/80 overflow-hidden shadow-card hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+                className="bg-white rounded-3xl border border-gray-200/80 overflow-hidden shadow-card hover:shadow-xl transition-all duration-300 flex flex-col h-full group"
               >
-                <div className="relative h-44 bg-gray-100 overflow-hidden">
+                <div className="relative h-44 bg-gray-100 overflow-hidden flex-shrink-0">
                   <img
                     src={college.banner}
                     alt={college.name}
@@ -143,7 +146,9 @@ export const CollegesPage: React.FC = () => {
                       className="w-12 h-12 rounded-xl bg-white p-1 shadow-md object-contain border border-gray-200"
                     />
                     <div>
-                      <h3 className="text-white font-black text-sm drop-shadow">{college.name}</h3>
+                      <h3 className="text-white font-black text-sm drop-shadow line-clamp-1 max-w-[150px]">
+                        {college.name}
+                      </h3>
                       <p className="text-gray-200 text-[11px] font-medium flex items-center">
                         <MapPin className="w-3 h-3 mr-1 text-[#FA394A]" /> {college.location}
                       </p>
@@ -151,12 +156,16 @@ export const CollegesPage: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
-                  <p className="text-xs text-gray-600 line-clamp-3 leading-relaxed">
-                    {college.description}
-                  </p>
+                <div className="p-5 flex-1 flex flex-col">
+                  {/* Description - removed line-clamp to show full text */}
+                  <div className="flex-1">
+                    <p className="text-xs text-gray-600 leading-relaxed">
+                      {college.description}
+                    </p>
+                  </div>
 
-                  <div className="flex flex-wrap gap-1.5">
+                  {/* Approvals Section */}
+                  <div className="mt-3 flex flex-wrap gap-1.5">
                     {(Array.isArray(college.approvals)
                       ? college.approvals
                       : typeof college.approvals === 'string'
@@ -172,7 +181,8 @@ export const CollegesPage: React.FC = () => {
                     ))}
                   </div>
 
-                  <div className="pt-3 border-t border-gray-100 flex items-center justify-between">
+                  {/* Action Buttons */}
+                  <div className="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">
                     <Link
                       to={`/colleges/${college.slug}`}
                       className="text-xs font-bold text-[#333333] hover:text-[#FA394A] flex items-center transition-colors"
@@ -186,9 +196,9 @@ export const CollegesPage: React.FC = () => {
                         setSelectedCollegeName(college.name);
                         setModalOpen(true);
                       }}
-                      className="bg-[#FA394A] hover:bg-[#D92B3B] text-white px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-sm"
+                      className="bg-[#FA394A] hover:bg-[#D92B3B] text-white px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-sm whitespace-nowrap"
                     >
-                      Enquire
+                      Enquire Now
                     </button>
                   </div>
                 </div>

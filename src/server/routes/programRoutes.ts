@@ -10,7 +10,10 @@ const router = Router();
 // GET All Programs (Public)
 router.get('/', async (req, res) => {
   try {
-    const { degreeType, collegeId, search, category } = req.query;
+    const { degreeType, collegeId, search, category, limit, page, pageSize } = req.query;
+    const pageNumber = Math.max(1, Number(page) || 1);
+    const requestedLimit = Math.min(100, Math.max(1, Number(limit || pageSize || 20)));
+    const skip = (pageNumber - 1) * requestedLimit;
 
     if (isMongoConnected()) {
       const query: any = {};
@@ -24,13 +27,22 @@ router.get('/', async (req, res) => {
         query.$or = [
           { title: new RegExp(s, 'i') },
           { name: new RegExp(s, 'i') },
+          { degreeType: new RegExp(s, 'i') },
           { specializations: { $in: [new RegExp(s, 'i')] } },
           { collegeName: new RegExp(s, 'i') }
         ];
       }
 
-      const programs = await (ProgramModel as any).find(query).sort({ createdAt: -1 }).lean();
-      return res.json({ success: true, count: programs.length, programs });
+      const [total, programs] = await Promise.all([
+        (ProgramModel as any).countDocuments(query),
+        (ProgramModel as any)
+          .find(query)
+          .sort({ createdAt: -1 })
+          .skip(skip)
+          .limit(requestedLimit)
+          .lean()
+      ]);
+      return res.json({ success: true, count: programs.length, total, totalPages: Math.max(1, Math.ceil(total / requestedLimit)), page: pageNumber, limit: requestedLimit, programs });
     }
 
     const db = getDb();
@@ -38,7 +50,7 @@ router.get('/', async (req, res) => {
 
     if (degreeType) {
       const dt = String(degreeType).toLowerCase();
-      programs = programs.filter((p) => p.degreeType.toLowerCase() === dt);
+      programs = programs.filter((p) => (p.degreeType || '').toLowerCase() === dt);
     }
 
     if (collegeId) {
@@ -50,14 +62,17 @@ router.get('/', async (req, res) => {
       const s = String(search).toLowerCase();
       programs = programs.filter(
         (p) =>
-          p.title.toLowerCase().includes(s) ||
+          (p.title || '').toLowerCase().includes(s) ||
           (p.name && p.name.toLowerCase().includes(s)) ||
-          p.collegeName.toLowerCase().includes(s) ||
-          (p.specializations && p.specializations.some((sp: string) => sp.toLowerCase().includes(s)))
+          (p.degreeType || '').toLowerCase().includes(s) ||
+          (p.collegeName || '').toLowerCase().includes(s) ||
+          (p.specializations || []).some((sp: string) => sp.toLowerCase().includes(s))
       );
     }
 
-    res.json({ success: true, count: programs.length, programs });
+    const total = programs.length;
+    const pagedPrograms = programs.slice(skip, skip + requestedLimit);
+    res.json({ success: true, count: pagedPrograms.length, total, totalPages: Math.max(1, Math.ceil(total / requestedLimit)), page: pageNumber, limit: requestedLimit, programs: pagedPrograms });
   } catch (err: any) {
     res.status(500).json({ success: false, message: err.message || 'Error fetching programs' });
   }

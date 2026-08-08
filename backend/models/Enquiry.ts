@@ -44,4 +44,7 @@ const EnquirySchema: Schema = new Schema(
   { timestamps: true }
 );
 
+EnquirySchema.index({ createdAt: -1, status: 1 });
+EnquirySchema.index({ email: 1, phone: 1 });
+
 export const EnquiryModel = mongoose.models.Enquiry || mongoose.model<IEnquiry>('Enquiry', EnquirySchema);

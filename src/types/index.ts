@@ -51,6 +51,7 @@ export interface College {
   highlights?: string[];
   admissionProcess?: string[];
   faqs?: { question: string; answer: string }[];
+  displayPriority?: number;
   isActive: boolean;
   createdAt?: string;
   updatedAt?: string;

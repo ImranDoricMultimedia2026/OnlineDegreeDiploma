@@ -66,4 +66,7 @@ const ProgramSchema: Schema = new Schema(
   { timestamps: true }
 );
 
+ProgramSchema.index({ collegeId: 1, degreeType: 1, createdAt: -1 });
+ProgramSchema.index({ title: 'text', collegeName: 'text', degreeType: 'text' });
+
 export const ProgramModel = mongoose.models.Program || mongoose.model<IProgram>('Program', ProgramSchema);

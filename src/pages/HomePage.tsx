@@ -16,7 +16,8 @@ import {
   ArrowRight,
   ShieldCheck,
   UserCheck,
-  Briefcase
+  Briefcase,
+  MapPin
 } from 'lucide-react';
 import api from '../services/api';
 import { College, Program, FAQ, Testimonial, HeroSlide } from '../types';
@@ -41,13 +42,24 @@ export const HomePage: React.FC = () => {
   const [selectedCollegeName, setSelectedCollegeName] = useState('');
   const [selectedProgramName, setSelectedProgramName] = useState('');
 
+  // Helper function to truncate text with HTML tag stripping
+  const truncateText = (text: string, maxLength: number = 80) => {
+    if (!text) return 'No description available.';
+    // Remove HTML tags
+    const cleanText = text.replace(/<[^>]*>/g, '');
+    // Trim extra spaces
+    const trimmedText = cleanText.trim();
+    if (trimmedText.length <= maxLength) return trimmedText;
+    return trimmedText.substring(0, maxLength) + '...';
+  };
+
   // Fetch Homepage API Data
   useEffect(() => {
     const fetchData = async () => {
       try {
         const [slidersRes, collegesRes, programsRes, faqsRes, tstRes] = await Promise.all([
           api.get('/sliders'),
-          api.get('/colleges?limit=6'),
+          api.get('/colleges?limit=50'),
           api.get('/programs?limit=100'),
           api.get('/faqs'),
           api.get('/testimonials')
@@ -136,12 +148,12 @@ export const HomePage: React.FC = () => {
                       <span>{slide.primaryBtnText}</span>
                       <ChevronRight className="w-4 h-4 ml-1" />
                     </Link>
-                  <Link
-  to={slide.secondaryBtnLink || '/apply'}
-  className="bg-[#ff3b57] hover:bg-[#e62f4d] text-white px-7 py-3.5 rounded-2xl font-extrabold text-sm transition-all duration-300 hover:scale-105 shadow-lg"
->
-  {slide.secondaryBtnText}
-</Link>
+                    <Link
+                      to={slide.secondaryBtnLink || '/apply'}
+                      className="bg-[#ff3b57] hover:bg-[#e62f4d] text-white px-7 py-3.5 rounded-2xl font-extrabold text-sm transition-all duration-300 hover:scale-105 shadow-lg"
+                    >
+                      {slide.secondaryBtnText}
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -198,7 +210,6 @@ export const HomePage: React.FC = () => {
           {/* Search Input */}
           <div className="flex-1 relative min-w-0">
             <Search className="w-5 h-5 text-gray-400 dark:text-gray-500 absolute left-4 top-1/2 -translate-y-1/2" />
-
             <input
               type="text"
               value={searchQuery}
@@ -217,7 +228,6 @@ export const HomePage: React.FC = () => {
               <Search className="w-4 h-4 mr-2 flex-shrink-0" />
               Search Programs
             </button>
-
             <button
               type="button"
               onClick={() => openEnquiry("general")}
@@ -251,7 +261,7 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* POPULAR COLLEGES SECTION */}
+      {/* POPULAR COLLEGES SECTION - WITH SHORTENED DESCRIPTIONS */}
       <section className="py-12 bg-white dark:bg-gray-900 border-y border-gray-200/80 dark:border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-10">
@@ -274,10 +284,10 @@ export const HomePage: React.FC = () => {
             {colleges.map((college) => (
               <div
                 key={college._id}
-                className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200/80 dark:border-gray-700 overflow-hidden shadow-sm  transition-all duration-300 flex flex-col group"
+                className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200/80 dark:border-gray-700 overflow-hidden shadow-sm transition-all duration-300 flex flex-col group"
               >
                 {/* College Banner & Logo */}
-                <div className="relative h-40 bg-gray-100 dark:bg-gray-700 overflow-hidden">
+                <div className="relative h-40 bg-gray-100 dark:bg-gray-700 overflow-hidden flex-shrink-0">
                   <img
                     loading="lazy"
                     decoding="async"
@@ -289,25 +299,31 @@ export const HomePage: React.FC = () => {
                   <div className="absolute bottom-3 left-4 flex items-center space-x-3">
                     <img
                       loading="lazy"
-  decoding="async"
+                      decoding="async"
                       src={college.logo}
                       alt={college.name}
                       className="w-12 h-12 rounded-xl bg-white p-1 shadow-md object-contain border border-gray-200"
                     />
                     <div>
-                      <h3 className="text-white font-extrabold text-sm drop-shadow">{college.name}</h3>
-                      <p className="text-gray-200 text-[11px] font-medium">{college.location}</p>
+                      <h3 className="text-white font-extrabold text-sm drop-shadow line-clamp-1 max-w-[150px]">
+                        {college.name}
+                      </h3>
+                      <p className="text-gray-200 text-[11px] font-medium flex items-center">
+                        <MapPin className="w-3 h-3 mr-1 text-[#FA394A]" /> {college.location}
+                      </p>
                     </div>
                   </div>
                 </div>
 
-                {/* Body Details */}
-                <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
-                  <p className="text-xs text-gray-600 dark:text-gray-400 line-clamp-2 leading-relaxed">
-                    {college.description}
-                  </p>
+                {/* Body Details - SHORTENED DESCRIPTION (80 characters max) */}
+                <div className="p-5 flex-1 flex flex-col">
+                  <div className="flex-1">
+                    <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+                      {truncateText(college.description, 80)}
+                    </p>
+                  </div>
 
-                  <div className="flex flex-wrap gap-1.5 pt-1">
+                  <div className="mt-3 flex flex-wrap gap-1.5">
                     {(Array.isArray(college.approvals)
                       ? college.approvals
                       : typeof college.approvals === 'string'
@@ -323,7 +339,7 @@ export const HomePage: React.FC = () => {
                     ))}
                   </div>
 
-                  <div className="pt-2 border-t border-gray-100 dark:border-gray-700 flex items-center justify-between">
+                  <div className="mt-4 pt-2 border-t border-gray-100 dark:border-gray-700 flex items-center justify-between">
                     <Link
                       to={`/colleges/${college.slug}`}
                       className="text-xs font-bold text-[#333333] dark:text-gray-200 hover:text-[#FA394A] transition-colors"
@@ -332,7 +348,7 @@ export const HomePage: React.FC = () => {
                     </Link>
                     <button
                       onClick={() => openEnquiry('general', college.name)}
-                      className="bg-[#FA394A] hover:bg-[#D92B3B] text-white px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all"
+                      className="bg-[#FA394A] hover:bg-[#D92B3B] text-white px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap"
                     >
                       Enquire Now
                     </button>
@@ -385,7 +401,7 @@ export const HomePage: React.FC = () => {
                     {program.image ? (
                       <img
                         loading="lazy"
-  decoding="async"
+                        decoding="async"
                         src={getAssetUrl(program.image)}
                         alt={program.title}
                         className="h-36 w-full rounded-2xl object-cover border border-gray-200 dark:border-gray-700"
@@ -417,9 +433,9 @@ export const HomePage: React.FC = () => {
                       )}
                     </div>
 
-                    {/* Overview */}
-                    <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-2">
-                      {program.overview || 'Career focused online degree program.'}
+                    {/* Overview - SHORTENED (80 characters) */}
+                    <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+                      {truncateText(program.overview || 'Career focused online degree program.', 80)}
                     </p>
 
                     {/* Key Attributes */}
@@ -436,10 +452,10 @@ export const HomePage: React.FC = () => {
                       )}
                     </div>
 
-                    {/* Eligibility */}
+                    {/* Eligibility - SHORTENED (50 characters) */}
                     {program.eligibility && (
                       <div className="bg-gray-50 dark:bg-gray-900 p-2.5 rounded-xl border border-gray-100 dark:border-gray-700 text-[11px] text-gray-600 dark:text-gray-400 font-medium">
-                        <span className="font-bold text-[#333333] dark:text-gray-200">Eligibility:</span> {program.eligibility}
+                        <span className="font-bold text-[#333333] dark:text-gray-200">Eligibility:</span> {truncateText(program.eligibility, 50)}
                       </div>
                     )}
                   </div>
@@ -579,7 +595,7 @@ export const HomePage: React.FC = () => {
                   {t.image ? (
                     <img
                       loading="lazy"
-  decoding="async"
+                      decoding="async"
                       src={t.image}
                       alt={t.name}
                       className="w-11 h-11 rounded-full object-cover border-2 border-[#FA394A]"

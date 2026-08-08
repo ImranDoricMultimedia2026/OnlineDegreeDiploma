@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useAuth } from '../context/AuthContext';
 import {
   College,
@@ -78,6 +78,14 @@ export const AdminDashboardPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('');
   const [actionSuccessMsg, setActionSuccessMsg] = useState('');
+  const [programSearchTerm, setProgramSearchTerm] = useState('');
+  const [programPage, setProgramPage] = useState(1);
+  const [programPageSize, setProgramPageSize] = useState(10);
+  const [collegeSearchTerm, setCollegeSearchTerm] = useState('');
+  const [collegePage, setCollegePage] = useState(1);
+  const [collegePageSize, setCollegePageSize] = useState(10);
+  const [confirmDelete, setConfirmDelete] = useState<{ type: 'college' | 'program' | 'enquiry' | 'application'; id: string; label: string } | null>(null);
+  const [deletingItem, setDeletingItem] = useState(false);
 
   // Modals & Form States
   // 1. College Modal
@@ -105,6 +113,7 @@ export const AdminDashboardPage: React.FC = () => {
     placementPercentage: '85%',
     averagePackage: '₹ 4.5 LPA',
     highestPackage: '₹ 18.0 LPA',
+    displayPriority: '9999',
     isActive: true
   });
 
@@ -367,21 +376,25 @@ export const AdminDashboardPage: React.FC = () => {
       placementPercentage: col.placementPercentage || '85%',
       averagePackage: col.averagePackage || '₹ 4.5 LPA',
       highestPackage: col.highestPackage || '₹ 18.0 LPA',
+      displayPriority: String(col.displayPriority ?? '9999'),
       isActive: col.isActive !== undefined ? col.isActive : true
     });
     setShowCollegeModal(true);
   };
 
   const handleDeleteCollege = async (id: string) => {
-    if (!window.confirm('Are you sure you want to delete this university? All linked programs will remain.')) return;
+    setDeletingItem(true);
     try {
       const res = await api.delete(`/colleges/${id}`);
       if (res.data.success) {
         showToast('University deleted');
-        setColleges((prev) => prev.filter((c) => c._id !== id));
+        await fetchAllData();
       }
     } catch (err) {
       alert('Error deleting university');
+    } finally {
+      setDeletingItem(false);
+      setConfirmDelete(null);
     }
   };
 
@@ -432,15 +445,18 @@ export const AdminDashboardPage: React.FC = () => {
   };
 
   const handleDeleteProgram = async (id: string) => {
-    if (!window.confirm('Are you sure you want to delete this program?')) return;
+    setDeletingItem(true);
     try {
       const res = await api.delete(`/programs/${id}`);
       if (res.data.success) {
         showToast('Program deleted');
-        setPrograms((prev) => prev.filter((p) => p._id !== id));
+        await fetchAllData();
       }
     } catch (err) {
       alert('Error deleting program');
+    } finally {
+      setDeletingItem(false);
+      setConfirmDelete(null);
     }
   };
 
@@ -596,6 +612,38 @@ export const AdminDashboardPage: React.FC = () => {
     }
   };
 
+  const handleDeleteEnquiry = async (id: string) => {
+    setDeletingItem(true);
+    try {
+      const res = await api.delete(`/enquiries/${id}`);
+      if (res.data.success) {
+        showToast('Enquiry deleted');
+        await fetchAllData();
+      }
+    } catch (err: any) {
+      alert(err.response?.data?.message || 'Error deleting enquiry');
+    } finally {
+      setDeletingItem(false);
+      setConfirmDelete(null);
+    }
+  };
+
+  const handleDeleteApplication = async (id: string) => {
+    setDeletingItem(true);
+    try {
+      const res = await api.delete(`/applications/${id}`);
+      if (res.data.success) {
+        showToast('Application deleted');
+        await fetchAllData();
+      }
+    } catch (err: any) {
+      alert(err.response?.data?.message || 'Error deleting application');
+    } finally {
+      setDeletingItem(false);
+      setConfirmDelete(null);
+    }
+  };
+
   const handleDeleteContact = async (id: string) => {
     if (!window.confirm('Delete this contact message?')) return;
     try {
@@ -716,6 +764,40 @@ export const AdminDashboardPage: React.FC = () => {
         (s.phone || '').includes(searchTerm))
   );
 
+  const filteredColleges = useMemo(() => {
+    const term = (collegeSearchTerm || '').trim().toLowerCase();
+    if (!term) return [...colleges].sort((a, b) => Number(a.displayPriority ?? 9999) - Number(b.displayPriority ?? 9999));
+    return [...colleges]
+      .filter((college) => {
+        const haystack = `${college.name} ${college.location} ${college.state} ${college.description}`.toLowerCase();
+        return haystack.includes(term);
+      })
+      .sort((a, b) => Number(a.displayPriority ?? 9999) - Number(b.displayPriority ?? 9999));
+  }, [colleges, collegeSearchTerm]);
+
+  const filteredPrograms = useMemo(() => {
+    const term = (programSearchTerm || '').trim().toLowerCase();
+    if (!term) return [...programs];
+    return programs.filter((program) => {
+      const haystack = `${program.title} ${program.collegeName} ${program.degreeType} ${program.fee || ''} ${program.eligibility || ''}`.toLowerCase();
+      return haystack.includes(term);
+    });
+  }, [programs, programSearchTerm]);
+
+  const totalCollegePages = Math.max(1, Math.ceil(filteredColleges.length / collegePageSize));
+  const totalProgramPages = Math.max(1, Math.ceil(filteredPrograms.length / programPageSize));
+
+  const pagedColleges = filteredColleges.slice((collegePage - 1) * collegePageSize, collegePage * collegePageSize);
+  const pagedPrograms = filteredPrograms.slice((programPage - 1) * programPageSize, programPage * programPageSize);
+
+  useEffect(() => {
+    setCollegePage(1);
+  }, [collegeSearchTerm, collegePageSize]);
+
+  useEffect(() => {
+    setProgramPage(1);
+  }, [programSearchTerm, programPageSize]);
+
   return (
     <div className="min-h-screen bg-[#F5F5F5] font-sans pb-16">
       {/* Toast Banner */}
@@ -723,6 +805,40 @@ export const AdminDashboardPage: React.FC = () => {
         <div className="fixed top-20 right-5 z-50 bg-emerald-600 text-white px-5 py-3 rounded-2xl shadow-2xl font-bold text-xs flex items-center space-x-2 animate-bounce">
           <Icons.CheckCircle2 className="w-5 h-5 text-white" />
           <span>{actionSuccessMsg}</span>
+        </div>
+      )}
+
+      {confirmDelete && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 px-4">
+          <div className="w-full max-w-md rounded-3xl bg-white p-6 shadow-2xl">
+            <div className="flex items-center space-x-2 text-[#FA394A]">
+              <Icons.AlertTriangle className="w-5 h-5" />
+              <h3 className="text-base font-black text-[#333333]">Confirm deletion</h3>
+            </div>
+            <p className="mt-3 text-sm text-gray-600">
+              Delete <span className="font-semibold text-[#333333]">{confirmDelete.label}</span>? This action cannot be undone.
+            </p>
+            <div className="mt-6 flex justify-end gap-3">
+              <button onClick={() => setConfirmDelete(null)} className="px-4 py-2 rounded-xl border text-sm font-semibold text-gray-600">Cancel</button>
+              <button
+                onClick={() => {
+                  if (confirmDelete.type === 'college') {
+                    void handleDeleteCollege(confirmDelete.id);
+                  } else if (confirmDelete.type === 'program') {
+                    void handleDeleteProgram(confirmDelete.id);
+                  } else if (confirmDelete.type === 'enquiry') {
+                    void handleDeleteEnquiry(confirmDelete.id);
+                  } else {
+                    void handleDeleteApplication(confirmDelete.id);
+                  }
+                }}
+                disabled={deletingItem}
+                className="px-4 py-2 rounded-xl bg-[#FA394A] text-white text-sm font-semibold disabled:opacity-60"
+              >
+                {deletingItem ? 'Deleting...' : 'Delete'}
+              </button>
+            </div>
+          </div>
         </div>
       )}
 
@@ -1138,6 +1254,7 @@ export const AdminDashboardPage: React.FC = () => {
                         <th className="py-3 px-3">Course / University</th>
                         <th className="py-3 px-3">Lead Status</th>
                         <th className="py-3 px-3">Date</th>
+                        <th className="py-3 px-3">Actions</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-100 font-medium">
@@ -1168,6 +1285,16 @@ export const AdminDashboardPage: React.FC = () => {
                           </td>
                           <td className="py-3 px-3 text-[11px] text-gray-500">
                             {new Date(enq.createdAt).toLocaleDateString('en-IN')}
+                          </td>
+                          <td className="py-3 px-3">
+                            <button
+                              type="button"
+                              onClick={() => setConfirmDelete({ type: 'enquiry', id: enq._id, label: enq.name || 'this enquiry' })}
+                              className="p-1.5 text-red-600 hover:bg-red-50 rounded-lg"
+                              aria-label="Delete enquiry"
+                            >
+                              <Icons.Trash2 className="w-4 h-4" />
+                            </button>
                           </td>
                         </tr>
                       ))}
@@ -1231,7 +1358,7 @@ export const AdminDashboardPage: React.FC = () => {
                               <option value="Rejected">Rejected</option>
                             </select>
                           </td>
-                          <td className="py-3 px-3">
+                          <td className="py-3 px-3 flex items-center gap-2">
                             <button
                               onClick={() => {
                                 const remarks = prompt('Enter Admin Review Remarks:', app.adminRemarks || '');
@@ -1242,6 +1369,14 @@ export const AdminDashboardPage: React.FC = () => {
                               className="text-xs text-blue-600 hover:underline font-bold"
                             >
                               Add Remark
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => setConfirmDelete({ type: 'application', id: app._id, label: app.programName || 'this application' })}
+                              className="p-1.5 text-red-600 hover:bg-red-50 rounded-lg"
+                              aria-label="Delete application"
+                            >
+                              <Icons.Trash2 className="w-4 h-4" />
                             </button>
                           </td>
                         </tr>
@@ -1327,10 +1462,27 @@ export const AdminDashboardPage: React.FC = () => {
             {/* 5. UNIVERSITIES TAB */}
             {activeTab === 'colleges' && (
               <div className="bg-white rounded-3xl p-6 sm:p-8 border border-gray-200/80 shadow-sm space-y-6">
-                <div className="flex justify-between items-center">
+                <div className="flex flex-col gap-3 sm:flex-row sm:justify-between sm:items-center">
                   <div>
                     <h2 className="text-lg font-black text-[#333333]">Manage Universities</h2>
                     <p className="text-xs text-gray-500">Add, edit logos, banners, brochure PDFs, video URLs, and apply URLs</p>
+                  </div>
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+                    <div className="relative">
+                      <Icons.Search className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                      <input
+                        type="text"
+                        placeholder="Search universities"
+                        value={collegeSearchTerm}
+                        onChange={(e) => setCollegeSearchTerm(e.target.value)}
+                        className="pl-9 pr-3 py-2 rounded-xl border text-xs outline-none"
+                      />
+                    </div>
+                    <select value={collegePageSize} onChange={(e) => setCollegePageSize(Number(e.target.value))} className="px-3 py-2 rounded-xl border text-xs outline-none bg-white">
+                      <option value={10}>10 per page</option>
+                      <option value={20}>20 per page</option>
+                      <option value={50}>50 per page</option>
+                    </select>
                   </div>
                   <button
                     onClick={() => {
@@ -1357,6 +1509,7 @@ export const AdminDashboardPage: React.FC = () => {
                         placementPercentage: '85%',
                         averagePackage: '₹ 4.5 LPA',
                         highestPackage: '₹ 18.0 LPA',
+                        displayPriority: '9999',
                         isActive: true
                       });
                       setShowCollegeModal(true);
@@ -1369,7 +1522,12 @@ export const AdminDashboardPage: React.FC = () => {
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {colleges.map((col) => (
+                  {pagedColleges.length === 0 ? (
+                    <div className="sm:col-span-2 py-10 text-center border border-dashed rounded-2xl text-gray-500 text-xs">
+                      No universities match the current search.
+                    </div>
+                  ) : (
+                    pagedColleges.map((col) => (
                     <div key={col._id} className="p-4 bg-gray-50 rounded-2xl border border-gray-200 flex justify-between items-start">
                       <div className="flex items-center space-x-3">
                         <img
@@ -1392,23 +1550,51 @@ export const AdminDashboardPage: React.FC = () => {
                         <button onClick={() => handleEditCollege(col)} className="p-1.5 text-blue-600 hover:bg-blue-50 rounded-lg">
                           <Icons.Edit2 className="w-4 h-4" />
                         </button>
-                        <button onClick={() => handleDeleteCollege(col._id)} className="p-1.5 text-red-600 hover:bg-red-50 rounded-lg">
+                        <button onClick={() => setConfirmDelete({ type: 'college', id: col._id, label: col.name })} className="p-1.5 text-red-600 hover:bg-red-50 rounded-lg">
                           <Icons.Trash2 className="w-4 h-4" />
                         </button>
                       </div>
                     </div>
-                  ))}
+                    ))
+                  )}
                 </div>
+                {filteredColleges.length > collegePageSize && (
+                  <div className="flex items-center justify-between border-t pt-4 text-xs text-gray-500">
+                    <span>Showing {Math.min(collegePageSize, filteredColleges.length)} of {filteredColleges.length} universities</span>
+                    <div className="flex items-center gap-2">
+                      <button onClick={() => setCollegePage((prev) => Math.max(1, prev - 1))} disabled={collegePage === 1} className="px-3 py-2 rounded-xl border disabled:opacity-50">Prev</button>
+                      <span>Page {collegePage} / {totalCollegePages}</span>
+                      <button onClick={() => setCollegePage((prev) => Math.min(totalCollegePages, prev + 1))} disabled={collegePage === totalCollegePages} className="px-3 py-2 rounded-xl border disabled:opacity-50">Next</button>
+                    </div>
+                  </div>
+                )}
               </div>
             )}
 
             {/* 5. PROGRAMS TAB */}
             {activeTab === 'programs' && (
               <div className="bg-white rounded-3xl p-6 sm:p-8 border border-gray-200/80 shadow-sm space-y-6">
-                <div className="flex justify-between items-center">
+                <div className="flex flex-col gap-3 sm:flex-row sm:justify-between sm:items-center">
                   <div>
                     <h2 className="text-lg font-black text-[#333333]">Manage Programs</h2>
                     <p className="text-xs text-gray-500">Configure online degree courses, fee structures, eligibility, and brochure PDFs</p>
+                  </div>
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+                    <div className="relative">
+                      <Icons.Search className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                      <input
+                        type="text"
+                        placeholder="Search programs"
+                        value={programSearchTerm}
+                        onChange={(e) => setProgramSearchTerm(e.target.value)}
+                        className="pl-9 pr-3 py-2 rounded-xl border text-xs outline-none"
+                      />
+                    </div>
+                    <select value={programPageSize} onChange={(e) => setProgramPageSize(Number(e.target.value))} className="px-3 py-2 rounded-xl border text-xs outline-none bg-white">
+                      <option value={10}>10 per page</option>
+                      <option value={20}>20 per page</option>
+                      <option value={50}>50 per page</option>
+                    </select>
                   </div>
                   <button
                     onClick={() => {
@@ -1440,7 +1626,12 @@ export const AdminDashboardPage: React.FC = () => {
                 </div>
 
                 <div className="space-y-3">
-                  {programs.map((prog) => (
+                  {pagedPrograms.length === 0 ? (
+                    <div className="py-10 text-center border border-dashed rounded-2xl text-gray-500 text-xs">
+                      No programs match the current search.
+                    </div>
+                  ) : (
+                    pagedPrograms.map((prog) => (
                     <div key={prog._id} className="p-4 bg-gray-50 rounded-2xl border border-gray-200 flex justify-between items-center">
                       <div>
                         <span className="text-[10px] font-extrabold text-[#FA394A] uppercase">{prog.degreeType || 'Degree'}</span>
@@ -1454,13 +1645,24 @@ export const AdminDashboardPage: React.FC = () => {
                         <button onClick={() => handleEditProgram(prog)} className="p-1.5 text-blue-600 hover:bg-blue-50 rounded-lg">
                           <Icons.Edit2 className="w-4 h-4" />
                         </button>
-                        <button onClick={() => handleDeleteProgram(prog._id)} className="p-1.5 text-red-600 hover:bg-red-50 rounded-lg">
+                        <button onClick={() => setConfirmDelete({ type: 'program', id: prog._id, label: prog.title })} className="p-1.5 text-red-600 hover:bg-red-50 rounded-lg">
                           <Icons.Trash2 className="w-4 h-4" />
                         </button>
                       </div>
                     </div>
-                  ))}
+                    ))
+                  )}
                 </div>
+                {filteredPrograms.length > programPageSize && (
+                  <div className="flex items-center justify-between border-t pt-4 text-xs text-gray-500">
+                    <span>Showing {Math.min(programPageSize, filteredPrograms.length)} of {filteredPrograms.length} programs</span>
+                    <div className="flex items-center gap-2">
+                      <button onClick={() => setProgramPage((prev) => Math.max(1, prev - 1))} disabled={programPage === 1} className="px-3 py-2 rounded-xl border disabled:opacity-50">Prev</button>
+                      <span>Page {programPage} / {totalProgramPages}</span>
+                      <button onClick={() => setProgramPage((prev) => Math.min(totalProgramPages, prev + 1))} disabled={programPage === totalProgramPages} className="px-3 py-2 rounded-xl border disabled:opacity-50">Next</button>
+                    </div>
+                  </div>
+                )}
               </div>
             )}
 
@@ -2177,6 +2379,18 @@ export const AdminDashboardPage: React.FC = () => {
                   onChange={(e) => setCollegeFormData({ ...collegeFormData, approvals: e.target.value })}
                   className="w-full px-3.5 py-2 rounded-xl border border-gray-300 outline-none"
                 />
+              </div>
+
+              <div>
+                <label className="block mb-1">Display Priority</label>
+                <input
+                  type="number"
+                  min="1"
+                  value={collegeFormData.displayPriority}
+                  onChange={(e) => setCollegeFormData({ ...collegeFormData, displayPriority: e.target.value })}
+                  className="w-full px-3.5 py-2 rounded-xl border border-gray-300 outline-none"
+                />
+                <p className="mt-1 text-[11px] text-gray-500">Lower numbers appear first. Use 1 for LPU and 2 for CU.</p>
               </div>
 
               <div>
