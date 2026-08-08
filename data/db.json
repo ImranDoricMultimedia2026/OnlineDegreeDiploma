@@ -1706,64 +1706,6 @@
       "status": "Pending",
       "adminRemarks": "Application submitted and queued for verification.",
       "createdAt": "2026-08-06T10:41:33.136Z"
-    },
-    {
-      "_id": "6a74641c75baae1db99babaa",
-      "userId": "guest_1786012700112",
-      "studentName": "System Administrator",
-      "studentEmail": "admin@onlinedegreediploma.com",
-      "studentPhone": "+91 9999900000",
-      "collegeId": "6a6b349c86943188967519c4",
-      "collegeName": "Online Mizoram University",
-      "programId": "6a6d9b21e806cbdf5384c843",
-      "programName": "Master of Arts in History (MA History)",
-      "personalInfo": {
-        "dob": "2026-08-04",
-        "gender": "Male",
-        "address": "",
-        "state": "Delhi",
-        "qualification": "General",
-        "tenthPercentage": "30",
-        "twelfthPercentage": "",
-        "graduationPercentage": ""
-      },
-      "documents": {
-        "idProof": "",
-        "marksheets": "",
-        "photo": ""
-      },
-      "status": "Pending",
-      "adminRemarks": "Application submitted and queued for verification.",
-      "createdAt": "2026-08-06T10:38:20.112Z"
-    },
-    {
-      "_id": "6a6dc46865900f8f70d2091e",
-      "userId": "guest_1785578600682",
-      "studentName": "Md Imran Alam",
-      "studentEmail": "mdimranalam12@gmail.com",
-      "studentPhone": "7640018213",
-      "collegeId": "6a6b349c86943188967519b9",
-      "collegeName": "LPU Online",
-      "programId": "6a6c50b0f2c49e5e9eb597fd",
-      "programName": "Master of Computer Applications (MCA)",
-      "personalInfo": {
-        "dob": "2026-02-17",
-        "gender": "Male",
-        "address": "",
-        "state": "Bihar",
-        "qualification": "",
-        "tenthPercentage": "76",
-        "twelfthPercentage": "",
-        "graduationPercentage": ""
-      },
-      "documents": {
-        "idProof": "",
-        "marksheets": "",
-        "photo": ""
-      },
-      "status": "Approved",
-      "adminRemarks": "Success",
-      "createdAt": "2026-08-01T10:03:20.684Z"
     }
   ],
   "documents": [

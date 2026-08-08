@@ -143,39 +143,69 @@ export const StudentDashboardPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#F5F5F5] font-sans pb-16">
-      {/* Top Banner */}
-      <div className="bg-[#333333] text-white py-10 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center space-x-4 text-center sm:text-left">
-            <div className="w-16 h-16 rounded-2xl bg-[#FA394A] flex items-center justify-center text-2xl font-black shadow-lg">
-              {user?.name ? user.name.charAt(0).toUpperCase() : 'S'}
-            </div>
-            <div>
-              <span className="text-[11px] font-extrabold text-[#FA394A] tracking-wider uppercase flex items-center justify-center sm:justify-start">
-                <Sparkles className="w-3.5 h-3.5 mr-1" /> Student Admission Portal
-              </span>
-              <h1 className="text-xl sm:text-2xl font-black">{user?.name || 'Welcome Back'}</h1>
-              <p className="text-xs text-gray-300">{user?.email}</p>
-            </div>
-          </div>
+   {/* Top Banner */}
+<div
+  className="relative text-white px-5 sm:px-8 py-8 sm:py-12 bg-cover bg-center bg-no-repeat overflow-hidden"
+  style={{
+    backgroundImage:
+      "url('/PagesBanner/Admin.png')",
+  }}
+>
+  {/* Banner Content */}
+  <div className="relative z-10 max-w-7xl mx-auto">
 
-          <div className="flex items-center space-x-3">
-            <Link
-              to="/apply"
-              className="bg-[#FA394A] hover:bg-[#D92B3B] text-white font-extrabold px-5 py-2.5 rounded-xl text-xs transition-all shadow-md"
-            >
-              + New Application
-            </Link>
-            <button
-              onClick={logout}
-              className="bg-gray-700 hover:bg-gray-600 text-white font-bold px-4 py-2.5 rounded-xl text-xs transition-all flex items-center space-x-1.5"
-            >
-              <LogOut className="w-4 h-4" />
-              <span>Logout</span>
-            </button>
-          </div>
+    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
+
+      {/* Student Info */}
+      <div className="flex items-center space-x-4">
+
+        {/* Profile Initial */}
+        <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#FA394A] flex items-center justify-center text-white text-xl sm:text-2xl font-black shadow-lg">
+          {user?.name
+            ? user.name.charAt(0).toUpperCase()
+            : 'S'}
         </div>
+
+        <div>
+          <p className="text-sm font-bold text-white/80">
+            Student Admission Portal
+          </p>
+
+          <h1 className="text-xl sm:text-3xl font-black text-white mt-1">
+            {user?.name || 'Welcome Back'}
+          </h1>
+
+          <p className="text-xs sm:text-sm text-white/70 mt-1">
+            {user?.email}
+          </p>
+        </div>
+
       </div>
+
+      {/* Buttons */}
+      <div className="flex items-center space-x-3">
+
+        <Link
+          to="/apply"
+          className="bg-[#FA394A] hover:bg-[#D92B3B] text-white font-extrabold px-5 py-2.5 rounded-xl text-xs transition-all shadow-md"
+        >
+          + New Application
+        </Link>
+
+        <button
+          onClick={logout}
+          className="bg-gray-700 hover:bg-gray-600 text-white font-bold px-4 py-2.5 rounded-xl text-xs transition-all flex items-center space-x-1.5"
+        >
+          <LogOut className="w-4 h-4" />
+          <span>Logout</span>
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
 
       {/* Main Content Area */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
@@ -272,7 +302,7 @@ export const StudentDashboardPage: React.FC = () => {
               </p>
               <div className="pt-2 text-xs font-extrabold text-[#FA394A] flex items-center space-x-2">
                 <Phone className="w-4 h-4" />
-                <span>+91 1800 123 4567</span>
+                <span>+91 80541-00099</span>
               </div>
             </div>
           </div>

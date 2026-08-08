@@ -841,39 +841,57 @@ export const AdminDashboardPage: React.FC = () => {
           </div>
         </div>
       )}
-
-      {/* Admin Top Header */}
-      <div className="bg-[#333333] text-white py-8 px-4 sm:px-8 border-b border-gray-800">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-          <div>
-            <div className="flex items-center space-x-2">
-              <span className="bg-[#FA394A] text-white px-2.5 py-0.5 rounded-md font-black text-[10px] uppercase tracking-wider">
-                Full CMS Control Panel
-              </span>
-              <span className="text-gray-400 text-xs">MongoDB Atlas Connected</span>
-            </div>
-            <h1 className="text-xl sm:text-3xl font-black text-white mt-1">
-              Online Degree & Diploma CMS Dashboard
-            </h1>
-          </div>
-          <div className="flex items-center space-x-3">
-          <button
-  onClick={() => setShowNotificationModal(true)}
-  className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-xs font-extrabold transition-colors flex items-center space-x-1.5"
+{/* Admin Top Header */}
+<div
+  className="relative min-h-[220px] sm:min-h-[320px] text-white px-4 sm:px-8 py-14 sm:py-20 border-b border-gray-800 bg-cover bg-center bg-no-repeat"
+  style={{
+    backgroundImage:
+      "url('/PagesBanner/Admin.png')",
+  }}
 >
-  <Icons.Bell className="w-4 h-4 text-amber-400" />
-  <span>Broadcast Alert</span>
-</button>
-            <button
-              onClick={logout}
-              className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-xs font-extrabold transition-colors flex items-center space-x-1.5"
-            >
-              <Icons.LogOut className="w-4 h-4" />
-              <span>Logout Admin</span>
-            </button>
-          </div>
-        </div>
+  {/* Header Content */}
+  <div className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+
+    {/* Left Content */}
+    <div>
+      <div className="flex items-center space-x-2">
+        <span className="bg-[#FA394A] text-white px-3 py-1 rounded-md font-black text-[10px] uppercase tracking-wider">
+          Full CMS Control Panel
+        </span>
+
+        <span className="text-white text-xs">
+          MongoDB Atlas Connected
+        </span>
       </div>
+
+      <h1 className="text-2xl sm:text-4xl font-black text-white mt-3">
+        Online Degree & Diploma CMS Dashboard
+      </h1>
+    </div>
+
+    {/* Right Buttons */}
+    <div className="flex items-center space-x-3">
+
+      <button
+        onClick={() => setShowNotificationModal(true)}
+        className="bg-red-600 hover:bg-red-700 text-white px-5 py-3 rounded-xl text-xs font-extrabold transition-colors flex items-center space-x-1.5 shadow-lg"
+      >
+        <Icons.Bell className="w-4 h-4 text-amber-400" />
+        <span>Broadcast Alert</span>
+      </button>
+
+      <button
+        onClick={logout}
+        className="bg-red-600 hover:bg-red-700 text-white px-5 py-3 rounded-xl text-xs font-extrabold transition-colors flex items-center space-x-1.5 shadow-lg"
+      >
+        <Icons.LogOut className="w-4 h-4" />
+        <span>Logout Admin</span>
+      </button>
+
+    </div>
+
+  </div>
+</div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
