@@ -74,7 +74,7 @@
 .bg-white\/20,
 .bg-white\/30,
 .bg-\[\#ffffff\] {
-  background-color: var(--surface) !important;
+  /* background-color: var(--surface) !important; */
 }
 .bg-\[\#f5f5f5\] {
   background-color: var(--bg-light) !important;

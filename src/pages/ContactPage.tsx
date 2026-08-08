@@ -61,13 +61,13 @@ export const ContactPage: React.FC = () => {
 
         {/* Background Image */}
         <img
-          src="/PagesBanner/3.png" // Apni image ka naam yaha likho
+          src="/PagesBanner/1.png" // Apni image ka naam yaha likho
           alt="Contact Banner"
           className="absolute inset-0 w-full h-full object-cover object-center md:object-center"
         />
 
         {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/45 to-black/45"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-black/25 to-black/25"></div>
 
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

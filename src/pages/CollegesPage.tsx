@@ -48,15 +48,29 @@ export const CollegesPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#F5F5F5] font-sans pb-16">
       {/* Header Banner */}
-      <div className="bg-[#333333] text-white py-12 px-4">
-        <div className="max-w-7xl mx-auto text-center space-y-3">
-          <span className="text-xs font-bold text-[#FA394A] uppercase tracking-wider">UGC-Recognized Institutions</span>
-          <h1 className="text-2xl sm:text-4xl font-black">Top Online Degree Universities & Colleges</h1>
-          <p className="text-xs sm:text-sm text-gray-300 max-w-xl mx-auto">
-            Compare NAAC A+ accredited partner institutions offering accredited online degrees with flexible exams and placement support.
-          </p>
-        </div>
-      </div>
+<div className="relative text-white min-h-[400px] sm:min-h-[500px] md:min-h-[600px] lg:min-h-[500px] flex items-center px-4">
+  {/* Background Image */}
+  <div 
+    className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+    style={{ backgroundImage: "url('/PagesBanner/3.png')" }}
+  />
+  
+  {/* Dark Overlay */}
+  <div className="absolute inset-0 bg-black/17" />
+  
+  {/* Content - Centered Vertically */}
+  <div className="relative z-10 max-w-7xl mx-auto text-center space-y-3 w-full">
+    <span className="text-xs sm:text-sm font-bold text-[#FA394A] uppercase tracking-wider">UGC-Recognized Institutions</span>
+    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
+      Top Online Degree Universities & Colleges
+    </h1>
+    <p className="text-sm sm:text-base md:text-lg text-gray-300 max-w-2xl mx-auto">
+      Compare NAAC A+ accredited partner institutions offering accredited online degrees with flexible exams and placement support.
+    </p>
+  </div>
+</div>
+
+
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
         {/* Search & Filter Bar */}

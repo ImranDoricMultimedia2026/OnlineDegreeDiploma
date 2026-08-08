@@ -8,7 +8,7 @@ export const AboutPage: React.FC = () => {
       <div className="relative overflow-hidden py-20 sm:py-28">
 
         <img
-          src="/PagesBanner/1.png"
+          src="/PagesBanner/2.png"
           alt="Students"
           className="absolute inset-0 w-full h-full object-cover"
         />

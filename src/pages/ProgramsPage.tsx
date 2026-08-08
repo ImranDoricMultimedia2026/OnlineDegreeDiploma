@@ -67,7 +67,7 @@ export const ProgramsPage: React.FC = () => {
 
   {/* Background Image */}
   <img
-    src="/PagesBanner/2.png"
+    src="/PagesBanner/5.png"
     alt="Online Courses"
     className="absolute inset-0 w-full h-full object-cover object-center"
   />
