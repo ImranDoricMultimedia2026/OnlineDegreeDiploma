@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { Search, BookOpen, Clock, Building2, Filter, Download, ArrowRight, CheckCircle2 } from 'lucide-react';
 import api from '../services/api';
 import { Program, College } from '../types';
@@ -61,6 +62,12 @@ export const ProgramsPage: React.FC = () => {
   };
 
   return (
+ <>
+
+ <Helmet>
+        <title>Online Degree & Diploma Courses 2026 | MBA, BCA, MCA & More</title>
+        <meta name="description" content="Browse 17+ UGC-recognized online degree and diploma programs — MBA, BCA, MCA, BBA and more from LPU, CU, IGNOU & 12+ universities. Compare fees, duration, eligibility." />
+      </Helmet>
     <div className="min-h-screen bg-[#F5F5F5] font-sans pb-16">
       {/* Header Banner */}
      <div className="relative overflow-hidden py-16 sm:py-20 lg:py-24">
@@ -243,7 +250,7 @@ export const ProgramsPage: React.FC = () => {
         )}
       </div>
 
-      {modalOpen && (
+   {modalOpen && (
         <EnquiryModal
           isOpen={modalOpen}
           onClose={() => setModalOpen(false)}
@@ -254,5 +261,7 @@ export const ProgramsPage: React.FC = () => {
         />
       )}
     </div>
+ 
+ </>
   );
 };

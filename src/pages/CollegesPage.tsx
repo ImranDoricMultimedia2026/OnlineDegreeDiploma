@@ -4,6 +4,7 @@ import { Search, Building2, MapPin, Award, CheckCircle, ArrowRight, Filter, Chev
 import api from '../services/api';
 import { College } from '../types';
 import { EnquiryModal } from '../components/common/EnquiryModal';
+import { Helmet } from 'react-helmet-async';
 
 export const CollegesPage: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -46,29 +47,34 @@ export const CollegesPage: React.FC = () => {
   const uniqueStates = ['Delhi', 'Punjab', 'Uttar Pradesh', 'Maharashtra', 'Karnataka', 'Uttarakhand', 'Mizoram'];
 
   return (
+ <>
+  <Helmet>
+      <title>Top Online Universities 2026 | LPU, CU & 12+ UGC Colleges</title>
+      <meta name="description" content="Compare NAAC A+ accredited online universities like LPU, CU, IGNOU & Amity. Check approvals, fees, and apply for UGC-recognized online degrees & diplomas." />
+    </Helmet>
     <div className="min-h-screen bg-[#F5F5F5] font-sans pb-16">
       {/* Header Banner */}
-<div className="relative text-white min-h-[400px] sm:min-h-[500px] md:min-h-[600px] lg:min-h-[500px] flex items-center px-4">
-  {/* Background Image */}
-  <div 
-    className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-    style={{ backgroundImage: "url('/PagesBanner/3.png')" }}
-  />
-  
-  {/* Dark Overlay */}
-  <div className="absolute inset-0 bg-black/17" />
-  
-  {/* Content - Centered Vertically */}
-  <div className="relative z-10 max-w-7xl mx-auto text-center space-y-3 w-full">
-    <span className="text-xs sm:text-sm font-bold text-[#FA394A] uppercase tracking-wider">UGC-Recognized Institutions</span>
-    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
-      Top Online Degree Universities & Colleges
-    </h1>
-    <p className="text-sm sm:text-base md:text-lg text-gray-300 max-w-2xl mx-auto">
-      Compare NAAC A+ accredited partner institutions offering accredited online degrees with flexible exams and placement support.
-    </p>
-  </div>
-</div>
+      <div className="relative text-white min-h-[400px] sm:min-h-[500px] md:min-h-[600px] lg:min-h-[500px] flex items-center px-4">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/PagesBanner/3.png')" }}
+        />
+
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-black/17" />
+
+        {/* Content - Centered Vertically */}
+        <div className="relative z-10 max-w-7xl mx-auto text-center space-y-3 w-full">
+          <span className="text-xs sm:text-sm font-bold text-[#FA394A] uppercase tracking-wider">UGC-Recognized Institutions</span>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
+            Top Online Degree Universities & Colleges
+          </h1>
+          <p className="text-sm sm:text-base md:text-lg text-gray-300 max-w-2xl mx-auto">
+            Compare NAAC A+ accredited partner institutions offering accredited online degrees with flexible exams and placement support.
+          </p>
+        </div>
+      </div>
 
 
 
@@ -183,8 +189,8 @@ export const CollegesPage: React.FC = () => {
                     {(Array.isArray(college.approvals)
                       ? college.approvals
                       : typeof college.approvals === 'string'
-                      ? (college.approvals as string).split(',')
-                      : []
+                        ? (college.approvals as string).split(',')
+                        : []
                     ).map((app, i) => (
                       <span
                         key={i}
@@ -222,7 +228,7 @@ export const CollegesPage: React.FC = () => {
         )}
       </div>
 
-      {modalOpen && (
+   {modalOpen && (
         <EnquiryModal
           isOpen={modalOpen}
           onClose={() => setModalOpen(false)}
@@ -231,5 +237,8 @@ export const CollegesPage: React.FC = () => {
         />
       )}
     </div>
+ 
+ 
+ </>
   );
 };

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
 import api from '../services/api';
 import { SiteSettings } from '../types';
@@ -55,6 +56,11 @@ export const ContactPage: React.FC = () => {
   const address = settings?.address || 'Online Degree Diploma Platform,\nStatesman House, Building 12, Connaught Place,\nNew Delhi, India — 110001';
 
   return (
+<>
+ <Helmet>
+        <title>Contact Us | Online Degree Diploma Admission Support</title>
+        <meta name="description" content="Get in touch with our admission experts for free counselling on online degrees and diplomas from LPU, CU, IGNOU & more. Call, WhatsApp, or send us a message." />
+      </Helmet>
     <div className="min-h-screen bg-page font-sans pb-16 transition-colors duration-300">
       {/* Header Banner */}
       <div className="relative overflow-hidden py-16 sm:py-20 lg:py-24">
@@ -242,6 +248,8 @@ export const ContactPage: React.FC = () => {
         </div>
       </div>
     </div>
+
+</>
   );
 };
 

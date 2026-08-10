@@ -1,8 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { GraduationCap, Target, Eye, Award, CheckCircle, Shield, Users, ArrowRight } from 'lucide-react';
+
+
 export const AboutPage: React.FC = () => {
   return (
+<>
+<Helmet>
+        <title>About Us | Online Degree Diploma</title>
+        <meta name="description" content="Learn how Online Degree Diploma connects students with UGC-recognized universities like LPU, CU, IGNOU & Amity for accredited online degrees and diplomas." />
+      </Helmet>
     <div className="min-h-screen bg-page font-sans pb-16 transition-colors duration-300">
       {/* Header Banner */}
       <div className="relative overflow-hidden py-20 sm:py-28">
@@ -118,6 +126,8 @@ export const AboutPage: React.FC = () => {
         </div>
       </div>
     </div>
+
+</>
   );
 };
 

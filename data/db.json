@@ -300,7 +300,7 @@
         "HR Director"
       ],
       "isActive": true,
-      "createdAt": "2026-08-08T05:17:13.920Z"
+      "createdAt": "2026-08-10T05:31:07.767Z"
     },
     {
       "_id": "prog_pg_mca",
@@ -329,7 +329,7 @@
         "Tech Lead"
       ],
       "isActive": true,
-      "createdAt": "2026-08-08T05:17:13.921Z"
+      "createdAt": "2026-08-10T05:31:07.773Z"
     },
     {
       "_id": "prog_pg_mcom",
@@ -355,7 +355,7 @@
         "Investment Executive"
       ],
       "isActive": true,
-      "createdAt": "2026-08-08T05:17:13.921Z"
+      "createdAt": "2026-08-10T05:31:07.773Z"
     },
     {
       "_id": "prog_pg_mscit",
@@ -381,7 +381,7 @@
         "Network Engineer"
       ],
       "isActive": true,
-      "createdAt": "2026-08-08T05:17:13.921Z"
+      "createdAt": "2026-08-10T05:31:07.773Z"
     },
     {
       "_id": "prog_pg_maeng",
@@ -407,7 +407,7 @@
         "PR Executive"
       ],
       "isActive": true,
-      "createdAt": "2026-08-08T05:17:13.921Z"
+      "createdAt": "2026-08-10T05:31:07.773Z"
     },
     {
       "_id": "prog_pg_mahist",
@@ -433,7 +433,7 @@
         "Researcher"
       ],
       "isActive": true,
-      "createdAt": "2026-08-08T05:17:13.921Z"
+      "createdAt": "2026-08-10T05:31:07.773Z"
     },
     {
       "_id": "prog_pg_mahin",
@@ -459,7 +459,7 @@
         "Journalist"
       ],
       "isActive": true,
-      "createdAt": "2026-08-08T05:17:13.921Z"
+      "createdAt": "2026-08-10T05:31:07.774Z"
     },
     {
       "_id": "prog_pg_mapun",
@@ -485,7 +485,7 @@
         "Translator"
       ],
       "isActive": true,
-      "createdAt": "2026-08-08T05:17:13.921Z"
+      "createdAt": "2026-08-10T05:31:07.774Z"
     },
     {
       "_id": "prog_pg_mapol",
@@ -511,7 +511,7 @@
         "PR Specialist"
       ],
       "isActive": true,
-      "createdAt": "2026-08-08T05:17:13.921Z"
+      "createdAt": "2026-08-10T05:31:07.774Z"
     },
     {
       "_id": "prog_pg_mamath",
@@ -537,7 +537,7 @@
         "Research Scientist"
       ],
       "isActive": true,
-      "createdAt": "2026-08-08T05:17:13.921Z"
+      "createdAt": "2026-08-10T05:31:07.774Z"
     },
     {
       "_id": "prog_pg_masoc",
@@ -563,7 +563,7 @@
         "Researcher"
       ],
       "isActive": true,
-      "createdAt": "2026-08-08T05:17:13.921Z"
+      "createdAt": "2026-08-10T05:31:07.774Z"
     },
     {
       "_id": "prog_pg_maedu",
@@ -588,7 +588,7 @@
         "Academic Counselor"
       ],
       "isActive": true,
-      "createdAt": "2026-08-08T05:17:13.921Z"
+      "createdAt": "2026-08-10T05:31:07.774Z"
     },
     {
       "_id": "prog_pg_maeco",
@@ -614,7 +614,7 @@
         "Risk Consultant"
       ],
       "isActive": true,
-      "createdAt": "2026-08-08T05:17:13.921Z"
+      "createdAt": "2026-08-10T05:31:07.774Z"
     },
     {
       "_id": "prog_pg_mlis",
@@ -639,7 +639,7 @@
         "Information Specialist"
       ],
       "isActive": true,
-      "createdAt": "2026-08-08T05:17:13.921Z"
+      "createdAt": "2026-08-10T05:31:07.774Z"
     },
     {
       "_id": "prog_ug_bba",
@@ -664,7 +664,7 @@
         "Business Development Officer"
       ],
       "isActive": true,
-      "createdAt": "2026-08-08T05:17:13.921Z"
+      "createdAt": "2026-08-10T05:31:07.774Z"
     },
     {
       "_id": "prog_ug_bca",
@@ -689,7 +689,7 @@
         "System Executive"
       ],
       "isActive": true,
-      "createdAt": "2026-08-08T05:17:13.921Z"
+      "createdAt": "2026-08-10T05:31:07.774Z"
     },
     {
       "_id": "prog_ug_ba",
@@ -714,7 +714,7 @@
         "PR Assistant"
       ],
       "isActive": true,
-      "createdAt": "2026-08-08T05:17:13.921Z"
+      "createdAt": "2026-08-10T05:31:07.774Z"
     },
     {
       "_id": "prog_dip_dba",
@@ -739,7 +739,7 @@
         "Front Desk Executive"
       ],
       "isActive": true,
-      "createdAt": "2026-08-08T05:17:13.921Z"
+      "createdAt": "2026-08-10T05:31:07.774Z"
     },
     {
       "_id": "prog_dip_dca",
@@ -764,7 +764,7 @@
         "IT Assistant"
       ],
       "isActive": true,
-      "createdAt": "2026-08-08T05:17:13.921Z"
+      "createdAt": "2026-08-10T05:31:07.774Z"
     },
     {
       "title": "Diploma in Library & Information Science (DLIS)",

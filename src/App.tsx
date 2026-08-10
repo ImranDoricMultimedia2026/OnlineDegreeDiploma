@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { AuthProvider } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { Navbar } from './components/layout/Navbar';
@@ -40,6 +41,10 @@ const ScrollToTop = () => {
 const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <div className="flex flex-col min-h-screen bg-page text-heading font-sans transition-colors duration-300">
+      <Helmet>
+        <title>Online Degree Diploma | UGC-Recognized Online Degrees & Diplomas 2026</title>
+        <meta name="description" content="Compare 12+ UGC-recognized universities for online degrees, diplomas & MBA courses. Free counselling, transparent fees, and instant online application." />
+      </Helmet>
       <Navbar />
       <main className="flex-grow">{children}</main>
       <Footer />

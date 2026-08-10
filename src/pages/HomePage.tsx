@@ -23,6 +23,7 @@ import api from '../services/api';
 import { College, Program, FAQ, Testimonial, HeroSlide } from '../types';
 import { EnquiryModal } from '../components/common/EnquiryModal';
 import { getAssetUrl } from '../utils/image';
+import { Helmet } from 'react-helmet-async';
 
 export const HomePage: React.FC = () => {
   const navigate = useNavigate();
@@ -108,6 +109,12 @@ export const HomePage: React.FC = () => {
   };
 
   return (
+ <>
+  <Helmet>
+  <title>Online Degree Diploma | LPU, CU & 12+ UGC Online Universities</title>
+  <meta name="description" content="Free counselling for online degrees & diplomas from LPU Online, CU Online, IGNOU, Amity & 8+ UGC-recognized universities. Compare fees, apply online, download brochures." />
+  <meta name="keywords" content="LPU online admission, CU online admission, online degree India, UGC online university, online MBA LPU, distance education 2026" />
+</Helmet>
     <div className="min-h-screen bg-[#F5F5F5] dark:bg-gray-900 font-sans transition-colors duration-300">
       {/* HERO SLIDER SECTION */}
       <section className="relative bg-[#333333] dark:bg-black text-white overflow-hidden min-h-[520px] sm:min-h-[600px] flex items-center">
@@ -678,7 +685,7 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* Instant Enquiry Modal Trigger */}
-      {modalOpen && (
+ {modalOpen && (
         <EnquiryModal
           isOpen={modalOpen}
           onClose={() => setModalOpen(false)}
@@ -688,5 +695,6 @@ export const HomePage: React.FC = () => {
         />
       )}
     </div>
+ </>
   );
 };
