@@ -48,10 +48,19 @@ export const CollegesPage: React.FC = () => {
 
   return (
  <>
-  <Helmet>
-      <title>Top Online Universities 2026 | LPU, CU & 12+ UGC Colleges</title>
-      <meta name="description" content="Compare NAAC A+ accredited online universities like LPU, CU, IGNOU & Amity. Check approvals, fees, and apply for UGC-recognized online degrees & diplomas." />
-    </Helmet>
+<Helmet>
+  <title>Top Online Universities & Colleges 2026 | Online Degree Diploma</title>
+
+  <meta
+    name="description"
+    content="Compare top UGC-recognized online universities and colleges in India. Explore online degrees, courses, fees, approvals and admission options."
+  />
+
+  <link
+    rel="canonical"
+    href="https://onlinedegreediploma.com/colleges"
+  />
+</Helmet>
     <div className="min-h-screen bg-[#F5F5F5] font-sans pb-16">
       {/* Header Banner */}
       <div className="relative text-white min-h-[400px] sm:min-h-[500px] md:min-h-[600px] lg:min-h-[500px] flex items-center px-4">

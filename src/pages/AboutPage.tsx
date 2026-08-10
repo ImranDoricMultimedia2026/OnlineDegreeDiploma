@@ -8,9 +8,18 @@ export const AboutPage: React.FC = () => {
   return (
 <>
 <Helmet>
-        <title>About Us | Online Degree Diploma</title>
-        <meta name="description" content="Learn how Online Degree Diploma connects students with UGC-recognized universities like LPU, CU, IGNOU & Amity for accredited online degrees and diplomas." />
-      </Helmet>
+  <title>About Us | Online Degree Diploma</title>
+
+  <meta
+    name="description"
+    content="Learn about Online Degree Diploma and how we help students explore UGC-recognized online degrees and diplomas from leading universities in India."
+  />
+
+  <link
+    rel="canonical"
+    href="https://onlinedegreediploma.com/about"
+  />
+</Helmet>
     <div className="min-h-screen bg-page font-sans pb-16 transition-colors duration-300">
       {/* Header Banner */}
       <div className="relative overflow-hidden py-20 sm:py-28">

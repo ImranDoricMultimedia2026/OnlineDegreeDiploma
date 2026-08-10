@@ -64,10 +64,19 @@ export const ProgramsPage: React.FC = () => {
   return (
  <>
 
- <Helmet>
-        <title>Online Degree & Diploma Courses 2026 | MBA, BCA, MCA & More</title>
-        <meta name="description" content="Browse 17+ UGC-recognized online degree and diploma programs — MBA, BCA, MCA, BBA and more from LPU, CU, IGNOU & 12+ universities. Compare fees, duration, eligibility." />
-      </Helmet>
+<Helmet>
+  <title>Online Degree & Diploma Courses 2026 | MBA, BCA, MCA & More</title>
+
+  <meta
+    name="description"
+    content="Explore UGC-recognized online degree and diploma courses including MBA, BCA, MCA, BBA and more from LPU, CU, IGNOU and other leading universities. Compare fees, duration and eligibility."
+  />
+
+  <link
+    rel="canonical"
+    href="https://onlinedegreediploma.com/programs"
+  />
+</Helmet>
     <div className="min-h-screen bg-[#F5F5F5] font-sans pb-16">
       {/* Header Banner */}
      <div className="relative overflow-hidden py-16 sm:py-20 lg:py-24">

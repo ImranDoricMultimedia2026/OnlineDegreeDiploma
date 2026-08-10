@@ -110,10 +110,18 @@ export const HomePage: React.FC = () => {
 
   return (
  <>
-  <Helmet>
+<Helmet>
   <title>Online Degree Diploma | LPU, CU & 12+ UGC Online Universities</title>
-  <meta name="description" content="Free counselling for online degrees & diplomas from LPU Online, CU Online, IGNOU, Amity & 8+ UGC-recognized universities. Compare fees, apply online, download brochures." />
-  <meta name="keywords" content="LPU online admission, CU online admission, online degree India, UGC online university, online MBA LPU, distance education 2026" />
+
+  <meta
+    name="description"
+    content="Online Degree Diploma helps students explore UGC-recognized online degrees and diplomas from LPU, CU, IGNOU, Amity and other leading universities in India. Compare fees, courses and apply online."
+  />
+
+  <link
+    rel="canonical"
+    href="https://onlinedegreediploma.com/"
+  />
 </Helmet>
     <div className="min-h-screen bg-[#F5F5F5] dark:bg-gray-900 font-sans transition-colors duration-300">
       {/* HERO SLIDER SECTION */}

@@ -57,10 +57,19 @@ export const ContactPage: React.FC = () => {
 
   return (
 <>
- <Helmet>
-        <title>Contact Us | Online Degree Diploma Admission Support</title>
-        <meta name="description" content="Get in touch with our admission experts for free counselling on online degrees and diplomas from LPU, CU, IGNOU & more. Call, WhatsApp, or send us a message." />
-      </Helmet>
+<Helmet>
+  <title>Contact Us | Online Degree Diploma Admission Support</title>
+
+  <meta
+    name="description"
+    content="Contact Online Degree Diploma for admission guidance and counselling on UGC-recognized online degrees and diplomas. Get help with courses, fees, eligibility and applications."
+  />
+
+  <link
+    rel="canonical"
+    href="https://onlinedegreediploma.com/contact"
+  />
+</Helmet>
     <div className="min-h-screen bg-page font-sans pb-16 transition-colors duration-300">
       {/* Header Banner */}
       <div className="relative overflow-hidden py-16 sm:py-20 lg:py-24">
