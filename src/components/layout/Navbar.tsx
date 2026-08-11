@@ -579,7 +579,7 @@ export const Navbar: React.FC = () => {
                 href="tel:+9180541-00099"
                 className="w-full flex items-center justify-center bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 font-extrabold py-2.5 rounded-xl text-xs border border-emerald-200 dark:border-emerald-800"
               >
-                <PhoneCall className="w-3.5 h-3.5 mr-2 text-emerald-600 dark:text-emerald-400" /> Helpline: +91 98765 43210
+                <PhoneCall className="w-3.5 h-3.5 mr-2 text-emerald-600 dark:text-emerald-400" /> Helpline: +91 80541-00099
               </a>
 
               {user ? (
