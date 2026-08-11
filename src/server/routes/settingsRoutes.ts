@@ -9,7 +9,7 @@ const router = Router();
 const defaultSettings = {
   phonePrimary: '+91 98765 43210',
   phoneSecondary: '+91 80000 12345',
-  whatsappNumber: '919876543210',
+  whatsappNumber: '9180541-00099',
   emailPrimary: 'admissions@onlinedegreeportal.in',
   emailSupport: 'addmission@onlinedegreediplomaludhiana.com',
   address: 'Building 4B, Knowledge Park III, Greater Noida, UP - 201306',

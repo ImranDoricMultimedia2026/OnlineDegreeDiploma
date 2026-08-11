@@ -177,7 +177,7 @@ export const Navbar: React.FC = () => {
               <span className="text-gray-300 dark:text-gray-400">UGC & AICTE Entitled Online Degree Programs</span>
             </div>
             <div className="flex items-center space-x-6">
-              <a href={`tel:${settings?.phonePrimary || '+919876543210'}`} className="hover:text-[#FA394A] transition-colors flex items-center">
+              <a href={`tel:${settings?.phonePrimary || '+9180541-00099'}`} className="hover:text-[#FA394A] transition-colors flex items-center">
                 <PhoneCall className="w-3 h-3 mr-1 text-[#FA394A]" /> Helpline: {settings?.phonePrimary || '+91 98765 43210'}
               </a>
               <Link to="/contact" className="hover:text-[#FA394A] transition-colors">
@@ -576,7 +576,7 @@ export const Navbar: React.FC = () => {
             {/* Bottom Controls */}
             <div className="mt-6 pt-4 border-t border-gray-100 dark:border-gray-800 space-y-3">
               <a
-                href="tel:+919876543210"
+                href="tel:+9180541-00099"
                 className="w-full flex items-center justify-center bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 font-extrabold py-2.5 rounded-xl text-xs border border-emerald-200 dark:border-emerald-800"
               >
                 <PhoneCall className="w-3.5 h-3.5 mr-2 text-emerald-600 dark:text-emerald-400" /> Helpline: +91 98765 43210

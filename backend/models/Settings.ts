@@ -26,7 +26,7 @@ const SettingsSchema: Schema = new Schema(
   {
     phonePrimary: { type: String, default: '+91 98765 43210' },
     phoneSecondary: { type: String, default: '+91 80000 12345' },
-    whatsappNumber: { type: String, default: '919876543210' },
+    whatsappNumber: { type: String, default: '9180541-00099' },
     emailPrimary: { type: String, default: 'admissions@onlinedegreeportal.in' },
     emailSupport: { type: String, default: 'addmission@onlinedegreediplomaludhiana.com' },
     address: { type: String, default: 'Building 4B, Knowledge Park III, Greater Noida, UP - 201306' },

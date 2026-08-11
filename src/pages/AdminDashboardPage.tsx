@@ -54,7 +54,7 @@ export const AdminDashboardPage: React.FC = () => {
   const [siteSettings, setSiteSettings] = useState<SiteSettings>({
     phonePrimary: '+91 98765 43210',
     phoneSecondary: '1800-123-4567',
-    whatsappNumber: '+919876543210',
+    whatsappNumber: '+9180541-00099',
     emailPrimary: 'admissions@onlinedegreediploma.com',
     emailSupport: 'support@onlinedegreediploma.com',
     address: 'Statesman House, Building 12, Connaught Place, New Delhi, India — 110001',
