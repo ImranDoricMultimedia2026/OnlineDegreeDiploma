@@ -121,13 +121,13 @@ export const CollegeDetailPage: React.FC = () => {
       {/* ================= DYNAMIC SEO & SCHEMA START ================= */}
       <Helmet>
         {/* Dynamic Title (College Name + Keywords) */}
-        <title>{college.name} Online Courses, Fees & Admission 2026 | Online Degree Diploma</title>
+        <title>{`${college.name} Online Courses, Fees & Admission 2026 | Online Degree Diploma`}</title>
         
         {/* Dynamic Description */}
-        <meta
-          name="description"
-          content={`${college.name} offers UGC-entitled online degrees & diplomas. Check fees, eligibility, approvals and admission process for 2026.`}
-        />
+       <meta
+    name="description"
+    content={`${college.name} offers UGC-entitled online degrees & diplomas. Check fees, eligibility, approvals and admission process for 2026.`}
+  />
         
         {/* Dynamic Keywords */}
         <meta
@@ -136,7 +136,8 @@ export const CollegeDetailPage: React.FC = () => {
         />
 
         {/* Dynamic Canonical (Har college ka apna URL) */}
-        <link rel="canonical" href={`https://onlinedegreediploma.com/colleges/${slug}`} />
+         <link rel="canonical" href={`https://onlinedegreediploma.com/colleges/${slug}`} />
+
 
         {/* Schema Markup: College Or University */}
         <script type="application/ld+json">
