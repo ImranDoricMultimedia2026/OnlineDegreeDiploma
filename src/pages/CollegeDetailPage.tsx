@@ -119,49 +119,100 @@ export const CollegeDetailPage: React.FC = () => {
   return (
     <>
       {/* ================= DYNAMIC SEO & SCHEMA START ================= */}
+           {/* ================= ADVANCED SEO & SCHEMA MARKUP (DORIC FORMAT) ================= */}
       <Helmet>
-        {/* Dynamic Title (College Name + Keywords) */}
-        <title>{`${college.name} Online Courses, Fees & Admission 2026 | Online Degree Diploma`}</title>
-        
-        {/* Dynamic Description */}
-       <meta
-    name="description"
-    content={`${college.name} offers UGC-entitled online degrees & diplomas. Check fees, eligibility, approvals and admission process for 2026.`}
-  />
-        
-        {/* Dynamic Keywords */}
+        {/* 1. PRIMARY SEO */}
+        <title>{`${college.name} Courses, Fees & Admission 2026 | Online Degree`}</title>
+        <meta
+          name="description"
+          content={`${college.name} offers UGC-entitled online degrees & diplomas. Check fees, eligibility, approvals and admission process for 2026.`}
+        />
         <meta
           name="keywords"
-          content={`${college.name}, ${college.name} online courses, ${college.name} fees, UGC approved online degree, online admission 2026`}
+          content={`${college.name}, ${college.name} fees, UGC approved online degree, online admission 2026`}
         />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <link rel="canonical" href={`https://onlinedegreediploma.com/colleges/${slug}`} />
 
-        {/* Dynamic Canonical (Har college ka apna URL) */}
-         <link rel="canonical" href={`https://onlinedegreediploma.com/colleges/${slug}`} />
+        {/* 2. OPEN GRAPH (Social Media) */}
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_IN" />
+        <meta property="og:site_name" content="Online Degree Diploma" />
+        <meta property="og:title" content={`${college.name} Courses, Fees & Admission 2026`} />
+        <meta property="og:description" content={`Explore UGC-entitled online degrees from ${college.name}. Get detailed fees, eligibility, and admission info for 2026.`} />
+        <meta property="og:url" content={`https://onlinedegreediploma.com/colleges/${slug}`} />
+        <meta property="og:image" content={college.banner || "https://onlinedegreediploma.com/icons/android-chrome-512x512.png"} />
+        <meta property="og:image:alt" content={`${college.name} Online Courses`} />
 
+        {/* 3. TWITTER CARD */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${college.name} Online Courses & Fees 2026`} />
+        <meta name="twitter:description" content={`Get UGC-entitled online degrees from ${college.name}. Check fees, eligibility & apply online.`} />
+        <meta name="twitter:image" content={college.banner || "https://onlinedegreediploma.com/icons/android-chrome-512x512.png"} />
 
-        {/* Schema Markup: College Or University */}
+        {/* 4. SCHEMA MARKUP (JSON-LD) - ADVANCED */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "CollegeOrUniversity",
-            "name": college.name,
-            "description": college.description,
-            "url": `https://onlinedegreediploma.com/colleges/${slug}`,
-            "logo": college.logo,
-            "image": college.banner,
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": college.location || "India",
-              "addressCountry": "IN"
-            },
-            "parentOrganization": {
-              "@type": "Organization",
-              "name": "Online Degree Diploma",
-              "url": "https://onlinedegreediploma.com/"
-            }
+            "@graph": [
+              {
+                "@type": "CollegeOrUniversity",
+                "@id": `https://onlinedegreediploma.com/colleges/${slug}/#college`,
+                "name": college.name,
+                "description": college.description,
+                "url": `https://onlinedegreediploma.com/colleges/${slug}`,
+                "logo": college.logo,
+                "image": college.banner,
+                "address": {
+                  "@type": "PostalAddress",
+                  "addressLocality": college.location || "India",
+                  "addressCountry": "IN"
+                },
+                "parentOrganization": {
+                  "@id": "https://onlinedegreediploma.com/#organization"
+                }
+              },
+              {
+                "@type": "WebPage",
+                "@id": `https://onlinedegreediploma.com/colleges/${slug}/#webpage`,
+                "url": `https://onlinedegreediploma.com/colleges/${slug}`,
+                "name": `${college.name} Courses, Fees & Admission 2026 | Online Degree`,
+                "isPartOf": {
+                  "@id": "https://onlinedegreediploma.com/#website"
+                },
+                "about": {
+                  "@id": `https://onlinedegreediploma.com/colleges/${slug}/#college`
+                }
+              },
+              {
+                "@type": "BreadcrumbList",
+                "@id": `https://onlinedegreediploma.com/colleges/${slug}/#breadcrumb`,
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://onlinedegreediploma.com/"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Colleges",
+                    "item": "https://onlinedegreediploma.com/colleges"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": college.name,
+                    "item": `https://onlinedegreediploma.com/colleges/${slug}`
+                  }
+                ]
+              }
+            ]
           })}
         </script>
       </Helmet>
+      {/* ================= SEO & SCHEMA MARKUP END ================= */}
       {/* ================= DYNAMIC SEO & SCHEMA END ================= */}
 
       <div className="min-h-screen bg-page font-sans pb-20 transition-colors duration-300">
