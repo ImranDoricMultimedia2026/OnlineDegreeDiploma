@@ -111,11 +111,16 @@ export const HomePage: React.FC = () => {
   return (
  <>
 <Helmet>
-  <title>Online Degree Diploma | LPU, CU & 12+ UGC Online Universities</title>
-
+  <title>Online Degree Diploma | LPU, CU & UGC Universities</title>
+  
   <meta
     name="description"
-    content="Online Degree Diploma helps students explore UGC-recognized online degrees and diplomas from LPU, CU, IGNOU, Amity and other leading universities in India. Compare fees, courses and apply online."
+    content="Explore UGC-recognized online degrees & diplomas from LPU, CU, IGNOU & Amity. Compare fees, courses & apply online for 2026 admissions."
+  />
+  
+  <meta
+    name="keywords"
+    content="Online Degree, Online Diploma, LPU Online, CU Online, UGC Approved Universities, Online Degree Admission 2026"
   />
 
   <link
