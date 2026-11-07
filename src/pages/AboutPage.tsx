@@ -8,22 +8,21 @@ export const AboutPage: React.FC = () => {
     <>
       {/* ================= SEO & SCHEMA MARKUP START ================= */}
       <Helmet>
-        <title>About Us | Online Degree Diploma</title>
+        <title>About Online Degree Diploma | UGC Recognized Platform</title>
         
+      <meta
+    name="description"
+    content="Discover how Online Degree Diploma helps students compare UGC-recognized online degrees, diplomas & MBA courses with free counselling and zero hassle."
+  />
         <meta
-          name="description"
-          content="Learn about Online Degree Diploma and how we help students explore UGC-recognized online degrees and diplomas from leading universities in India."
-        />
-        
-        <meta
-          name="keywords"
-          content="About Online Degree Diploma, Online Education Platform India, UGC Approved Online Degrees, Best Online University Admission"
-        />
+    name="keywords"
+    content="About Online Degree Diploma, UGC recognized online degrees, online education platform India"
+  />
 
         <link
-          rel="canonical"
-          href="https://onlinedegreediploma.com/about"
-        />
+    rel="canonical"
+    href="https://onlinedegreediploma.com/about"
+  />
 
         {/* Schema Markup for About Page */}
         <script type="application/ld+json">
