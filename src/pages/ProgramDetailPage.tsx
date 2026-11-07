@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async'; // <-- SEO ke liye import
+import { Helmet } from 'react-helmet-async';
 import {
   BookOpen, Clock, Building2, CheckCircle2, Download, Sparkles, Award,
   GraduationCap, Briefcase, Layers, ArrowRight
@@ -59,20 +59,27 @@ export const ProgramDetailPage: React.FC = () => {
     );
   }
 
+  // SMART LOGIC: Bracket se short naam nikalne ke liye (e.g., "BCA" from "Bachelor of Computer Applications (BCA)")
+  const match = program.title.match(/\(([^)]+)\)/);
+  const shortName = match ? match[1] : program.title;
+
   return (
     <>
       {/* ================= ADVANCED SEO & SCHEMA MARKUP (DORIC FORMAT) ================= */}
       <Helmet>
-        {/* 1. PRIMARY SEO */}
-        <title>{`${program.title} Online Admission 2026 | Fees & Eligibility`}</title>
+        {/* 1. PRIMARY SEO (Using Short Name to keep Title under 60 chars) */}
+        <title>{`${shortName} Online Admission 2026 | Fees & Eligibility`}</title>
+        
         <meta
           name="description"
-          content={`Earn your ${program.title} online from ${college?.name || 'top UGC universities'}. Check detailed fees, eligibility, curriculum & apply online for 2026.`}
+          content={`Earn your ${shortName} online from ${college?.name || 'top UGC universities'}. Check detailed fees, eligibility, curriculum & apply online for 2026.`}
         />
+        
         <meta
           name="keywords"
-          content={`${program.title}, online ${program.title}, ${program.title} fees, ${program.title} admission 2026, UGC approved online degree`}
+          content={`${shortName}, online ${shortName}, ${shortName} fees, ${shortName} admission 2026, UGC approved online degree`}
         />
+        
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         <link rel="canonical" href={`https://onlinedegreediploma.com/programs/${activeSlug}`} />
 
@@ -80,15 +87,15 @@ export const ProgramDetailPage: React.FC = () => {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_IN" />
         <meta property="og:site_name" content="Online Degree Diploma" />
-        <meta property="og:title" content={`${program.title} Online Admission 2026 | Fees & Eligibility`} />
-        <meta property="og:description" content={`Earn your ${program.title} online from top UGC universities. Check fees, eligibility & apply online.`} />
+        <meta property="og:title" content={`${shortName} Online Admission 2026 | Fees & Eligibility`} />
+        <meta property="og:description" content={`Earn your ${shortName} online from top UGC universities. Check fees, eligibility & apply online.`} />
         <meta property="og:url" content={`https://onlinedegreediploma.com/programs/${activeSlug}`} />
         <meta property="og:image" content={program.image ? getAssetUrl(program.image) : "https://onlinedegreediploma.com/icons/android-chrome-512x512.png"} />
 
         {/* 3. TWITTER CARD */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`${program.title} Online Admission 2026`} />
-        <meta name="twitter:description" content={`Get your ${program.title} online from UGC-approved universities. Check fees & eligibility.`} />
+        <meta name="twitter:title" content={`${shortName} Online Admission 2026`} />
+        <meta name="twitter:description" content={`Get your ${shortName} online from UGC-approved universities. Check fees & eligibility.`} />
         <meta name="twitter:image" content={program.image ? getAssetUrl(program.image) : "https://onlinedegreediploma.com/icons/android-chrome-512x512.png"} />
 
         {/* 4. SCHEMA MARKUP (JSON-LD) - ADVANCED */}
@@ -99,7 +106,7 @@ export const ProgramDetailPage: React.FC = () => {
               {
                 "@type": "Course",
                 "@id": `https://onlinedegreediploma.com/programs/${activeSlug}/#course`,
-                "name": program.title,
+                "name": program.title, // Schema mein poora naam achha hai
                 "description": program.overview,
                 "provider": {
                   "@type": "Organization",
@@ -116,7 +123,7 @@ export const ProgramDetailPage: React.FC = () => {
                 "@type": "WebPage",
                 "@id": `https://onlinedegreediploma.com/programs/${activeSlug}/#webpage`,
                 "url": `https://onlinedegreediploma.com/programs/${activeSlug}`,
-                "name": `${program.title} Online Admission 2026 | Fees & Eligibility`,
+                "name": `${shortName} Online Admission 2026 | Fees & Eligibility`,
                 "isPartOf": { "@id": "https://onlinedegreediploma.com/#website" },
                 "about": { "@id": `https://onlinedegreediploma.com/programs/${activeSlug}/#course` }
               },
@@ -126,7 +133,7 @@ export const ProgramDetailPage: React.FC = () => {
                 "itemListElement": [
                   { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://onlinedegreediploma.com/" },
                   { "@type": "ListItem", "position": 2, "name": "Programs", "item": "https://onlinedegreediploma.com/programs" },
-                  { "@type": "ListItem", "position": 3, "name": program.title, "item": `https://onlinedegreediploma.com/programs/${activeSlug}` }
+                  { "@type": "ListItem", "position": 3, "name": shortName, "item": `https://onlinedegreediploma.com/programs/${activeSlug}` }
                 ]
               }
             ]
@@ -238,7 +245,7 @@ export const ProgramDetailPage: React.FC = () => {
             <div className="bg-surface p-6 rounded-3xl border border-theme shadow-xl space-y-4 sticky top-24">
               <div className="text-center space-y-1">
                 <span className="text-xs font-bold text-[#FA394A] uppercase">Admission Helpline</span>
-                <h3 className="text-lg font-black text-heading">Enroll in {program.title}</h3>
+                <h3 className="text-lg font-black text-heading">Enroll in {shortName}</h3>
                 <p className="text-xs text-muted">Official admissions open for upcoming 2026 academic batch.</p>
               </div>
               <Link to={`/apply?programId=${program._id}&collegeId=${program.collegeId}`} className="w-full bg-[#FA394A] hover:bg-[#D92B3B] text-white font-extrabold py-3.5 rounded-2xl text-xs transition-all shadow-md shadow-[#FA394A]/20 flex items-center justify-center space-x-2 text-center">
