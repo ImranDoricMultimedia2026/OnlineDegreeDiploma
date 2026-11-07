@@ -1,17 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async'; // <-- SEO ke liye import
 import {
-  BookOpen,
-  Clock,
-  Building2,
-  CheckCircle2,
-  Download,
-  Sparkles,
-  Award,
-  GraduationCap,
-  Briefcase,
-  Layers,
-  ArrowRight
+  BookOpen, Clock, Building2, CheckCircle2, Download, Sparkles, Award,
+  GraduationCap, Briefcase, Layers, ArrowRight
 } from 'lucide-react';
 import api from '../services/api';
 import { Program, College } from '../types';
@@ -44,7 +36,6 @@ export const ProgramDetailPage: React.FC = () => {
         setLoading(false);
       }
     };
-
     fetchProgram();
   }, [activeSlug]);
 
@@ -69,192 +60,210 @@ export const ProgramDetailPage: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-page font-sans pb-16 transition-colors duration-300">
-      {/* Hero Header */}
-      <div
-        className="relative w-full min-h-[280px] sm:min-h-[380px] md:min-h-[500px] lg:min-h-[600px] overflow-hidden border-b border-gray-800"
-        style={{
-          backgroundImage: program.image
-            ? `url(${getAssetUrl(program.image)})`
-            : "none",
-          backgroundSize: "cover",
-          backgroundPosition: "center center",
-          backgroundRepeat: "no-repeat",
-        }}
-      >
-        {/* Premium Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/25 to-black/3"></div>
+    <>
+      {/* ================= ADVANCED SEO & SCHEMA MARKUP (DORIC FORMAT) ================= */}
+      <Helmet>
+        {/* 1. PRIMARY SEO */}
+        <title>{`${program.title} Online Admission 2026 | Fees & Eligibility`}</title>
+        <meta
+          name="description"
+          content={`Earn your ${program.title} online from ${college?.name || 'top UGC universities'}. Check detailed fees, eligibility, curriculum & apply online for 2026.`}
+        />
+        <meta
+          name="keywords"
+          content={`${program.title}, online ${program.title}, ${program.title} fees, ${program.title} admission 2026, UGC approved online degree`}
+        />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <link rel="canonical" href={`https://onlinedegreediploma.com/programs/${activeSlug}`} />
 
-        {/* Content */}
-        <div className="relative z-10 flex items-center h-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-16 sm:py-24 md:py-32">
+        {/* 2. OPEN GRAPH (Social Media) */}
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_IN" />
+        <meta property="og:site_name" content="Online Degree Diploma" />
+        <meta property="og:title" content={`${program.title} Online Admission 2026 | Fees & Eligibility`} />
+        <meta property="og:description" content={`Earn your ${program.title} online from top UGC universities. Check fees, eligibility & apply online.`} />
+        <meta property="og:url" content={`https://onlinedegreediploma.com/programs/${activeSlug}`} />
+        <meta property="og:image" content={program.image ? getAssetUrl(program.image) : "https://onlinedegreediploma.com/icons/android-chrome-512x512.png"} />
 
-          <div className="max-w-4xl">
+        {/* 3. TWITTER CARD */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${program.title} Online Admission 2026`} />
+        <meta name="twitter:description" content={`Get your ${program.title} online from UGC-approved universities. Check fees & eligibility.`} />
+        <meta name="twitter:image" content={program.image ? getAssetUrl(program.image) : "https://onlinedegreediploma.com/icons/android-chrome-512x512.png"} />
 
-            {/* Badges */}
-            <div className="flex flex-wrap items-center gap-3 mb-6">
+        {/* 4. SCHEMA MARKUP (JSON-LD) - ADVANCED */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Course",
+                "@id": `https://onlinedegreediploma.com/programs/${activeSlug}/#course`,
+                "name": program.title,
+                "description": program.overview,
+                "provider": {
+                  "@type": "Organization",
+                  "name": college?.name || "Online Degree Diploma",
+                  "sameAs": college?.website || "https://onlinedegreediploma.com/"
+                },
+                "hasCourseInstance": {
+                  "@type": "CourseInstance",
+                  "courseMode": "Online",
+                  "courseWorkload": program.duration
+                }
+              },
+              {
+                "@type": "WebPage",
+                "@id": `https://onlinedegreediploma.com/programs/${activeSlug}/#webpage`,
+                "url": `https://onlinedegreediploma.com/programs/${activeSlug}`,
+                "name": `${program.title} Online Admission 2026 | Fees & Eligibility`,
+                "isPartOf": { "@id": "https://onlinedegreediploma.com/#website" },
+                "about": { "@id": `https://onlinedegreediploma.com/programs/${activeSlug}/#course` }
+              },
+              {
+                "@type": "BreadcrumbList",
+                "@id": `https://onlinedegreediploma.com/programs/${activeSlug}/#breadcrumb`,
+                "itemListElement": [
+                  { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://onlinedegreediploma.com/" },
+                  { "@type": "ListItem", "position": 2, "name": "Programs", "item": "https://onlinedegreediploma.com/programs" },
+                  { "@type": "ListItem", "position": 3, "name": program.title, "item": `https://onlinedegreediploma.com/programs/${activeSlug}` }
+                ]
+              }
+            ]
+          })}
+        </script>
+      </Helmet>
+      {/* ================= SEO & SCHEMA MARKUP END ================= */}
 
-              <span className="px-4 py-2 rounded-full bg-[#FA394A] text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider shadow-lg">
-                {program.degreeType} Program
-              </span>
+      <div className="min-h-screen bg-page font-sans pb-16 transition-colors duration-300">
+        {/* Hero Header */}
+        <div
+          className="relative w-full min-h-[280px] sm:min-h-[380px] md:min-h-[500px] lg:min-h-[600px] overflow-hidden border-b border-gray-800"
+          style={{
+            backgroundImage: program.image ? `url(${getAssetUrl(program.image)})` : "none",
+            backgroundSize: "cover",
+            backgroundPosition: "center center",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/25 to-black/3"></div>
+          <div className="relative z-10 flex items-center h-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-16 sm:py-24 md:py-32">
+            <div className="max-w-4xl">
+              <div className="flex flex-wrap items-center gap-3 mb-6">
+                <span className="px-4 py-2 rounded-full bg-[#FA394A] text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider shadow-lg">
+                  {program.degreeType} Program
+                </span>
+                <span className="px-4 py-2 rounded-full bg-white/20 backdrop-blur-md text-white text-[10px] sm:text-xs font-semibold flex items-center shadow-lg">
+                  <Clock className="w-4 h-4 mr-2" />
+                  {program.duration}
+                </span>
+              </div>
+              <h1 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight drop-shadow-2xl [text-shadow:0_4px_18px_rgba(0,0,0,0.9)]">
+                {program.title}
+              </h1>
+            </div>
+          </div>
+        </div>
 
-              <span className="px-4 py-2 rounded-full bg-white/20 backdrop-blur-md text-white text-[10px] sm:text-xs font-semibold flex items-center shadow-lg">
-                <Clock className="w-4 h-4 mr-2" />
-                {program.duration}
-              </span>
-
+        {/* Main Grid */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Left Column: Details */}
+          <div className="lg:col-span-2 space-y-8">
+            <div className="bg-surface p-6 sm:p-8 rounded-3xl border border-theme shadow-sm space-y-4">
+              <h2 className="text-lg font-extrabold text-heading">Program Overview</h2>
+              <p className="text-xs sm:text-sm text-muted leading-relaxed whitespace-pre-line">{program.overview}</p>
             </div>
 
-            {/* Title */}
-            <h1
-              className="
-                text-white
-                text-3xl
-                sm:text-4xl
-                md:text-5xl
-                lg:text-6xl
-                xl:text-7xl
-                font-black
-                leading-tight
-                drop-shadow-2xl
-                [text-shadow:0_4px_18px_rgba(0,0,0,0.9)]
-              "
-            >
-              {program.title}
-            </h1>
-
-          </div>
-
-        </div>
-      </div>
-      {/* Main Grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Left Column: Details */}
-        <div className="lg:col-span-2 space-y-8">
-          {/* Overview */}
-          <div className="bg-surface p-6 sm:p-8 rounded-3xl border border-theme shadow-sm space-y-4">
-            <h2 className="text-lg font-extrabold text-heading">Program Overview</h2>
-            <p className="text-xs sm:text-sm text-muted leading-relaxed whitespace-pre-line">
-              {program.overview}
-            </p>
-          </div>
-
-          {/* Eligibility Criteria */}
-          <div className="bg-surface p-6 rounded-3xl border border-theme shadow-sm space-y-3">
-            <h2 className="text-sm font-extrabold text-heading uppercase tracking-wider flex items-center">
-              <GraduationCap className="w-4 h-4 mr-2 text-[#FA394A]" /> Eligibility Requirements
-            </h2>
-            <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 font-medium bg-[#FFE8EA] dark:bg-[#4a1d21] p-4 rounded-2xl border border-[#FA394A]/20">
-              {program.eligibility}
-            </p>
-          </div>
-
-          {/* Specializations */}
-          {program.specializations && program.specializations.length > 0 && (
             <div className="bg-surface p-6 rounded-3xl border border-theme shadow-sm space-y-3">
               <h2 className="text-sm font-extrabold text-heading uppercase tracking-wider flex items-center">
-                <Layers className="w-4 h-4 mr-2 text-[#FA394A]" /> Available Specializations
+                <GraduationCap className="w-4 h-4 mr-2 text-[#FA394A]" /> Eligibility Requirements
               </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {program.specializations.map((spec, i) => (
-                  <div key={i} className="p-3 rounded-2xl bg-gray-50 dark:bg-gray-800 border border-theme text-xs font-bold text-heading flex items-center">
-                    <CheckCircle2 className="w-4 h-4 text-[#FA394A] mr-2 shrink-0" />
-                    <span>{spec}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Curriculum / Semester Info */}
-          {program.semesterInfo && (
-            <div className="bg-surface p-6 sm:p-8 rounded-3xl border border-theme shadow-sm space-y-3">
-              <h2 className="text-lg font-extrabold text-heading">Semester & Subject Information</h2>
-              <p className="text-xs sm:text-sm text-muted leading-relaxed whitespace-pre-line">
-                {program.semesterInfo}
+              <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 font-medium bg-[#FFE8EA] dark:bg-[#4a1d21] p-4 rounded-2xl border border-[#FA394A]/20">
+                {program.eligibility}
               </p>
             </div>
-          )}
 
-          {/* Fee Structure */}
-          <div className="bg-surface p-6 sm:p-8 rounded-3xl border border-theme shadow-sm space-y-4">
-            <h2 className="text-lg font-extrabold text-heading">Fee Structure & EMI Options</h2>
-            <div className="bg-[#FFE8EA] dark:bg-[#4a1d21] p-5 rounded-2xl border border-[#FA394A]/30 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-              <div>
-                <p className="text-xs font-bold text-muted uppercase">Total Estimated Program Fee</p>
-                <p className="text-xl font-black text-[#FA394A]">{program.fee}</p>
+            {program.specializations && program.specializations.length > 0 && (
+              <div className="bg-surface p-6 rounded-3xl border border-theme shadow-sm space-y-3">
+                <h2 className="text-sm font-extrabold text-heading uppercase tracking-wider flex items-center">
+                  <Layers className="w-4 h-4 mr-2 text-[#FA394A]" /> Available Specializations
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {program.specializations.map((spec, i) => (
+                    <div key={i} className="p-3 rounded-2xl bg-gray-50 dark:bg-gray-800 border border-theme text-xs font-bold text-heading flex items-center">
+                      <CheckCircle2 className="w-4 h-4 text-[#FA394A] mr-2 shrink-0" />
+                      <span>{spec}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <button
-                onClick={() => {
-                  setModalType('fee_structure');
-                  setModalOpen(true);
-                }}
-                className="bg-[#FA394A] text-white px-5 py-2.5 rounded-xl font-bold text-xs shadow-md"
-              >
-                Get Full Semester Breakdown
+            )}
+
+            {program.semesterInfo && (
+              <div className="bg-surface p-6 sm:p-8 rounded-3xl border border-theme shadow-sm space-y-3">
+                <h2 className="text-lg font-extrabold text-heading">Semester & Subject Information</h2>
+                <p className="text-xs sm:text-sm text-muted leading-relaxed whitespace-pre-line">{program.semesterInfo}</p>
+              </div>
+            )}
+
+            <div className="bg-surface p-6 sm:p-8 rounded-3xl border border-theme shadow-sm space-y-4">
+              <h2 className="text-lg font-extrabold text-heading">Fee Structure & EMI Options</h2>
+              <div className="bg-[#FFE8EA] dark:bg-[#4a1d21] p-5 rounded-2xl border border-[#FA394A]/30 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                <div>
+                  <p className="text-xs font-bold text-muted uppercase">Total Estimated Program Fee</p>
+                  <p className="text-xl font-black text-[#FA394A]">{program.fee}</p>
+                </div>
+                <button onClick={() => { setModalType('fee_structure'); setModalOpen(true); }} className="bg-[#FA394A] text-white px-5 py-2.5 rounded-xl font-bold text-xs shadow-md">
+                  Get Full Semester Breakdown
+                </button>
+              </div>
+            </div>
+
+            {program.careerScope && program.careerScope.length > 0 && (
+              <div className="bg-surface p-6 rounded-3xl border border-theme shadow-sm space-y-3">
+                <h2 className="text-sm font-extrabold text-heading uppercase tracking-wider flex items-center">
+                  <Briefcase className="w-4 h-4 mr-2 text-[#FA394A]" /> Career Opportunities & Job Roles
+                </h2>
+                <div className="flex flex-wrap gap-2">
+                  {program.careerScope.map((role, i) => (
+                    <span key={i} className="px-3.5 py-2 rounded-xl bg-gray-100 dark:bg-gray-700 text-heading font-bold text-xs border border-theme">{role}</span>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Right Sidebar */}
+          <div className="space-y-6">
+            <div className="bg-surface p-6 rounded-3xl border border-theme shadow-xl space-y-4 sticky top-24">
+              <div className="text-center space-y-1">
+                <span className="text-xs font-bold text-[#FA394A] uppercase">Admission Helpline</span>
+                <h3 className="text-lg font-black text-heading">Enroll in {program.title}</h3>
+                <p className="text-xs text-muted">Official admissions open for upcoming 2026 academic batch.</p>
+              </div>
+              <Link to={`/apply?programId=${program._id}&collegeId=${program.collegeId}`} className="w-full bg-[#FA394A] hover:bg-[#D92B3B] text-white font-extrabold py-3.5 rounded-2xl text-xs transition-all shadow-md shadow-[#FA394A]/20 flex items-center justify-center space-x-2 text-center">
+                <Sparkles className="w-4 h-4" />
+                <span>Apply Online Now</span>
+              </Link>
+              <button onClick={() => { setModalType('brochure'); setModalOpen(true); }} className="w-full bg-[#333333] dark:bg-gray-700 hover:bg-black dark:hover:bg-gray-600 text-white font-extrabold py-3.5 rounded-2xl text-xs transition-all flex items-center justify-center space-x-2">
+                <Download className="w-4 h-4" />
+                <span>Download Official Syllabus PDF</span>
               </button>
             </div>
           </div>
-
-          {/* Career Opportunities */}
-          {program.careerScope && program.careerScope.length > 0 && (
-            <div className="bg-surface p-6 rounded-3xl border border-theme shadow-sm space-y-3">
-              <h2 className="text-sm font-extrabold text-heading uppercase tracking-wider flex items-center">
-                <Briefcase className="w-4 h-4 mr-2 text-[#FA394A]" /> Career Opportunities & Job Roles
-              </h2>
-              <div className="flex flex-wrap gap-2">
-                {program.careerScope.map((role, i) => (
-                  <span key={i} className="px-3.5 py-2 rounded-xl bg-gray-100 dark:bg-gray-700 text-heading font-bold text-xs border border-theme">
-                    {role}
-                  </span>
-                ))}
-              </div>
-            </div>
-          )}
         </div>
 
-        {/* Right Sidebar */}
-        <div className="space-y-6">
-          <div className="bg-surface p-6 rounded-3xl border border-theme shadow-xl space-y-4 sticky top-24">
-            <div className="text-center space-y-1">
-              <span className="text-xs font-bold text-[#FA394A] uppercase">Admission Helpline</span>
-              <h3 className="text-lg font-black text-heading">Enroll in {program.title}</h3>
-              <p className="text-xs text-muted">
-                Official admissions open for upcoming 2026 academic batch.
-              </p>
-            </div>
-
-            <Link
-              to={`/apply?programId=${program._id}&collegeId=${program.collegeId}`}
-              className="w-full bg-[#FA394A] hover:bg-[#D92B3B] text-white font-extrabold py-3.5 rounded-2xl text-xs transition-all shadow-md shadow-[#FA394A]/20 flex items-center justify-center space-x-2 text-center"
-            >
-              <Sparkles className="w-4 h-4" />
-              <span>Apply Online Now</span>
-            </Link>
-
-            <button
-              onClick={() => {
-                setModalType('brochure');
-                setModalOpen(true);
-              }}
-              className="w-full bg-[#333333] dark:bg-gray-700 hover:bg-black dark:hover:bg-gray-600 text-white font-extrabold py-3.5 rounded-2xl text-xs transition-all flex items-center justify-center space-x-2"
-            >
-              <Download className="w-4 h-4" />
-              <span>Download Official Syllabus PDF</span>
-            </button>
-          </div>
-        </div>
+        {modalOpen && (
+          <EnquiryModal
+            isOpen={modalOpen}
+            onClose={() => setModalOpen(false)}
+            type={modalType}
+            defaultCollege={program.collegeName}
+            defaultProgram={program.title}
+            title={modalType === 'brochure' ? `Download Brochure for ${program.title}` : `Fee Enquiry for ${program.title}`}
+          />
+        )}
       </div>
-
-      {modalOpen && (
-        <EnquiryModal
-          isOpen={modalOpen}
-          onClose={() => setModalOpen(false)}
-          type={modalType}
-          defaultCollege={program.collegeName}
-          defaultProgram={program.title}
-          title={modalType === 'brochure' ? `Download Brochure for ${program.title}` : `Fee Enquiry for ${program.title}`}
-        />
-      )}
-    </div>
+    </>
   );
 };
