@@ -249,7 +249,7 @@ export const ProgramDetailPage: React.FC = () => {
                 <p className="text-xs text-muted">Official admissions open for upcoming 2026 academic batch.</p>
               </div>
               <Link to={`/apply?programId=${program._id}&collegeId=${program.collegeId}`} className="w-full bg-[#FA394A] hover:bg-[#D92B3B] text-white font-extrabold py-3.5 rounded-2xl text-xs transition-all shadow-md shadow-[#FA394A]/20 flex items-center justify-center space-x-2 text-center">
-                <Sparkles className="w-4 h-4" />
+                <GraduationCap className="w-4 h-4" />
                 <span>Apply Online Now</span>
               </Link>
               <button onClick={() => { setModalType('brochure'); setModalOpen(true); }} className="w-full bg-[#333333] dark:bg-gray-700 hover:bg-black dark:hover:bg-gray-600 text-white font-extrabold py-3.5 rounded-2xl text-xs transition-all flex items-center justify-center space-x-2">
