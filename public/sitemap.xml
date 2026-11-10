@@ -1,139 +1,184 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-    <!-- ===================================== -->
-    <!-- MAIN WEBSITE PAGES -->
-    <!-- ===================================== -->
+  <url>
+    <loc>https://onlinedegreediploma.com/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
 
-    <url>
-        <loc>https://onlinedegreediploma.com/</loc>
-    </url>
+  <url>
+    <loc>https://onlinedegreediploma.com/about</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
-    <url>
-        <loc>https://onlinedegreediploma.com/about</loc>
-    </url>
+  <url>
+    <loc>https://onlinedegreediploma.com/colleges</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
 
-    <url>
-        <loc>https://onlinedegreediploma.com/colleges</loc>
-    </url>
+  <url>
+    <loc>https://onlinedegreediploma.com/programs</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
 
-    <url>
-        <loc>https://onlinedegreediploma.com/programs</loc>
-    </url>
+  <url>
+    <loc>https://onlinedegreediploma.com/contact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
 
-    <url>
-        <loc>https://onlinedegreediploma.com/contact</loc>
-    </url>
+  <url>
+    <loc>https://onlinedegreediploma.com/apply</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
-    <url>
-        <loc>https://onlinedegreediploma.com/apply</loc>
-    </url>
+  <url>
+    <loc>https://onlinedegreediploma.com/colleges/lpu-online</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
+  <url>
+    <loc>https://onlinedegreediploma.com/colleges/cu-online</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
-    <!-- ===================================== -->
-    <!-- COLLEGE DETAIL PAGES -->
-    <!-- ===================================== -->
+  <url>
+    <loc>https://onlinedegreediploma.com/colleges/delhi-university-du-sol</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
-    <url>
-        <loc>https://onlinedegreediploma.com/colleges/lpu-online</loc>
-    </url>
+  <url>
+    <loc>https://onlinedegreediploma.com/colleges/amity-online</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
-    <url>
-        <loc>https://onlinedegreediploma.com/colleges/cu-online</loc>
-    </url>
+  <url>
+    <loc>https://onlinedegreediploma.com/colleges/ignou</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
-    <url>
-        <loc>https://onlinedegreediploma.com/colleges/delhi-university-du-sol</loc>
-    </url>
+  <url>
+    <loc>https://onlinedegreediploma.com/colleges/gla-university-online</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
-    <url>
-        <loc>https://onlinedegreediploma.com/colleges/amity-online</loc>
-    </url>
+  <url>
+    <loc>https://onlinedegreediploma.com/colleges/ssodl</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
-    <url>
-        <loc>https://onlinedegreediploma.com/colleges/ignou</loc>
-    </url>
+  <url>
+    <loc>https://onlinedegreediploma.com/colleges/amu-online</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
-    <url>
-        <loc>https://onlinedegreediploma.com/colleges/gla-university-online</loc>
-    </url>
+  <url>
+    <loc>https://onlinedegreediploma.com/colleges/online-manipal-university</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
-    <url>
-        <loc>https://onlinedegreediploma.com/colleges/ssodl</loc>
-    </url>
+  <url>
+    <loc>https://onlinedegreediploma.com/colleges/online-mizoram-university</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
-    <url>
-        <loc>https://onlinedegreediploma.com/colleges/amu-online</loc>
-    </url>
+  <url>
+    <loc>https://onlinedegreediploma.com/colleges/online-uttaranchal-university</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
-    <url>
-        <loc>https://onlinedegreediploma.com/colleges/online-manipal-university</loc>
-    </url>
+  <url>
+    <loc>https://onlinedegreediploma.com/colleges/jamia-hamdard-online</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
-    <url>
-        <loc>https://onlinedegreediploma.com/colleges/online-mizoram-university</loc>
-    </url>
+  <url>
+    <loc>https://onlinedegreediploma.com/programs/diploma-in-computer-applications-dca</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
-    <url>
-        <loc>https://onlinedegreediploma.com/colleges/online-uttaranchal-university</loc>
-    </url>
+  <url>
+    <loc>https://onlinedegreediploma.com/programs/diploma-in-business-administration-dba</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
-    <url>
-        <loc>https://onlinedegreediploma.com/colleges/jamia-hamdard-online</loc>
-    </url>
+  <url>
+    <loc>https://onlinedegreediploma.com/programs/bachelor-of-arts-ba</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
+  <url>
+    <loc>https://onlinedegreediploma.com/programs/bachelor-of-computer-applications-bca</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
-    <!-- ===================================== -->
-    <!-- PROGRAM DETAIL PAGES -->
-    <!-- ===================================== -->
+  <url>
+    <loc>https://onlinedegreediploma.com/programs/bachelor-of-business-administration-bba</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
-    <url>
-        <loc>https://onlinedegreediploma.com/programs/diploma-in-computer-applications-dca</loc>
-    </url>
+  <url>
+    <loc>https://onlinedegreediploma.com/programs/master-of-library-information-science-mlis</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
-    <url>
-        <loc>https://onlinedegreediploma.com/programs/diploma-in-business-administration-dba</loc>
-    </url>
+  <url>
+    <loc>https://onlinedegreediploma.com/programs/master-of-arts-in-economics-ma-economics</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
-    <url>
-        <loc>https://onlinedegreediploma.com/programs/bachelor-of-arts-ba</loc>
-    </url>
+  <url>
+    <loc>https://onlinedegreediploma.com/programs/master-of-arts-in-education-ma-education</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
-    <url>
-        <loc>https://onlinedegreediploma.com/programs/bachelor-of-computer-applications-bca</loc>
-    </url>
+  <url>
+    <loc>https://onlinedegreediploma.com/programs/master-of-arts-in-sociology-ma-sociology</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
-    <url>
-        <loc>https://onlinedegreediploma.com/programs/bachelor-of-business-administration-bba</loc>
-    </url>
+  <url>
+    <loc>https://onlinedegreediploma.com/programs/master-of-arts-in-mathematics-ma-mathematics</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
-    <url>
-        <loc>https://onlinedegreediploma.com/programs/master-of-library-information-science-mlis</loc>
-    </url>
+  <url>
+    <loc>https://onlinedegreediploma.com/programs/master-of-arts-in-political-science-ma-political-science</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
-    <url>
-        <loc>https://onlinedegreediploma.com/programs/master-of-arts-in-economics-ma-economics</loc>
-    </url>
-
-    <url>
-        <loc>https://onlinedegreediploma.com/programs/master-of-arts-in-education-ma-education</loc>
-    </url>
-
-    <url>
-        <loc>https://onlinedegreediploma.com/programs/master-of-arts-in-sociology-ma-sociology</loc>
-    </url>
-
-    <url>
-        <loc>https://onlinedegreediploma.com/programs/master-of-arts-in-mathematics-ma-mathematics</loc>
-    </url>
-
-    <url>
-        <loc>https://onlinedegreediploma.com/programs/master-of-arts-in-political-science-ma-political-science</loc>
-    </url>
-
-    <url>
-        <loc>https://onlinedegreediploma.com/programs/master-of-arts-in-punjabi-ma-punjabi</loc>
-    </url>
+  <url>
+    <loc>https://onlinedegreediploma.com/programs/master-of-arts-in-punjabi-ma-punjabi</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
 </urlset>
