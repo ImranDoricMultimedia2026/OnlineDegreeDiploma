@@ -1,2 +1,62 @@
+# =====================================
+# Online Degree Diploma - Advanced robots.txt
+# Optimized for Search Engines & AI Visibility
+# =====================================
+
+# 1. Global Rules: Allow everything by default
 User-agent: *
 Allow: /
+
+# 2. Block Private/Admin Areas (Security)
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /login
+Disallow: /register
+Disallow: /forgot-password
+
+# 3. Block Search Result Pages (Prevent Duplicate Content & Crawl Waste)
+# Your site has filters like ?search=, ?degreeType=, ?collegeId=
+Disallow: /*?search=
+Disallow: /*?degreeType=
+Disallow: /*?collegeId=
+
+# 4. AI TRAINING CRAWLERS - BLOCK (Protect your content)
+# These bots scrape your content to train AI models (like ChatGPT, Gemini)
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+# 5. AI SEARCH CRAWLERS - ALLOW (Get visibility in AI search)
+# These bots fetch your content in real-time when users ask AI for recommendations
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# 6. Block Unwanted/Spam Crawlers (Save Server Resources)
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+# 7. Sitemap Location
+Sitemap: https://onlinedegreediploma.com/sitemap.xml
