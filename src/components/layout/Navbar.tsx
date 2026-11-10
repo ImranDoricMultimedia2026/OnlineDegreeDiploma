@@ -354,7 +354,7 @@ export const Navbar: React.FC = () => {
                 to="/apply"
                 className="bg-[#FA394A] hover:bg-[#D92B3B] text-white px-5 py-2.5 rounded-xl font-bold text-sm shadow-md shadow-[#FA394A]/20 transition-all hover:shadow-lg hover:-translate-y-0.5 flex items-center"
               >
-                <Sparkles className="w-4 h-4 mr-1.5" /> Apply Now
+                <GraduationCap className="w-4 h-4 mr-1.5" /> Apply Now
               </Link>
 
               {user ? (
