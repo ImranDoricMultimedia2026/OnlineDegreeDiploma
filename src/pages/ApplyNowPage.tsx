@@ -198,7 +198,7 @@ export const ApplyNowPage: React.FC = () => {
           {/* Content */}
           <div className="relative z-10 max-w-4xl mx-auto text-center">
             <span className="inline-flex items-center justify-center bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#FA394A]">
-              <Sparkles className="w-4 h-4 mr-2" />
+              <GraduationCap className="w-4 h-4 mr-2" />
               Direct University Admission Form
             </span>
 
