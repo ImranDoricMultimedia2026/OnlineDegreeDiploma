@@ -1,0 +1,5 @@
+# Sitemap aur Robots.txt ko index.html par redirect hone se rokein
+RewriteEngine On
+RewriteCond %{REQUEST_URI} ^/sitemap\.xml$ [OR]
+RewriteCond %{REQUEST_URI} ^/robots\.txt$
+RewriteRule ^ - [L]
