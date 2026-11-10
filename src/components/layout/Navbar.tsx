@@ -171,7 +171,7 @@ export const Navbar: React.FC = () => {
           <div className="max-w-7xl mx-auto flex justify-between items-center">
             <div className="flex items-center space-x-4">
               <span className="flex items-center text-amber-400 font-medium">
-                <Sparkles className="w-3.5 h-3.5 mr-1" /> {settings?.headerAnnouncement || 'Free Admission & Career Counselling Available'}
+               <GraduationCap className="w-3.5 h-3.5 mr-1" />{settings?.headerAnnouncement || 'Free Admission & Career Counselling Available'}
               </span>
               <span className="text-gray-400 dark:text-gray-600">|</span>
               <span className="text-gray-300 dark:text-gray-400">UGC & AICTE Entitled Online Degree Programs</span>
