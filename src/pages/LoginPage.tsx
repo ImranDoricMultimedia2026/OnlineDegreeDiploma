@@ -70,7 +70,7 @@ export const LoginPage: React.FC = () => {
           {/* Quick Demo Login Credentials Bar */}
           <div className="bg-[#FFE8EA] p-3.5 rounded-2xl border border-[#FA394A]/20 space-y-2">
             <p className="text-[11px] font-extrabold text-[#FA394A] uppercase flex items-center">
-              <Sparkles className="w-3.5 h-3.5 mr-1" /> Quick Demo One-Click Login:
+              <GraduationCap className="w-3.5 h-3.5 mr-1" /> Quick Demo One-Click Login:
             </p>
             <div className="grid grid-cols-2 gap-2">
               <button
