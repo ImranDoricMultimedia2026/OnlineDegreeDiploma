@@ -237,7 +237,7 @@ export const CollegeDetailPage: React.FC = () => {
                   </div>
                   <div className="flex flex-col sm:flex-row gap-3 mt-6">
                     <button onClick={() => handleOpenModal("brochure")} className="bg-white/10 hover:bg-white/20 border border-white/30 text-white font-bold px-6 py-3 rounded-2xl backdrop-blur transition-all flex items-center justify-center gap-2"><Download className="w-4 h-4" />Download Brochure</button>
-                    <button onClick={() => handleOpenModal("general")} className="bg-[#FA394A] hover:bg-[#D92B3B] text-white font-extrabold px-6 py-3 rounded-2xl shadow-lg shadow-[#FA394A]/30 transition-all flex items-center justify-center gap-2"><Sparkles className="w-4 h-4" />Free Admission Counseling</button>
+                    <button onClick={() => handleOpenModal("general")} className="bg-[#FA394A] hover:bg-[#D92B3B] text-white font-extrabold px-6 py-3 rounded-2xl shadow-lg shadow-[#FA394A]/30 transition-all flex items-center justify-center gap-2"><GraduationCap className="w-4 h-4" />Free Admission Counseling</button>
                   </div>
                 </div>
               </div>
@@ -271,7 +271,7 @@ export const CollegeDetailPage: React.FC = () => {
 
             {/* UNIVERSITY HIGHLIGHTS */}
             <div className="bg-surface p-6 sm:p-8 rounded-3xl border border-theme shadow-sm space-y-4">
-              <h2 className="text-lg font-extrabold text-heading flex items-center"><Sparkles className="w-5 h-5 mr-2 text-[#FA394A]" /> Key University Highlights</h2>
+              <h2 className="text-lg font-extrabold text-heading flex items-center"><GraduationCap className="w-5 h-5 mr-2 text-[#FA394A]" /> Key University Highlights</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                 {highlightsList.map((hl, idx) => (<div key={idx} className="flex items-start space-x-3 p-3 bg-gray-50 dark:bg-gray-800 rounded-2xl border border-theme"><div className="w-5 h-5 rounded-full bg-[#FA394A] text-white flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">✓</div><span className="text-xs font-bold text-gray-700 dark:text-gray-300">{hl}</span></div>))}
               </div>
@@ -379,7 +379,7 @@ export const CollegeDetailPage: React.FC = () => {
             <div className="bg-surface p-6 rounded-3xl border border-theme shadow-xl space-y-5 sticky top-24">
               <div className="text-center space-y-1"><span className="text-[10px] font-black text-[#FA394A] uppercase tracking-widest bg-red-50 dark:bg-red-950/30 px-3 py-1 rounded-full">Free Admission Guidance</span><h3 className="text-lg font-black text-heading pt-1">Apply to {college.name}</h3><p className="text-xs text-muted">Get free 1-on-1 counseling, syllabus brochure, and fee installment plan.</p></div>
               <div className="space-y-3">
-                <button onClick={() => handleOpenModal('general')} className="w-full bg-[#FA394A] hover:bg-[#D92B3B] text-white font-extrabold py-3.5 rounded-2xl text-xs transition-all shadow-md shadow-[#FA394A]/20 flex items-center justify-center space-x-2"><Sparkles className="w-4 h-4" /><span>Get Free University Prospectus</span></button>
+                <button onClick={() => handleOpenModal('general')} className="w-full bg-[#FA394A] hover:bg-[#D92B3B] text-white font-extrabold py-3.5 rounded-2xl text-xs transition-all shadow-md shadow-[#FA394A]/20 flex items-center justify-center space-x-2"><GraduationCap className="w-4 h-4" /><span>Get Free University Prospectus</span></button>
                 <button onClick={() => navigate(`/apply?collegeId=${college._id}`)} className="w-full bg-[#333333] dark:bg-gray-700 hover:bg-black dark:hover:bg-gray-600 text-white font-extrabold py-3.5 rounded-2xl text-xs transition-all flex items-center justify-center space-x-2"><span>Apply Online Now</span><ArrowRight className="w-4 h-4" /></button>
                 <button onClick={() => handleOpenModal('fee_structure')} className="w-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-heading font-bold py-3.5 rounded-2xl text-xs transition-all flex items-center justify-center space-x-2"><Briefcase className="w-4 h-4" /><span>Check EMI & Fee Schedule</span></button>
               </div>
