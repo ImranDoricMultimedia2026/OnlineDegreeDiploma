@@ -74,34 +74,90 @@ export const HomePage: React.FC = () => {
 
   return (
     <>
-      {/* ================= SEO & SCHEMA MARKUP START ================= */}
+            {/* ================= ADVANCED SEO & SCHEMA MARKUP (DORIC FORMAT) ================= */}
       <Helmet>
+        {/* 1. PRIMARY SEO (Limits ke andar) */}
         <title>Online Degree Diploma | LPU, CU & UGC Universities</title>
-        <meta name="description" content="Explore UGC-recognized online degrees & diplomas from LPU, CU, IGNOU & Amity. Compare fees, courses & apply online for 2026 admissions." />
-        <meta name="keywords" content="Online Degree, Online Diploma, LPU Online, CU Online, UGC Approved Universities, Online Degree Ludhiana" />
-        <link rel="canonical" href="https://onlinedegreediploma.com/" />
         
-        {/* Homepage Specific Schema (FAQ) */}
+        <meta
+          name="description"
+          content="Explore UGC-recognized online degrees & diplomas from LPU, CU, IGNOU & Amity. Compare fees, courses & apply online for 2026 admissions."
+        />
+        
+        <meta
+          name="keywords"
+          content="Online Degree, Online Diploma, LPU Online, CU Online, UGC Approved Universities, Online Degree Ludhiana"
+        />
+        
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <link rel="canonical" href="https://onlinedegreediploma.com/" />
+
+        {/* 2. OPEN GRAPH (Social Media) */}
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_IN" />
+        <meta property="og:site_name" content="Online Degree Diploma" />
+        <meta property="og:title" content="Online Degree Diploma | LPU, CU & UGC Universities" />
+        <meta property="og:description" content="Explore UGC-recognized online degrees & diplomas from LPU, CU, IGNOU & Amity. Compare fees & apply online." />
+        <meta property="og:url" content="https://onlinedegreediploma.com/" />
+        <meta property="og:image" content="https://onlinedegreediploma.com/icons/android-chrome-512x512.png" />
+
+        {/* 3. TWITTER CARD */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Online Degree Diploma | UGC Online Universities" />
+        <meta name="twitter:description" content="Explore UGC-recognized online degrees and diplomas from top Indian universities." />
+        <meta name="twitter:image" content="https://onlinedegreediploma.com/icons/android-chrome-512x512.png" />
+
+        {/* 4. SCHEMA MARKUP (JSON-LD) - ADVANCED GRAPH */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
+            "@graph": [
               {
-                "@type": "Question",
-                "name": "Are online degrees from LPU and CU valid for jobs?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Yes, online degrees from UGC-DEB approved universities like LPU and CU are fully valid for government and private jobs. They hold the same value as regular degrees."
+                "@type": "WebSite",
+                "@id": "https://onlinedegreediploma.com/#website",
+                "url": "https://onlinedegreediploma.com/",
+                "name": "Online Degree Diploma",
+                "publisher": { "@id": "https://onlinedegreediploma.com/#organization" },
+                "inLanguage": "en-IN"
+              },
+              {
+                "@type": "Organization",
+                "@id": "https://onlinedegreediploma.com/#organization",
+                "name": "Online Degree Diploma",
+                "url": "https://onlinedegreediploma.com/",
+                "logo": "https://onlinedegreediploma.com/icons/android-chrome-512x512.png",
+                "telephone": "+91-80541-00099",
+                "email": "admissions@onlinedegreediploma.com",
+                "address": {
+                  "@type": "PostalAddress",
+                  "streetAddress": "1st Floor, Gulati Market, Near CMC Chowk",
+                  "addressLocality": "Ludhiana",
+                  "addressRegion": "Punjab",
+                  "postalCode": "141001",
+                  "addressCountry": "IN"
                 }
               },
               {
-                "@type": "Question",
-                "name": "How can I apply for an online degree on your website?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "You can compare universities, check fees, and fill out the application form directly on our website. Our counselors will guide you through the admission process."
-                }
+                "@type": "FAQPage",
+                "@id": "https://onlinedegreediploma.com/#faq",
+                "mainEntity": [
+                  {
+                    "@type": "Question",
+                    "name": "Are online degrees from LPU and CU valid for jobs?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Yes, online degrees from UGC-DEB approved universities like LPU and CU are fully valid for government and private jobs. They hold the same value as regular degrees."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "How can I apply for an online degree on your website?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "You can compare universities, check fees, and fill out the application form directly on our website. Our counselors will guide you through the admission process."
+                    }
+                  }
+                ]
               }
             ]
           })}
