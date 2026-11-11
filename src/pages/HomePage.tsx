@@ -74,7 +74,7 @@ export const HomePage: React.FC = () => {
 
   return (
     <>
-      {/* ================= ADVANCED SEO & SCHEMA MARKUP (DORIC FORMAT) ================= */}
+           {/* ================= ADVANCED SEO & SCHEMA MARKUP (DORIC FORMAT) ================= */}
       <Helmet>
         {/* 1. PRIMARY SEO (Limits ke andar) */}
         <title>Online Degree Diploma | LPU, CU & UGC Universities</title>
@@ -117,7 +117,7 @@ export const HomePage: React.FC = () => {
         <meta name="twitter:description" content="Explore UGC-recognized online degrees and diplomas from top Indian universities." />
         <meta name="twitter:image" content="https://onlinedegreediploma.com/icons/android-chrome-512x512.png" />
 
-        {/* 4. SCHEMA MARKUP (JSON-LD) - ADVANCED GRAPH */}
+        {/* 4. SCHEMA MARKUP (JSON-LD) - ADVANCED GRAPH WITH SEARCHACTION */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -128,7 +128,15 @@ export const HomePage: React.FC = () => {
                 "url": "https://onlinedegreediploma.com/",
                 "name": "Online Degree Diploma",
                 "publisher": { "@id": "https://onlinedegreediploma.com/#organization" },
-                "inLanguage": "en-IN"
+                "inLanguage": "en-IN",
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": {
+                    "@type": "EntryPoint",
+                    "urlTemplate": "https://onlinedegreediploma.com/programs?search={search_term_string}"
+                  },
+                  "query-input": "required name=search_term_string"
+                }
               },
               {
                 "@type": "Organization",
@@ -146,6 +154,13 @@ export const HomePage: React.FC = () => {
                   "postalCode": "141001",
                   "addressCountry": "IN"
                 }
+              },
+              {
+                "@type": "BreadcrumbList",
+                "@id": "https://onlinedegreediploma.com/#breadcrumb",
+                "itemListElement": [
+                  { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://onlinedegreediploma.com/" }
+                ]
               },
               {
                 "@type": "FAQPage",
@@ -174,7 +189,6 @@ export const HomePage: React.FC = () => {
         </script>
       </Helmet>
       {/* ================= SEO & SCHEMA MARKUP END ================= */}
-
       <div className="min-h-screen bg-[#F5F5F5] dark:bg-gray-900 font-sans transition-colors duration-300">
         {/* HERO SLIDER SECTION */}
         <section className="relative bg-[#333333] dark:bg-black text-white overflow-hidden min-h-[520px] sm:min-h-[600px] flex items-center">
