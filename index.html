@@ -1,5 +1,7 @@
 <!doctype html>
 <html lang="en">
+  <!doctype html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,10 +12,9 @@
 
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     
-    <!-- ⚠️ CANONICAL LINE YAHAN SE HATA DI GAYI HAI ⚠️ -->
-    <!-- <link rel="canonical" href="https://onlinedegreediploma.com/" /> -->
+    <!-- ⚠️ CANONICAL LINE YAHAN SE HATA DI GAYI HAI (React Helmet handles this) ⚠️ -->
 
-    <!-- Open Graph (OG) Tags for Social Media (WhatsApp, Facebook, LinkedIn) -->
+    <!-- 1. OPEN GRAPH (Social Media) - Doric Format -->
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_IN" />
     <meta property="og:site_name" content="Online Degree Diploma" />
@@ -23,18 +24,16 @@
     <meta property="og:image" content="https://onlinedegreediploma.com/icons/android-chrome-512x512.png" />
     <meta property="og:image:alt" content="Online Degree Diploma - UGC Approved Universities" />
 
-    <!-- Twitter Card Tags -->
+    <!-- 2. TWITTER CARD - Doric Format -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Online Degree Diploma | UGC Online Universities" />
     <meta name="twitter:description" content="Explore UGC-recognized online degrees and diplomas from top Indian universities." />
     <meta name="twitter:image" content="https://onlinedegreediploma.com/icons/android-chrome-512x512.png" />
 
-    <!-- Favicon -->
+    <!-- 3. FAVICON -->
     <link rel="icon" type="image/png" href="/icons/android-chrome-512x512.png" />
 
-    <!-- =====================================================
-         SCHEMA MARKUP (JSON-LD) - VERY IMPORTANT FOR GOOGLE
-    ====================================================== -->
+    <!-- 4. ADVANCED SCHEMA MARKUP (JSON-LD) - Doric Format -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -116,9 +115,13 @@
       ]
     }
     </script>
-    <!-- SCHEMA MARKUP END -->
-
   </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
 
   <body>
     <div id="root"></div>
