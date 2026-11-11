@@ -186,14 +186,15 @@ export const HomePage: React.FC = () => {
               >
                 <div className="absolute inset-0 bg-black/20 z-10" />
                 {/* LCP FIX: Pehli image eager load, baaki lazy */}
-                <img 
-                  decoding="async" 
-                  src={slide.bgImage} 
-                  alt={slide.title} 
-                  fetchPriority={idx === 0 ? "high" : "auto"}
-                  loading={idx === 0 ? "eager" : "lazy"}
-                  className="absolute inset-0 w-full h-full object-cover object-center" 
-                />
+               <img 
+  src={slide.bgImage} 
+  alt={slide.title} 
+  width="1920" 
+  height="1080" 
+  fetchPriority={idx === 0 ? "high" : "auto"}
+  loading={idx === 0 ? "eager" : "lazy"}
+  className="absolute inset-0 w-full h-full object-cover object-center" 
+/>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full py-12">
                   <div className="max-w-3xl space-y-5">
                     {slide.badge && (
