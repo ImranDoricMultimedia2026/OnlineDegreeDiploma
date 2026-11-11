@@ -74,7 +74,7 @@ export const HomePage: React.FC = () => {
 
   return (
     <>
-            {/* ================= ADVANCED SEO & SCHEMA MARKUP (DORIC FORMAT) ================= */}
+      {/* ================= ADVANCED SEO & SCHEMA MARKUP (DORIC FORMAT) ================= */}
       <Helmet>
         {/* 1. PRIMARY SEO (Limits ke andar) */}
         <title>Online Degree Diploma | LPU, CU & UGC Universities</title>
@@ -91,6 +91,16 @@ export const HomePage: React.FC = () => {
         
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         <link rel="canonical" href="https://onlinedegreediploma.com/" />
+
+        {/* LCP FIX: Preload First Hero Image */}
+        {sliders.length > 0 && (
+          <link 
+            rel="preload" 
+            as="image" 
+            href={sliders[0].bgImage} 
+            fetchPriority="high" 
+          />
+        )}
 
         {/* 2. OPEN GRAPH (Social Media) */}
         <meta property="og:type" content="website" />
@@ -175,7 +185,15 @@ export const HomePage: React.FC = () => {
                 className={`absolute inset-0 transition-opacity duration-1000 flex items-center ${idx === currentSlideIndex ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}
               >
                 <div className="absolute inset-0 bg-black/20 z-10" />
-                <img loading="lazy" decoding="async" src={slide.bgImage} alt={slide.title} className="absolute inset-0 w-full h-full object-cover object-center" />
+                {/* LCP FIX: Pehli image eager load, baaki lazy */}
+                <img 
+                  decoding="async" 
+                  src={slide.bgImage} 
+                  alt={slide.title} 
+                  fetchPriority={idx === 0 ? "high" : "auto"}
+                  loading={idx === 0 ? "eager" : "lazy"}
+                  className="absolute inset-0 w-full h-full object-cover object-center" 
+                />
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full py-12">
                   <div className="max-w-3xl space-y-5">
                     {slide.badge && (
