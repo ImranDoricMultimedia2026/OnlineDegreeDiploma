@@ -178,10 +178,62 @@ export const ApplyNowPage: React.FC = () => {
 
   return (
     <>
+          {/* ================= ADVANCED SEO & SCHEMA MARKUP (DORIC FORMAT) ================= */}
       <Helmet>
-        <title>Apply Online | Online Degree Diploma Admissions 2026</title>
-        <meta name="description" content="Submit your application for 2026 Academic Batches in 3 simple steps." />
+        {/* 1. PRIMARY SEO */}
+        <title>Apply Online for Online Degrees 2026 | Admission Form</title>
+        <meta
+          name="description"
+          content="Submit your online degree application for 2026 batches. Choose from 12+ UGC-recognized universities & 17+ courses. Simple 3-step admission process."
+        />
+        <meta
+          name="keywords"
+          content="online degree admission form, apply online for online degree, UGC online degree application 2026, online course registration"
+        />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <link rel="canonical" href="https://onlinedegreediploma.com/apply" />
+
+        {/* 2. OPEN GRAPH (Social Media) */}
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_IN" />
+        <meta property="og:site_name" content="Online Degree Diploma" />
+        <meta property="og:title" content="Apply Online for Online Degrees 2026 | Admission Form" />
+        <meta property="og:description" content="Submit your online degree application for 2026 batches. Simple 3-step admission process with free counselling." />
+        <meta property="og:url" content="https://onlinedegreediploma.com/apply" />
+        <meta property="og:image" content="https://onlinedegreediploma.com/icons/android-chrome-512x512.png" />
+
+        {/* 3. TWITTER CARD */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Apply Online for Online Degrees 2026" />
+        <meta name="twitter:description" content="Submit your online degree application for 2026 batches. Simple 3-step admission process." />
+        <meta name="twitter:image" content="https://onlinedegreediploma.com/icons/android-chrome-512x512.png" />
+
+        {/* 4. SCHEMA MARKUP (JSON-LD) - ADVANCED */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "WebPage",
+                "@id": "https://onlinedegreediploma.com/apply/#webpage",
+                "url": "https://onlinedegreediploma.com/apply",
+                "name": "Apply Online for Online Degrees 2026 | Admission Form",
+                "description": "Submit your online degree application for 2026 batches. Choose from 12+ UGC-recognized universities & 17+ courses.",
+                "isPartOf": { "@id": "https://onlinedegreediploma.com/#website" }
+              },
+              {
+                "@type": "BreadcrumbList",
+                "@id": "https://onlinedegreediploma.com/apply/#breadcrumb",
+                "itemListElement": [
+                  { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://onlinedegreediploma.com/" },
+                  { "@type": "ListItem", "position": 2, "name": "Apply Online", "item": "https://onlinedegreediploma.com/apply" }
+                ]
+              }
+            ]
+          })}
+        </script>
       </Helmet>
+      {/* ================= SEO & SCHEMA MARKUP END ================= */}
       <div className="min-h-screen bg-[#F5F5F5] font-sans pb-16">
         {/* Header Banner */}
         <div className="relative overflow-hidden text-white py-16 sm:py-20 lg:py-24 px-4">
