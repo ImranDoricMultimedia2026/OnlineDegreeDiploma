@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { GraduationCap, Lock, Mail, AlertCircle, Sparkles, ArrowRight, ShieldCheck, User } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
+import { Helmet } from 'react-helmet-async'; 
+
 
 export const LoginPage: React.FC = () => {
   const { login } = useAuth();
@@ -52,6 +54,68 @@ export const LoginPage: React.FC = () => {
   };
 
   return (
+
+     {/* ================= ADVANCED SEO & SCHEMA MARKUP (DORIC FORMAT) ================= */}
+      <Helmet>
+        {/* 1. PRIMARY SEO - Noindex for Login Page (Best Practice) */}
+        <title>Student & Admin Login | Online Degree Diploma Portal</title>
+        
+        <meta
+          name="description"
+          content="Secure login portal for Online Degree Diploma students and administrators. Access your dashboard, track applications, and manage university records."
+        />
+        
+        <meta
+          name="keywords"
+          content="online degree student login, admin portal login, education portal sign in"
+        />
+        
+        {/* NOINDEX: Search engines ko is page ko index karne se rokein */}
+        <meta name="robots" content="noindex, nofollow" />
+        
+        <link rel="canonical" href="https://onlinedegreediploma.com/login" />
+
+        {/* 2. OPEN GRAPH (Social Media) */}
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_IN" />
+        <meta property="og:site_name" content="Online Degree Diploma" />
+        <meta property="og:title" content="Login | Online Degree Diploma Portal" />
+        <meta property="og:description" content="Secure login for students and administrators." />
+        <meta property="og:url" content="https://onlinedegreediploma.com/login" />
+        <meta property="og:image" content="https://onlinedegreediploma.com/icons/android-chrome-512x512.png" />
+
+        {/* 3. TWITTER CARD */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Login | Online Degree Diploma Portal" />
+        <meta name="twitter:description" content="Secure login for students and administrators." />
+        <meta name="twitter:image" content="https://onlinedegreediploma.com/icons/android-chrome-512x512.png" />
+
+        {/* 4. SCHEMA MARKUP (JSON-LD) */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "WebPage",
+                "@id": "https://onlinedegreediploma.com/login/#webpage",
+                "url": "https://onlinedegreediploma.com/login",
+                "name": "Student & Admin Login | Online Degree Diploma Portal",
+                "description": "Secure login portal for Online Degree Diploma students and administrators.",
+                "isPartOf": { "@id": "https://onlinedegreediploma.com/#website" }
+              },
+              {
+                "@type": "BreadcrumbList",
+                "@id": "https://onlinedegreediploma.com/login/#breadcrumb",
+                "itemListElement": [
+                  { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://onlinedegreediploma.com/" },
+                  { "@type": "ListItem", "position": 2, "name": "Login", "item": "https://onlinedegreediploma.com/login" }
+                ]
+              }
+            ]
+          })}
+        </script>
+      </Helmet>
+      {/* ================= SEO & SCHEMA MARKUP END ================= */}
     <div className="min-h-screen bg-[#F5F5F5] flex flex-col justify-center py-12 sm:px-6 lg:px-8 font-sans">
       <div className="sm:mx-auto sm:w-full sm:max-w-md text-center space-y-3">
         <Link to="/" className="inline-flex items-center space-x-2">
