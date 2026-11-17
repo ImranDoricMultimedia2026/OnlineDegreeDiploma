@@ -40,11 +40,11 @@ const ScrollToTop = () => {
 // Main Layout Component
 const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
+   
+// Main Layout Component
+const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  return (
     <div className="flex flex-col min-h-screen bg-page text-heading font-sans transition-colors duration-300">
-      <Helmet>
-        <title>Online Degree Diploma | UGC-Recognized Online Degrees & Diplomas 2026</title>
-        <meta name="description" content="Compare 12+ UGC-recognized universities for online degrees, diplomas & MBA courses. Free counselling, transparent fees, and instant online application." />
-      </Helmet>
       <Navbar />
       <main className="flex-grow">{children}</main>
       <Footer />
@@ -52,6 +52,7 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     </div>
   );
 };
+
 
 export default function App() {
   return (
