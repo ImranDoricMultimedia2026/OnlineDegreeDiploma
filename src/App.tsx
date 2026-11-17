@@ -1,11 +1,19 @@
+
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from 'react-router-dom';
+
 import { AuthProvider } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
+
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { FloatingContact } from './components/layout/FloatingContact';
+
 import { ProtectedRoute } from './components/common/ProtectedRoute';
 import { ErrorBoundary } from './components/common/ErrorBoundary';
 
@@ -26,7 +34,7 @@ import { StudentDashboardPage } from './pages/StudentDashboardPage';
 import { AdminDashboardPage } from './pages/AdminDashboardPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
-// ScrollToTop Helper
+// Scroll To Top Helper
 const ScrollToTop = () => {
   const { pathname } = useLocation();
 
@@ -38,11 +46,9 @@ const ScrollToTop = () => {
 };
 
 // Main Layout Component
-const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  return (
-   
-// Main Layout Component
-const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const MainLayout: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   return (
     <div className="flex flex-col min-h-screen bg-page text-heading font-sans transition-colors duration-300">
       <Navbar />
@@ -53,148 +59,160 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   );
 };
 
-
+// Main App Component
 export default function App() {
   return (
     <ErrorBoundary>
       <ThemeProvider>
         <AuthProvider>
           <Router>
-          <ScrollToTop />
-          <Routes>
-          {/* Public Routes with Main Navbar & Footer */}
-          <Route
-            path="/"
-            element={
-              <MainLayout>
-                <HomePage />
-              </MainLayout>
-            }
-          />
-          <Route
-            path="/about"
-            element={
-              <MainLayout>
-                <AboutPage />
-              </MainLayout>
-            }
-          />
-          <Route
-            path="/colleges"
-            element={
-              <MainLayout>
-                <CollegesPage />
-              </MainLayout>
-            }
-          />
-          <Route
-            path="/colleges/:slug"
-            element={
-              <MainLayout>
-                <CollegeDetailPage />
-              </MainLayout>
-            }
-          />
-          <Route
-            path="/programs"
-            element={
-              <MainLayout>
-                <ProgramsPage />
-              </MainLayout>
-            }
-          />
-          <Route
-            path="/programs/:slug"
-            element={
-              <MainLayout>
-                <ProgramDetailPage />
-              </MainLayout>
-            }
-          />
-          <Route
-            path="/contact"
-            element={
-              <MainLayout>
-                <ContactPage />
-              </MainLayout>
-            }
-          />
-          <Route
-            path="/apply"
-            element={
-              <MainLayout>
-                <ApplyNowPage />
-              </MainLayout>
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <MainLayout>
-                <LoginPage />
-              </MainLayout>
-            }
-          />
-          <Route
-            path="/register"
-            element={
-              <MainLayout>
-                <RegisterPage />
-              </MainLayout>
-            }
-          />
-          <Route
-            path="/forgot-password"
-            element={
-              <MainLayout>
-                <ForgotPasswordPage />
-              </MainLayout>
-            }
-          />
-          <Route
-            path="/reset-password/:token"
-            element={
-              <MainLayout>
-                <ResetPasswordPage />
-              </MainLayout>
-            }
-          />
+            <ScrollToTop />
 
-          {/* Protected Student Dashboard */}
-          <Route
-            path="/dashboard/*"
-            element={
-              <ProtectedRoute>
-                <MainLayout>
-                  <StudentDashboardPage />
-                </MainLayout>
-              </ProtectedRoute>
-            }
-          />
+            <Routes>
+              {/* Public Routes */}
+              <Route
+                path="/"
+                element={
+                  <MainLayout>
+                    <HomePage />
+                  </MainLayout>
+                }
+              />
 
-          {/* Protected Admin Dashboard */}
-          <Route
-            path="/admin/*"
-            element={
-              <ProtectedRoute requireAdminRole={true}>
-                <AdminDashboardPage />
-              </ProtectedRoute>
-            }
-          />
+              <Route
+                path="/about"
+                element={
+                  <MainLayout>
+                    <AboutPage />
+                  </MainLayout>
+                }
+              />
 
-          {/* Catch-all 404 Route */}
-          <Route
-            path="*"
-            element={
-              <MainLayout>
-                <NotFoundPage />
-              </MainLayout>
-            }
-          />
-        </Routes>
-      </Router>
-    </AuthProvider>
-  </ThemeProvider>
-  </ErrorBoundary>
-);
+              <Route
+                path="/colleges"
+                element={
+                  <MainLayout>
+                    <CollegesPage />
+                  </MainLayout>
+                }
+              />
+
+              <Route
+                path="/colleges/:slug"
+                element={
+                  <MainLayout>
+                    <CollegeDetailPage />
+                  </MainLayout>
+                }
+              />
+
+              <Route
+                path="/programs"
+                element={
+                  <MainLayout>
+                    <ProgramsPage />
+                  </MainLayout>
+                }
+              />
+
+              <Route
+                path="/programs/:slug"
+                element={
+                  <MainLayout>
+                    <ProgramDetailPage />
+                  </MainLayout>
+                }
+              />
+
+              <Route
+                path="/contact"
+                element={
+                  <MainLayout>
+                    <ContactPage />
+                  </MainLayout>
+                }
+              />
+
+              <Route
+                path="/apply"
+                element={
+                  <MainLayout>
+                    <ApplyNowPage />
+                  </MainLayout>
+                }
+              />
+
+              <Route
+                path="/login"
+                element={
+                  <MainLayout>
+                    <LoginPage />
+                  </MainLayout>
+                }
+              />
+
+              <Route
+                path="/register"
+                element={
+                  <MainLayout>
+                    <RegisterPage />
+                  </MainLayout>
+                }
+              />
+
+              <Route
+                path="/forgot-password"
+                element={
+                  <MainLayout>
+                    <ForgotPasswordPage />
+                  </MainLayout>
+                }
+              />
+
+              <Route
+                path="/reset-password/:token"
+                element={
+                  <MainLayout>
+                    <ResetPasswordPage />
+                  </MainLayout>
+                }
+              />
+
+              {/* Protected Student Dashboard */}
+              <Route
+                path="/dashboard/*"
+                element={
+                  <ProtectedRoute>
+                    <MainLayout>
+                      <StudentDashboardPage />
+                    </MainLayout>
+                  </ProtectedRoute>
+                }
+              />
+
+              {/* Protected Admin Dashboard */}
+              <Route
+                path="/admin/*"
+                element={
+                  <ProtectedRoute requireAdminRole={true}>
+                    <AdminDashboardPage />
+                  </ProtectedRoute>
+                }
+              />
+
+              {/* Catch-all 404 Route */}
+              <Route
+                path="*"
+                element={
+                  <MainLayout>
+                    <NotFoundPage />
+                  </MainLayout>
+                }
+              />
+            </Routes>
+          </Router>
+        </AuthProvider>
+      </ThemeProvider>
+    </ErrorBoundary>
+  );
 }
