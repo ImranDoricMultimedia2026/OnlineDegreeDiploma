@@ -277,7 +277,7 @@ export const HomePage: React.FC = () => {
         {/* STATS BANNER */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-            {[{val: '12+', label: 'UGC Accredited Universities'}, {val: '17+', label: 'Online Degrees & Diplomas'}, {val: '100%', label: 'Government Job Valid Degrees'}, {val: '25,000+', label: 'Students Counselled & Enrolled'}].map((stat, i) => (
+            {[{val: '12+', label: 'UGC Accredited Universities'}, {val: '19+', label: 'Online Degrees & Diplomas'}, {val: '100%', label: 'Government Job Valid Degrees'}, {val: '25,000+', label: 'Students Counselled & Enrolled'}].map((stat, i) => (
               <div key={i} className="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200/80 dark:border-gray-700 shadow-sm text-center">
                 <p className="text-2xl sm:text-3xl font-black text-[#FA394A]">{stat.val}</p>
                 <p className="text-xs font-bold text-[#333333] dark:text-gray-200 uppercase mt-1">{stat.label}</p>
@@ -403,7 +403,7 @@ export const HomePage: React.FC = () => {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
               {[
-                { num: '1', title: 'Choose Program', desc: 'Browse 17+ online degree and diploma courses.' },
+                { num: '1', title: 'Choose Program', desc: 'Browse 19+ online degree and diploma courses.' },
                 { num: '2', title: 'Submit Enquiry', desc: 'Fill out our free counselling or brochure request form.' },
                 { num: '3', title: 'Get Counselling', desc: 'Speak with an academic advisor regarding fee & eligibility.' },
                 { num: '4', title: 'Apply Online', desc: 'Upload documents & complete university registration.' },
