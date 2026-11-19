@@ -69,7 +69,7 @@ export const ProgramsPage: React.FC = () => {
         <title>Online Degree & Diploma Courses 2026 | MBA, BCA, MCA</title>
         <meta
           name="description"
-          content="Explore 17+ UGC-recognized online degree and diploma courses including MBA, BCA, MCA, BBA from LPU, CU & IGNOU. Compare fees, duration & eligibility."
+          content="Explore 19+ UGC-recognized online degree and diploma courses including MBA, BCA, MCA, BBA from LPU, CU & IGNOU. Compare fees, duration & eligibility."
         />
         <meta
           name="keywords"
@@ -83,14 +83,14 @@ export const ProgramsPage: React.FC = () => {
         <meta property="og:locale" content="en_IN" />
         <meta property="og:site_name" content="Online Degree Diploma" />
         <meta property="og:title" content="Online Degree & Diploma Courses 2026 | MBA, BCA, MCA" />
-        <meta property="og:description" content="Explore 17+ UGC-recognized online degree and diploma courses. Compare fees & apply online." />
+        <meta property="og:description" content="Explore 19+ UGC-recognized online degree and diploma courses. Compare fees & apply online." />
         <meta property="og:url" content="https://onlinedegreediploma.com/programs" />
         <meta property="og:image" content="https://onlinedegreediploma.com/icons/android-chrome-512x512.png" />
 
         {/* 3. TWITTER CARD */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Online Degree & Diploma Courses 2026" />
-        <meta name="twitter:description" content="Explore 17+ UGC-recognized online degree and diploma courses from top universities." />
+        <meta name="twitter:description" content="Explore 19+ UGC-recognized online degree and diploma courses from top universities." />
         <meta name="twitter:image" content="https://onlinedegreediploma.com/icons/android-chrome-512x512.png" />
 
         {/* 4. SCHEMA MARKUP (JSON-LD) - ADVANCED */}
@@ -103,7 +103,7 @@ export const ProgramsPage: React.FC = () => {
                 "@id": "https://onlinedegreediploma.com/programs/#webpage",
                 "url": "https://onlinedegreediploma.com/programs",
                 "name": "Online Degree & Diploma Courses 2026 | MBA, BCA, MCA",
-                "description": "Explore 17+ UGC-recognized online degree and diploma courses including MBA, BCA, MCA, BBA from LPU, CU & IGNOU.",
+                "description": "Explore 19+ UGC-recognized online degree and diploma courses including MBA, BCA, MCA, BBA from LPU, CU & IGNOU.",
                 "isPartOf": { "@id": "https://onlinedegreediploma.com/#website" }
               },
               {
@@ -143,7 +143,7 @@ export const ProgramsPage: React.FC = () => {
             <span className="text-xs sm:text-sm font-bold text-[#FA394A] uppercase tracking-[3px]">Online Degree Directory</span>
             <h1 className="mt-4 text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-tight">
               Explore All
-              <span className="block text-[#FA394A]">17 Degree & Diploma Courses</span>
+              <span className="block text-[#FA394A]">19 Degree & Diploma Courses</span>
             </h1>
             <p className="mt-6 max-w-3xl mx-auto text-sm sm:text-lg text-gray-200 leading-7">
               Find the right online program matching your qualification, budget, and career goals with verified university accreditations.
